@@ -173,9 +173,13 @@ button {
   align-items: center;
   justify-content: space-between;
 }
-.swip-ctrl-btn { cursor: pointer; }
-.swip-ctrl-btn > path { transition: fill .3s; }
-.swip-ctrl-btn:hover > path { fill: var(--gold); }
+.swip-ctrl-btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+.swip-ctrl-btn > svg > path { transition: fill .3s; }
+.swip-ctrl-btn:hover > svg > path { fill: var(--gold); }
 .welcome--padding { padding: 150px 40px 272px 40px; }
 .welcome__text {
   position: absolute;
@@ -194,12 +198,15 @@ button {
   letter-spacing: 2px;
 }
 .welcome__btn {
+  display: block;
   width: 360px;
   font-weight: 100;
   font-size: 22px;
   line-height: 75px;
   letter-spacing: 2px;
   color: var(--light);
+  text-align: center;
+  text-decoration: none;
   background-color: var(--bg-dark-red);
   border-radius: 10px;
   transition: background-color .3s;
@@ -568,7 +575,7 @@ button {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 1px solid #666666;
+  border: 1px solid #666;
   transition: border .3s;
 }
 .socials__logo:hover {

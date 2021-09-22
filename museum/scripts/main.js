@@ -18,3 +18,6 @@ new Swiper('.swiper-container', {
     }
   },
 });
+
+// Initialize before-after slider
+new BeerSlider(document.getElementById('slider'));
