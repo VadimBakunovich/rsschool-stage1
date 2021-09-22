@@ -20,6 +20,7 @@ html {
   --border-gold: #9D8665;
   --light: #fff;
   --dark: #000;
+  --light-gold: #D2B183;
   --gold: #9D8665;
 }
 .body {
@@ -40,7 +41,7 @@ html {
   letter-spacing: 2px;
   color: var(--light);
   text-decoration: none;
-  transition: color 300ms;
+  transition: color .3s;
 }
 .nav-list-text:hover { color: var(--gold); }
 .no-list-style {
@@ -91,7 +92,7 @@ button {
   margin-right: 20px;
   width: 50px;
   height: 34px;
-  background: url(../assets/img/logo.svg) no-repeat;
+  background: url(../assets/svg/logo.svg) no-repeat;
 }
 .louvre-logo__text {
   font-family: 'Forum', Arial;
@@ -110,18 +111,78 @@ button {
   align-items: center;
 }
                                           /*Welcome-section*/
-.welcome__wrp { position: relative; }
-.welcome__bg {
+.welcome__wrp {
+  position: relative;
+  height: 810px;
+}
+.swiper {
   position: absolute;
   top: 0;
   right: 40px;
   width: 1000px;
-  height: 750px;
-  background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/1.jpg);
-  background-repeat: no-repeat;
-  z-index: -1;
+  height: 810px;
 }
+.slide { background-repeat: no-repeat; }
+.slide-1 {
+  background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/1.jpg);
+}
+.slide-2 {
+  background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/2.jpg);
+}
+.slide-3 {
+  background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/3.jpg);
+}
+.slide-4 {
+  background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/4.jpg);
+}
+.slide-5 {
+  background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/5.jpg);
+}
+.swiper__controls {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 45px 75px;
+  background-color: #000;
+  z-index: 10;
+}
+.swiper-fraction { font-size: 22px; }
+.swip-frac__other { margin-left: 8px; }
+.swip-ctrl__pagination {
+  width: 180px !important;
+  display: flex;
+  justify-content: space-between;
+}
+.swip-ctrl-pag__bullet {
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all .3s;
+}
+.swip-ctrl-pag__bullet:hover { background-color: var(--bg-gold); }
+.swip-ctrl-pag__bullet--active { background-color: var(--light-gold); }
+.swip-ctrl__buttons {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.swip-ctrl-btn { cursor: pointer; }
+.swip-ctrl-btn > path { transition: fill .3s; }
+.swip-ctrl-btn:hover > path { fill: var(--gold); }
 .welcome--padding { padding: 150px 40px 272px 40px; }
+.welcome__text {
+  position: absolute;
+  top: 150px;
+  left: 40px;
+  z-index: 10;
+}
 .welcome__title {
   margin-bottom: 26px;
 }
@@ -141,7 +202,7 @@ button {
   color: var(--light);
   background-color: var(--bg-dark-red);
   border-radius: 10px;
-  transition: background-color 300ms;
+  transition: background-color .3s;
 }
 .welcome__btn:hover {
   background-color: var(--bg-gold);
@@ -186,7 +247,7 @@ button {
   margin-bottom: 11px;
   width: 300px;
   border-top: 2px solid var(--border-dark-red);
-  transition: width 750ms;
+  transition: width .75s;
 }
 .card__ref:hover > .card__border {
   width: 100%;
@@ -248,7 +309,7 @@ button {
   border-radius: 50%;
   background-color: transparent;
   z-index: 10;
-  transition: border 300ms;
+  transition: border .3s;
 }
 .video__big-btn:hover {
   border: 9px solid var(--border-gold);
@@ -354,7 +415,7 @@ button {
 }
 .ticket-type__label {
   cursor: pointer;
-  transition: color 300ms;
+  transition: color .3s;
 }
 .ticket-type__label:hover {
   color: var(--gold);
@@ -418,7 +479,7 @@ button {
 	line-height: 32px;
   color: var(--light);
   background-color: var(--bg-dark);
-  transition: color 300ms;
+  transition: color .3s;
 }
 .number__btn:hover {
   color: var(--gold);
@@ -437,7 +498,7 @@ button {
   line-height: 50px;
   letter-spacing: 2px;
   border-radius: 2px;
-  transition: background-color 300ms;
+  transition: background-color .3s;
 }
 .tickets-amount__btn:hover {
   background-color: var(--bg-gold);
@@ -508,7 +569,7 @@ button {
   height: 48px;
   border-radius: 50%;
   border: 1px solid #666666;
-  transition: border 300ms;
+  transition: border .3s;
 }
 .socials__logo:hover {
   border: 1px solid var(--border-gold);
@@ -520,7 +581,7 @@ button {
   padding-top: 13px;
 }
 .path {
-  transition: fill 300ms;
+  transition: fill .3s;
 }
 .socials__logo:hover > .socials__svg > .path {
   fill: var(--gold);

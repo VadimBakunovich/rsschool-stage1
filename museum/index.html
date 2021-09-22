@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Forum:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="body">
@@ -35,18 +36,42 @@
     <main>
       <section class="welcome" id="welcome">
         <div class="welcome__wrp container welcome--padding">
-          <div class="welcome__bg"></div>
-          <div class="swiper-container">
-            <div class="swipre-wrapper">
-              <div class="swiper-slide">
-
+          <div class="swiper-container swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide slide slide-1"></div>
+              <div class="swiper-slide slide slide-2"></div>
+              <div class="swiper-slide slide slide-3"></div>
+              <div class="swiper-slide slide slide-4"></div>
+              <div class="swiper-slide slide slide-5"></div>
+            </div>
+            <div class="swiper__controls swip-ctrl">
+              <div class="swiper-fraction swip-frac">
+                <span class="swip-frac__current" id="swipFracCurr">01</span>
+                <span class="swip-frac__other">|</span>
+                <span class="swip-frac__other">05</span>
               </div>
-              
+              <div class="swip-ctrl__pagination swip-ctrl-pag">
+                <span class="swip-ctrl-pag__bullet"></span>
+                <span class="swip-ctrl-pag__bullet"></span>
+                <span class="swip-ctrl-pag__bullet"></span>
+                <span class="swip-ctrl-pag__bullet"></span>
+                <span class="swip-ctrl-pag__bullet"></span>
+              </div>
+              <div class="swip-ctrl__buttons swip-ctrl-btns">
+                <svg class="swip-ctrl-btn swip-ctrl-btns__prev" width="30" height="20" viewBox="0 0 30 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.72254 8C3.90173 6.31339 1.99422 5.08262 0 4.30769V3.69231C1.99422 2.89459 3.90173 1.66382 5.72254 0H7.23988C6.37283 1.4359 5.53468 2.52991 4.72543 3.28205H30V4.71795H4.72543C5.53468 5.47009 6.37283 6.5641 7.23988 8H5.72254Z" fill="white"/>
+                </svg>
+                <svg class="swip-ctrl-btn swip-ctrl-btns__next" width="30" height="20" viewBox="0 0 30 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24.2775 1.97284e-06C26.0983 1.68661 28.0058 2.91738 30 3.69231L30 4.30769C28.0058 5.10541 26.0983 6.33618 24.2775 8L22.7601 8C23.6272 6.5641 24.4653 5.47009 25.2746 4.71795L3.48964e-07 4.71795L5.01636e-07 3.28205L25.2746 3.28205C24.4653 2.52992 23.6272 1.4359 22.7601 1.86378e-06L24.2775 1.97284e-06Z" fill="white"/>
+                </svg>
+              </div>
             </div>
           </div>
-          <h2 class="welcome__title section-title">Welcome<br>to the Louvre</h2>
-          <p class="welcome__descr">From the castle to the museum</p>
-          <button class="welcome__btn">Discover the Louvre</button>
+          <div class="welcome__text">
+            <h2 class="welcome__title section-title">Welcome<br>to the Louvre</h2>
+            <p class="welcome__descr">From the castle to the museum</p>
+            <button class="welcome__btn">Discover the Louvre</button>
+          </div>
         </div>
       </section>
       <section class="visiting bg-color--white" id="visiting">
@@ -334,5 +359,7 @@
         </ul>
       </div>
     </footer>
-    <script type="module" src="scripts/main.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <!-- <script src="scripts/video-player.js"></script> -->
+    <script src="scripts/main.js"></script>
   </body>
