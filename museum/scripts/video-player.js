@@ -5,7 +5,7 @@
 const muteAudio = () => {
   muteBtn.classList.toggle('muted');
   video.muted ? video.muted = false : video.muted = true;
-};
+}
 
 // filling in progress bars
 const fillProgressBar = (value) =>`
@@ -17,7 +17,7 @@ const displayOverlay = (inner) => {
   overlay.classList.remove('hidden');
   clearTimeout(timerOverlay);
   timerOverlay = setTimeout(() => overlay.classList.add('hidden'), 1000);
-};
+}
 
 // add control of the video player using the mouse
 document.addEventListener('click', (e) => {
@@ -30,7 +30,7 @@ document.addEventListener('click', (e) => {
     case 'muteBtn': muteAudio(); break;
     case 'fullscreenBtn': return document.fullscreenElement ? document.exitFullscreen() : player.requestFullscreen();
     default: break;
-  };
+  }
 });
 
 // add fullscreen mode by double click
@@ -44,14 +44,14 @@ document.addEventListener('keyup', (e) => {
     case 'KeyM': muteAudio(); break;
     case 'KeyF': return document.fullscreenElement ? document.exitFullscreen() : player.requestFullscreen();
     default: break;
-  };
+  }
   if (e.key >= 0 && e.code !== 'Space') video.currentTime = e.key * video.duration / 10;
   if (e.shiftKey && e.code === 'Period') {
     video.playbackRate === 2 ? video.playbackRate = 2 : video.playbackRate += 0.25;
-  };
+  }
   if (e.shiftKey && e.code === 'Comma') {
     video.playbackRate === 0.25 ? video.playbackRate = 0.25 : video.playbackRate -= 0.25;
-  };
+  }
 });
 
 // add control of the video player using the keyboard (second group)
@@ -64,7 +64,7 @@ document.addEventListener('keydown', (e) => {
       player.style.cursor = 'none';
       controls.style.opacity = 0;
     }, 3000);
-  };
+  }
   switch (e.code) {
     case 'Space': return e.preventDefault();
     case 'ArrowUp':
@@ -73,25 +73,25 @@ document.addEventListener('keydown', (e) => {
         else {
           video.muted = false;
           video.volume = 0.05;
-        };
-      };
+        }
+      }
       break;
     case 'ArrowDown':
       if (document.activeElement.id !== 'progress') {
         if (!video.muted) video.volume < 0.05 ? video.volume = 0 : video.volume -= 0.05;
-      };
+      }
       break;
     case 'ArrowLeft':
       if (document.activeElement.id !== 'progress') {
         video.currentTime > 5 ? video.currentTime -= 5 : video.currentTime = 0;
         displayOverlay('<< 5 sec');
-      };
+      }
       break;
     case 'ArrowRight':
       if (document.activeElement.id !== 'progress') {
         video.currentTime < video.duration - 5 ? video.currentTime += 5 : video.currentTime = video.duration;
         displayOverlay('>> 5 sec');
-      };
+      }
       break;
     case 'KeyJ':
       video.currentTime > 10 ? video.currentTime -= 10 : video.currentTime = 0;
@@ -105,14 +105,14 @@ document.addEventListener('keydown', (e) => {
       if (video.paused && !e.shiftKey) {
         video.currentTime += 0.17;
         displayOverlay('>>');
-      }; break;
+      } break;
     case 'Comma': 
       if (video.paused && !e.shiftKey) {
         video.currentTime -= 0.17;
         displayOverlay('<<');
-      }; break;
+      } break;
     default: break;
-  };
+  }
 });
 
 // change the display of play buttons
@@ -128,8 +128,10 @@ video.addEventListener('pause', () => {
 
 // control the display of the video progress bar
 video.addEventListener('timeupdate', () => {
-  progress.value = video.currentTime * 100 / video.duration;
-  progress.style.background = fillProgressBar(progress.value);
+  if (!isNaN(video.duration)) {
+    progress.value = video.currentTime * 100 / video.duration;
+    progress.style.background = fillProgressBar(progress.value);
+  }
 });
 
 // control overlay display when changing video playback speed
@@ -146,7 +148,7 @@ vol.addEventListener('input', () => {
   else {
     video.muted = false;
     video.volume = 0.05;
-  };
+  }
 });
 
 // control the video volume with the mouse wheel
@@ -178,7 +180,7 @@ video.addEventListener('volumechange', () => {
     vol.value = video.volume * 100;
     if (video.volume < 0.5 && !muteBtn.classList.contains('vol50')) muteBtn.classList.add('vol50');
     else if (video.volume >= 0.5 && muteBtn.classList.contains('vol50')) muteBtn.classList.remove('vol50');
-  };
+  }
   video.volume === 0 || video.muted ? muteBtn.classList.add('muted') : muteBtn.classList.remove('muted');
 });
 
@@ -192,7 +194,7 @@ document.addEventListener('mousemove', () => {
       player.style.cursor = 'none';
       controls.style.opacity = 0;
     }, 3000);
-  };
+  }
 });
 
 document.addEventListener('fullscreenchange', () => {
@@ -200,5 +202,5 @@ document.addEventListener('fullscreenchange', () => {
     clearTimeout(timerCursor);
     player.style.cursor = 'default';
     controls.style.opacity = 1;
-  };
+  }
 });

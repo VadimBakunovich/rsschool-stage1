@@ -443,6 +443,40 @@ iframe { border: none; }
   cursor: pointer;
 }
 .video-swp-ctrl-pag__bullet--active { background-color: #333; }
+                                          /*Gallery-section*/
+.gallery__container {
+  max-height: 1960px;
+  overflow: hidden;
+}
+.gallery__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 36px;
+  row-gap: 18px;
+  grid-auto-flow: dense;
+  grid-auto-rows: 1fr;
+  contain: layout paint;
+}
+.gallery__item {
+  position: relative;
+  width: 100%;
+}
+.gallery__item:nth-child(3n + 1) {
+  grid-column-start: 1;
+  top: 50px;
+}
+.gallery__item:nth-child(3n + 2) {
+  grid-column-start: 2;
+}
+.gallery__item:nth-child(3n + 3) {
+  grid-column-start: 3;
+  top: 50px;
+}
+.h { grid-row-end: span 3; }
+.s { grid-row-end: span 4; }
+.v { grid-row-end: span 5; }
+
                                           /*Tickets-section*/
 .tickets__title {
   margin-bottom: 25px;
