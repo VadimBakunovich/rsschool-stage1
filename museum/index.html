@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Forum:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="css/beerslider.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body class="body">
@@ -23,13 +23,13 @@
           <p class="louvre-logo__text">Louvre</p>
         </div>
         <nav class="header__nav">
-          <ul class="header___nav-list header-nav-list no-list-style">
-            <li><a class="header-nav-list__item nav-list-text" href="#visiting">Visiting</a></li>
-            <li><a class="header-nav-list__item nav-list-text" href="#explore">Explore</a></li>
-            <li><a class="header-nav-list__item nav-list-text" href="#videoJourney">Video</a></li>
-            <li><a class="header-nav-list__item nav-list-text" href="#gallery">Gallery</a></li>
-            <li><a class="header-nav-list__item nav-list-text" href="#tickets">Tickets</a></li>
-            <li><a class="header-nav-list__item nav-list-text" href="#contacts">Contacts</a></li>
+          <ul class="header___nav-list header-nav-list">
+            <li><a class="header-nav-list__item nav-list-text link" href="#visiting">Visiting</a></li>
+            <li><a class="header-nav-list__item nav-list-text link" href="#explore">Explore</a></li>
+            <li><a class="header-nav-list__item nav-list-text link" href="#videoJourney">Video</a></li>
+            <li><a class="header-nav-list__item nav-list-text link" href="#gallery">Gallery</a></li>
+            <li><a class="header-nav-list__item nav-list-text link" href="#tickets">Tickets</a></li>
+            <li><a class="header-nav-list__item nav-list-text link" href="#contacts">Contacts</a></li>
           </ul>
         </nav>
       </div>
@@ -84,7 +84,7 @@
       <section class="visiting bg-color--white" id="visiting">
         <div class="container visiting--padding">
           <h2 class="visiting__title section-title text-color--gold">Virtual tour</h2>
-          <ul class="visiting__list visiting-list no-list-style">
+          <ul class="visiting__list visiting-list">
             <li class="visiting-list__item card">
               <a class="card__ref" target="_blank" href="https://www.google.com/maps/@48.8606882,2.3356791,3a,90y,328.36h,87.55t/data=!3m7!1e1!3m5!1sAF1QipMZ9YgnArbwEIbTDANeSQYFu9gNqpW_2Sv8FBvY!2e10!3e12!7i4352!8i1815">
                 <figure class="card__photo card-photo">
@@ -245,12 +245,12 @@
       <section class="gallery" id="gallery">
         <div class="gallery__container container">
           <h2 class="gallery__title section-title">Art Gallery</h2>
-          <div class="gallery__inner" id="inner"></div>
+          <div class="gallery__inner"></div>
         </div>
       </section>
-      <section class="tickets bg-color--white" id="tickets">
+      <section class="tickets bg-color--white text-color--black" id="tickets">
         <div class="container">
-          <h2 class="tickets__title section-title">Buy tickets</h2>
+          <h2 class="tickets__title section-title text-color--gold">Buy tickets</h2>
           <div class="tickets__border"></div>
           <div class="tickets__wrapper">
             <div class="tickets__bg"></div>
@@ -279,7 +279,7 @@
                   <button class="number__btn" onclick="this.nextElementSibling.stepDown()">
                     &#8722;
                   </button>
-                  <input class="number__input" type="number" min="0" value="1">
+                  <input class="number__input" type="number" min="0" value="1" max="20">
                   <button class="number__btn" onclick="this.previousElementSibling.stepUp()">
                     +
                   </button>
@@ -289,7 +289,7 @@
                   <button class="number__btn" onclick="this.nextElementSibling.stepDown()">
                     &#8722;
                   </button>
-                  <input class="number__input" type="number" min="0" value="1">
+                  <input class="number__input" type="number" min="0" value="1" max="20">
                   <button class="number__btn" onclick="this.previousElementSibling.stepUp()">
                     +
                   </button>
@@ -301,6 +301,7 @@
           </div>
         </div>
       </section>
+      <div class="parallax"></div>
       <section class="contacts bg-color--white" id="contacts">
         <div class="container">
           <h2 class="contacts__title section-title text-color--gold">Contacts</h2>
@@ -309,10 +310,14 @@
             <div class="contacts__text-block contacts-text-block">
               <p class="contacts-text-block__title text-color--black">Palais Royal<br>Musee du Louvre</p>
               <p class="contacts-text-block__descr text-color--black">address: 75001 Paris, France</p>
-              <p class="contacts-text-block__descr text-color--black">phone: +33(0) 1 40 20 50 50</p>
-              <p class="contacts-text-block__descr text-color--black">mail: info@louvre.fr</p>
+              <a class="contacts-text-block__descr text-color--black link" href="tel:+330140205050">
+                phone: +33(0) 1 40 20 50 50
+              </a>
+              <a class="contacts-text-block__descr text-color--black link" href="mailto:info@louvre.fr">
+                mail: info@louvre.fr
+              </a>
             </div>
-            <img class="contacts__map" src="assets/img/map.png" alt="Map">
+            <img class="contacts__map" src="assets/img/map.jpg" alt="Map">
           </div>
         </div>
       </section>
@@ -324,16 +329,16 @@
           <p class="louvre-logo__text">Louvre</p>
         </div>
         <nav class="footer__nav footer-nav">
-          <ul class="footer-nav__list footer-nav-list no-list-style">
-            <li><a class="nav-list-text" href="#welcome">Welcome</a></li>
-            <li><a class="nav-list-text" href="#visiting">Visiting</a></li>
-            <li><a class="nav-list-text" href="#explore">Explore</a></li>
-            <li><a class="nav-list-text" href="#video">Video</a></li>
-            <li><a class="nav-list-text" href="#tickets">Tickets</a></li>
-            <li><a class="nav-list-text" href="#contacts">Contacts</a></li>
+          <ul class="footer-nav__list footer-nav-list">
+            <li><a class="nav-list-text link" href="#welcome">Welcome</a></li>
+            <li><a class="nav-list-text link" href="#visiting">Visiting</a></li>
+            <li><a class="nav-list-text link" href="#explore">Explore</a></li>
+            <li><a class="nav-list-text link" href="#video">Video</a></li>
+            <li><a class="nav-list-text link" href="#tickets">Tickets</a></li>
+            <li><a class="nav-list-text link" href="#contacts">Contacts</a></li>
           </ul>
         </nav>
-        <ul class="footer__socials no-list-style">
+        <ul class="footer__socials">
           <li>
             <a class="socials__logo youtube" href="https://www.youtube.com/user/louvre" target="_blank">
               <svg class="socials__svg" width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
