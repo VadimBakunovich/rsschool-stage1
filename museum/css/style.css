@@ -444,23 +444,34 @@ iframe { border: none; }
 }
 .video-swp-ctrl-pag__bullet--active { background-color: #333; }
                                           /*Gallery-section*/
-.gallery__container {
-  max-height: 1960px;
-  overflow: hidden;
+.gallery { position: relative; }
+.gallery::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 360px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+  z-index: 10;
 }
+.gallery__container {
+  max-height: 2200px;
+  overflow: hidden;
+  padding: 75px 40px 0 40px;
+}
+.gallery__title { margin-bottom: 75px; }
 .gallery__inner {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 36px;
-  row-gap: 18px;
+  row-gap: 24px;
   grid-auto-flow: dense;
-  grid-auto-rows: 1fr;
-  contain: layout paint;
 }
 .gallery__item {
   position: relative;
-  width: 100%;
+  width: 456px;
 }
 .gallery__item:nth-child(3n + 1) {
   grid-column-start: 1;
@@ -473,10 +484,18 @@ iframe { border: none; }
   grid-column-start: 3;
   top: 50px;
 }
-.h { grid-row-end: span 3; }
-.s { grid-row-end: span 4; }
-.v { grid-row-end: span 5; }
-
+.horizo { grid-row-end: span 3; }
+.square { grid-row-end: span 4; }
+.vertic { grid-row-end: span 5; }
+/* .gallery__container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 360px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+} */
                                           /*Tickets-section*/
 .tickets__title {
   margin-bottom: 25px;
