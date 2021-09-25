@@ -1,3 +1,6 @@
+// const elements = document.querySelectorAll(".lazyframe");
+// lazyframe(elements);
+
 // Initialize swiper in welcome section
 new Swiper('.welcome__swiper', {
   pagination: {
@@ -43,7 +46,7 @@ new Swiper('.video__swiper', {
   on: {
     slideChange: function() {
       video.src = `assets/video/video${this.realIndex}.mp4`;
-      video.poster = `assets/video/poster${this.realIndex}.jpg`;
+      video.poster = `assets/video/poster${this.realIndex}.avif`;
       video.currentTime = 0;
       progress.value = 0;
       progress.style.background = `

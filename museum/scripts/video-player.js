@@ -152,9 +152,8 @@ vol.addEventListener('input', () => {
 });
 
 // control the video volume with the mouse wheel
-player.addEventListener('wheel', (e) => {
-  if (document.fullscreenElement) {
-      let volume = video.volume * 100;
+const changeVolumeByWheel = e => {
+  let volume = video.volume * 100;
   if (e.deltaY < 0 && !video.muted) volume += 5;
   else if (e.deltaY < 0 && video.muted) {
     video.muted = false;
@@ -163,10 +162,12 @@ player.addEventListener('wheel', (e) => {
   if (volume < 0) video.volume = 0;
   else if (volume > 100) video.volume = 1;
   else video.volume = volume / 100;
-  }
+}
+
+document.addEventListener('fullscreenchange', _ => {
+  if (document.fullscreenElement) player.addEventListener('wheel', changeVolumeByWheel);
+  else player.removeEventListener('wheel', changeVolumeByWheel);
 });
-
-
 
 // control the display of video volume
 video.addEventListener('volumechange', () => {

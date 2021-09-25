@@ -68,18 +68,16 @@
   border: none;
   z-index: 2;
 }
-
 .beer-handle__line {
   flex-grow: 1;
   border: 2px solid #fff;
 }
 .beer-handle__circle {
-  width: 35px;
-  height: 35px;
+  width: 38px;
+  height: 38px;
   border: 4px solid #fff;
   border-radius: 50%;
 }
-
 .beer-range:focus ~ .beer-handle {
   background: transparent;
   z-index: 10;
