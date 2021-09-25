@@ -61,3 +61,23 @@ new Swiper('.video__swiper', {
     }
   },
 });
+
+// Popup handling
+
+buyBtn.addEventListener('click', _ => {
+  popup.style.visibility = 'visible';
+  popup.style.opacity = 1;
+  popupContent.classList.add('open');
+});
+
+const closePopup = _ => {
+  popupContent.classList.remove('open');
+  setTimeout(function() {
+    popup.style.opacity = 0;
+    setTimeout(function() { popup.style.visibility = 'hidden'; }, 600);
+  }, 300);
+}
+
+popup.addEventListener('click', function(e) {
+  if (e.target == this || e.target.id == 'btnClose') closePopup();
+});

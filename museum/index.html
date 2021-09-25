@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/beerslider.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/popup.css">
   </head>
   <body class="body">
     <h1 class="visually-hidden">Louvre Museum</h1>
@@ -264,7 +265,7 @@
           <div class="tickets__border"></div>
           <div class="tickets__wrapper">
             <div class="tickets__bg"></div>
-            <form class="tickets__buying" action="#">
+            <form class="tickets__buying" action="#" onsubmit="event.preventDefault()">
               <div class="tickets__type tickets-type">
                 <p class="tickets-type__title h3-style">Ticket Type</p>
                 <div class="tickets-type__inputs">
@@ -299,7 +300,7 @@
                   </button>
                 </div>
                 <p class="tickets-amount__total">Total &#8364;220</p>
-                <button class="tickets-amount__buy-btn">Buy Now</button>
+                <button type="button" class="tickets-amount__buy-btn" id="buyBtn">Buy Now</button>
               </div>
             </form>
           </div>
@@ -330,19 +331,17 @@
       <div class="container footer-wrapper">
         <div class="footer__logo louvre__logo louvre-logo">
           <div class="louvre-logo__img"></div>
-          <p class="louvre-logo__text">Louvre</p>
+          <a class="footer__logo link louvre-logo__text" href="javascript:scroll(0,0)" title="To the begining">
+            Louvre
+          </a>
         </div>
-        <!-- <a class="footer__logo link" href="javascript:scroll(0,0)" title="To the begining">
-          <div class="louvre-logo__img"></div>
-          <p class="louvre-logo__text">Louvre</p>
-        </a> -->
         <nav class="footer__nav footer-nav">
           <ul class="footer-nav__list footer-nav-list">
             <li><a class="nav-list-text link" href="#visiting">Visiting</a></li>
             <li><a class="nav-list-text link" href="#gallery">Gallery</a></li>
             <li><a class="nav-list-text link" href="#explore">Explore</a></li>
             <li><a class="nav-list-text link" href="#tickets">Tickets</a></li>
-            <li><a class="nav-list-text link" href="#video">Video</a></li>
+            <li><a class="nav-list-text link" href="#videoJourney">Video</a></li>
             <li><a class="nav-list-text link" href="#contacts">Contacts</a></li>
           </ul>
         </nav>
@@ -394,6 +393,19 @@
         </a>
       </div>
     </footer>
+    <div class="popup" id="popup">
+      <div class="popup__content" id="popupContent">
+        <button type="button" class="popup__btn-close" id="btnClose"></button>
+        <form class="popup__form" action="">
+          <div class="popup__left">
+
+          </div>
+          <div class="popup__right">
+
+          </div>
+        </form>
+      </div>
+    </div>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="scripts/beerslider.js"></script>
     <script src="scripts/video-player.js"></script>
