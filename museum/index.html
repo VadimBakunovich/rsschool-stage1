@@ -396,12 +396,122 @@
     <div class="popup" id="popup">
       <div class="popup__content" id="popupContent">
         <button type="button" class="popup__btn-close" id="btnClose"></button>
-        <form class="popup__form" action="">
-          <div class="popup__left">
-
+        <form class="popup__form" action="#" onsubmit="event.preventDefault()">
+          <div class="popup__booking">
+            <div class="popup__logo"></div>
+            <h2 class="popup__title">Booking tickets</h2>
+            <p class="popup__descr">Tour to Louvre</p>
+            <div class="popup__date-time">
+              <div class="popup__date-wrp">
+                <input class="popup__input-date" type="date">
+                <div class="popup__date-custom">
+                  <div class="calendar-logo"></div>
+                  <span class="date-custom__title">Date</span>
+                </div>
+              </div>
+              <div class="popup__time-wrp">
+                <input class="popup__input-time" type="time">
+                <div class="popup__time-custom">
+                  <div class="time-logo"></div>
+                  <span class="time-custom__title">Time</span>
+                </div>
+              </div>
+            </div>
+            <div class="popup__input-wrp">
+              <input class="popup__input" type="text" placeholder="Name">
+              <div class="popup__input-name-logo"></div>
+            </div>
+            <div class="popup__input-wrp">
+              <input class="popup__input" type="text" placeholder="E-mail">
+              <div class="popup__input-mail-logo"></div>
+            </div>
+            <div class="popup__input-wrp">
+              <input class="popup__input" type="text" placeholder="Phone">
+              <div class="popup__input-phone-logo"></div>
+            </div>
+            <div class="popup__input-wrp">
+              <select class="popup__select" name="Ticket Type">
+                <option value="0">Ticket Type</option>
+              </select>
+              <div class="popup__select-logo"></div>
+            </div>
+            <div class="popup__amount">
+              <p class="popup__amount-title">entry ticket</p>
+              <div class="popup__amount-wrp popup__amount--margin">
+                <p class="popup__amount-descr">Basic 18+ (20 €)</p>
+                <div class="popup__amount-number">
+                  <button class="popup__amount-number-btn" onclick="this.nextElementSibling.stepDown()">
+                    &#8722;
+                  </button>
+                  <input class="popup__amount-number-input" type="number" min="0" value="1" max="20">
+                  <button class="popup__amount-number-btn" onclick="this.previousElementSibling.stepUp()">
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="popup__amount-wrp">
+                <p class="popup__amount-descr">Senior 65+ (10 €)</p>
+                <div class="popup__amount-number">
+                  <button class="popup__amount-number-btn" onclick="this.nextElementSibling.stepDown()">
+                    &#8722;
+                  </button>
+                  <input class="popup__amount-number-input" type="number" min="0" value="1" max="20">
+                  <button class="popup__amount-number-btn" onclick="this.previousElementSibling.stepUp()">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="popup__right">
-
+          <div class="popup__payment">
+            <h3 class="popup__payment-title">Overview</h3>
+            <p class="popup__payment-descr">Tour to Louvre</p>
+            <p class="popup__payment-text popup__payment--date">Friday, August 19</p>
+            <p class="popup__payment-text popup__payment--time">16 : 30</p>
+            <p class="popup__payment-text popup__payment--temp">Temporary exhibition</p>
+            <div class="popup__payment-price-wrp popup__payment-price-wrp--margin">
+              <p class="popup__payment-price">Basic (20 €)</p>
+              <p class="popup__payment-summ">40 €</p>
+            </div>
+            <div class="popup__payment-price-wrp">
+              <p class="popup__payment-price">Senior (10 €)</p>
+              <p class="popup__payment-summ">20 €</p>
+            </div>
+            <div class="popup__payment-total">
+              <p>Total:</p>
+              <p>60 €</p>
+            </div>
+            <div class="popup__payment-card-wrp">
+              <div class="popup__payment-card --back">
+                <div class="popup__payment-card-cvc-wrp">
+                  <label class="popup__payment-card-cvc-descr" for="creditCardCVC">CVC/CVV</label>
+                  <input class="popup__payment-card-cvc" type="text" id="creditCardCVC">
+                  <p class="popup__payment-card-cvc-add" >The last<br>3 or 4 digits<br>on back<br>of the card</p>
+                </div>
+              </div>
+              <div class="popup__payment-card --face">
+                <label class="popup__payment-card-descr" for="creditCardNumber">Card number</label>
+                <input class="popup__payment-card-number" type="text" id="creditCardNumber">
+                <p class="popup__payment-card-descr">Expiration date</p>
+                <div class="popup__payment-card-exp-wrp">
+                  <button class="popup__payment-card-input-btn-up" onclick="this.nextElementSibling.stepUp()">
+                  </button>
+                  <input class="popup__payment-card-exp" type="number" min="1" max="12" value="03">
+                  <button class="popup__payment-card-input-btn-down" onclick="this.previousElementSibling.stepDown()">
+                  </button>
+                </div>
+                <div class="popup__payment-card-exp-wrp">
+                  <button class="popup__payment-card-input-btn-up" onclick="this.nextElementSibling.stepUp()">
+                  </button>
+                  <input class="popup__payment-card-exp" type="number" min="2021" max="2100" value="2024">
+                  <button class="popup__payment-card-input-btn-down" onclick="this.previousElementSibling.stepDown()">
+                  </button>
+                </div>
+                <label class="popup__payment-card-descr --margin" for="creditCardHolder">Cardholder name</label>
+                <input class="popup__payment-card-holder" type="text" id="creditCardHolder">
+              </div>
+            </div>
+            <button class="popup__payment-submit-btn" type="submit">Book</button>
           </div>
         </form>
       </div>

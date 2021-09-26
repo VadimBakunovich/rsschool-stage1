@@ -37,7 +37,7 @@ document.addEventListener('click', (e) => {
 video.addEventListener('dblclick', () => document.fullscreenElement ? document.exitFullscreen() : player.requestFullscreen());
 
 // add control of the video player using the keyboard (first group)
-document.addEventListener('keyup', (e) => {
+player.addEventListener('keyup', (e) => {
   switch (e.code) {
     case 'Space':
     case 'KeyK': return video.paused ? video.play() : video.pause();
@@ -55,7 +55,7 @@ document.addEventListener('keyup', (e) => {
 });
 
 // add control of the video player using the keyboard (second group)
-document.addEventListener('keydown', (e) => {
+player.addEventListener('keydown', (e) => {
   if (document.fullscreenElement) {
     player.style.cursor = 'default';
     controls.style.opacity = 1;

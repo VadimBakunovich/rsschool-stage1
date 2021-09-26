@@ -33,9 +33,9 @@
   width: 25px;
   height: 25px;
   background: url(../assets/svg/close.svg);
-  transition: .3s;
+  transition: 1s;
 }
-.popup__btn-close:hover { color: red; }
+.popup__btn-close:hover { transform: rotate(90deg); }
 
 .popup__form {
   width: 970px;
@@ -43,10 +43,472 @@
   display: flex;
   justify-content: space-between;
 }
-.popup__left {
-  width: 400px;
+.popup__booking { width: 400px; }
+
+.popup__logo {
+  width: 85px;
+  height: 41px;
+  background: url(../assets/svg/booking-logo.svg);
 }
-.popup__right {
+.popup__title {
+  margin-bottom: 14px;
+  font-family: Forum;
+  font-size: 50px;
+  font-weight: normal;
+  line-height: 55px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.popup__descr {
+  margin-bottom: 59px;
+  padding-bottom: 10px;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--dark-red);
+  border-bottom: 3px solid var(--border-dark-red);
+}
+.popup__date-time {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.popup__date-wrp,
+.popup__time-wrp {
+  position: relative;
+  width: 190px;
+  height: 45px;
+}
+
+.popup__date-custom,
+.popup__time-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 87px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+.calendar-logo {
+  margin-right: 15px;
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/date.svg);
+}
+.date-custom__title,
+.time-custom__title,
+input::placeholder,
+select {
+  font-size: 18px;
+  color: var(--dark);
+}
+.popup__input-date,
+.popup__input-time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 190px;
+  height: 45px;
+  padding: 15px 10px;
+  border: 1px solid var(--dark);
+}
+.time-logo {
+  margin-right: 15px;
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/time.svg);
+}
+input[type="date"]::-webkit-datetime-edit,
+input[type="time"]::-webkit-datetime-edit { opacity: 0; }
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: no-repeat center url(../assets/svg/input-picker.svg);
+  cursor: pointer;
+}
+.popup__input-wrp {
+  position: relative;
+  width: 400px;
+  height: 45px;
+  margin-bottom: 20px;
+}
+
+.popup__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 45px;
+  padding-left: 43px;
+  border: 1px solid var(--dark);
+}
+.popup__input-name-logo {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 13px;
+  height: 15px;
+  background: url(../assets/svg/name.svg);
+}
+.popup__input-mail-logo {
+  position: absolute;
+  top: 17px;
+  left: 15px;
+  width: 15px;
+  height: 11px;
+  background: url(../assets/svg/email.svg);
+}
+.popup__input-phone-logo {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  width: 14px;
+  height: 23px;
+  background: url(../assets/svg/tel.svg);
+}
+.popup__select {
+  padding-left: 44px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 45px;
+  appearance: none;
+  background-image: url(../assets/svg/input-picker.svg);
+  background-repeat: no-repeat;
+  background-size: 17px 17px;
+  background-position: 367px center;
+  cursor: pointer;
+}
+.popup__select-logo {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 15px;
+  height: 15px;
+  background: url(../assets/svg/ticket-type.svg);
+}
+.popup__amount {
+  height: 135px;
+  padding: 10px 15px 15px 15px;
+  border: 1px solid var(--dark);
+}
+.popup__amount-title {
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-family: Forum;
+  color: var(--gold);
+  font-size: 18px;
+  text-transform: capitalize;
+  border-bottom: 2px solid var(--border-dark-red);
+}
+.popup__amount-wrp {
+  display: flex;
+  justify-content: space-between;
+}
+.popup__amount--margin { margin-bottom: 18px; }
+
+.popup__amount-descr {
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--dark);
+}
+.popup__amount-number {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	width: 105px;
+  height: 25px;
+  padding: 0 12px;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--dark);
+}
+.popup__amount-number-input {
+	width: 33px;
+  font-size: 18px;
+  line-height: 21px;
+	text-align: center;
+	appearance: textfield;
+  background-color: var(--bg-light);
+  border: none;
+}
+.popup__amount-number input::-webkit-outer-spin-button,
+.popup__amount-number input::-webkit-inner-spin-button { display: none; }
+
+.popup__amount-number-btn {
+	font-size: 18px;
+	line-height: 18px;
+  color: var(--light);
+  background-color: var(--bg-dark);
+  transition: color .3s;
+}
+.popup__amount-number-btn:hover { color: var(--gold); }
+
+.popup__payment {
+  position: relative;
   width: 530px;
-  border: 1px solid #030303;
+  padding: 25px 30px;
+  border: 1px solid var(--dark);
+}
+.popup__payment::before {
+  position: absolute;
+  content: '';
+  top: 25px;
+  right: 30px;
+  width: 150px;
+  height: 120px;
+  background: url(../assets/img/payment-bg.avif);
+}
+.popup__payment-title {
+  margin-bottom: 3px;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 37px;
+  color: #272727;
+}
+.popup__payment-descr {
+  margin-bottom: 11px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #740C11;
+  opacity: 0.9;
+}
+.popup__payment-text {
+  position: relative;
+  margin-bottom: 5px;
+  padding-left: 30px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--dark);
+}
+.popup__payment-text::before {
+  position: absolute;
+  content: '';
+  top: 2px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+}
+.popup__payment--date::before {
+  background: url(../assets/svg/date.svg) no-repeat;
+}
+.popup__payment--time::before {
+  top: 3px;
+  background: url(../assets/svg/time.svg) no-repeat;
+}
+.popup__payment--temp::before {
+  top: 3px;
+  background: url(../assets/svg/temp.svg) no-repeat;
+}
+.popup__payment-price-wrp {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  line-height: 26px;
+  color: var(--dark);
+}
+.popup__payment-price-wrp--margin {
+  margin-top: 22px;
+}
+.popup__payment-price {
+  position: relative;
+  margin-bottom: 7px;
+  padding-left: 42px;
+}
+.popup__payment-price::before {
+  position: absolute;
+  content: '2';
+  font-size: 18px;
+  line-height: 21px;
+  color: #A4A4A3;
+  text-align: center;
+  display: block;
+  top: 2.5px;
+  left: 0;
+  width: 32px;
+  height: 20px;
+  background-color: var(--dark);
+  border-radius: 5px;
+}
+.popup__payment-total {
+  margin: 1px 0 9px 0;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 11px;
+  font-size: 32px;
+  line-height: 37px;
+  color: var(--dark);
+  border-top: 2px solid #740C11;
+}
+.popup__payment-card-wrp {
+  position: relative;
+  width: 470px;
+  height: 241px;
+  margin-bottom: 26px;
+}
+.popup__payment-card {
+  position: absolute;
+  width: 360px;
+  height: 211px;
+  border-radius: 5px;
+}
+.popup__payment-card.--face {
+  top: 0;
+  left: 0;
+  padding: 16px 20px;
+  background-color: #A4A4A3;
+}
+.popup__payment-card.--face::before {
+  position: absolute;
+  content: '';
+  top: 34px;
+  right: 20px;
+  width: 55px;
+  height: 16px;
+  background: url(../assets/svg/visa.svg);
+}
+.popup__payment-card.--face::after {
+  position: absolute;
+  content: '';
+  top: 65px;
+  right: 20px;
+  width: 53px;
+  height: 32px;
+  background: url(../assets/svg/mastercard.svg);
+}
+.popup__payment-card-descr {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #161615;
+}
+.popup__payment-card-number {
+  display: block;
+  margin-bottom: 10px;
+  width: 215px;
+  height: 35px;
+}
+.popup__payment-card-holder {
+  display: block;
+  width: 320px;
+  height: 35px;
+}
+.popup__payment-card-descr.--margin {
+  margin-bottom: 3px;
+}
+.popup__payment-card-exp-wrp {
+  display: inline-block;
+  margin: 0 11px 6px 0;
+  position: relative;
+	width: 100px;
+  height: 35px;
+  background-color: #fff;
+}
+.popup__payment-card-exp-wrp::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 28px;
+  width: 1px;
+  height: 35px;
+  background-color: #A4A4A3;
+  z-index: 1;
+}
+.popup__payment-card-exp {
+  position: absolute;
+  top: 0;
+  left: 10px;
+	width: 72px;
+  height: 35px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #161615;
+	appearance: textfield;
+  background-color: var(--bg-light);
+  border: none;
+}
+.popup__payment-card-exp::-webkit-outer-spin-button,
+.popup__payment-card-exp::-webkit-inner-spin-button { display: none; }
+
+.popup__payment-card-input-btn-up {
+	position: absolute;
+  top: 0;
+  right: 10px;
+  width: 10px;
+  height: 15px;
+  background: no-repeat bottom url(../assets/svg/arrow-up.svg);
+  transition: color .3s;
+}
+.popup__payment-card-input-btn-down {
+	position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 10px;
+  height: 15px;
+  background: no-repeat top url(../assets/svg/arrow-down.svg);
+  transition: .3s;
+}
+.popup__payment-card-input-btn-up:hover,
+.popup__payment-card-input-btn-down:hover { filter: invert(1); }
+
+.popup__payment-card.--back {
+  bottom: 0;
+  right: 0;
+  background-color: #939393;
+}
+.popup__payment-card.--back::before {
+  position: absolute;
+  content: '';
+  top: 25px;
+  right: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #161615;
+}
+.popup__payment-card-cvc-wrp {
+  position: absolute;
+  top: 86px;
+  right: 20px;
+  width: 75px;
+  height: 111px;
+}
+.popup__payment-card-cvc-descr {
+  display: block;
+  padding-left: 9px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #161615;
+}
+.popup__payment-card-cvc {
+  display: block;
+  margin-bottom: 6px;
+  width: 75px;
+  height: 36px;
+}
+.popup__payment-card-cvc-add {
+  padding-left: 10px;
+  font-size: 10px;
+  line-height: 12px;
+  color: #161615;
+}
+.popup__payment-submit-btn {
+  display: block;
+  margin-left: auto;
+  padding-top: 6px;
+  width: 220px;
+  height: 45px;
+  font-size: 22px;
+  line-height: 22px;
+  color: var(--light);
+  background-color: #710707;
+  opacity: 0.9;
+  transition: .3s;
+}
+.popup__payment-submit-btn:hover {
+  background-color: var(--bg-gold);
 }
