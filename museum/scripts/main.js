@@ -48,9 +48,9 @@ new Swiper('.video__swiper', {
       video.src = `assets/video/video${this.realIndex}.mp4`;
       video.poster = `assets/video/poster${this.realIndex}.avif`;
       video.currentTime = 0;
-      progress.value = 0;
-      progress.style.background = `
-        linear-gradient(to right, #710707 0%, #710707 0%, #c4c4c4 0%, #c4c4c4 100%)`;
+      // progress.value = 0;
+      // progress.style.background = `
+      //   linear-gradient(to right, #710707 0%, #710707 0%, #c4c4c4 0%, #c4c4c4 100%)`;
       if (video.paused) {
         playBtn.className = 'play';
         playBtnBig.className = 'big-play';
