@@ -73,8 +73,8 @@ const closePopup = _ => {
   popupContent.classList.remove('open');
   setTimeout(function() {
     popup.style.opacity = 0;
-    setTimeout(function() { popup.style.visibility = 'hidden'; }, 600);
-  }, 300);
+    setTimeout(function() { popup.style.visibility = 'hidden'; }, 500);
+  }, 200);
 }
 
 popup.addEventListener('click', function(e) {
