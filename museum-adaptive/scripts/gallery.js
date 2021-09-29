@@ -1,3 +1,5 @@
+export function gallery() {
+
 const fillGallery = _ => {
 
   let templates = [
@@ -50,6 +52,7 @@ const fillGallery = _ => {
     const img = document.createElement('img');
     img.className = 'gallery__item';
     img.alt = `tile-${i}`;
+    img.loading = 'lazy';
 
     switch (i) {
       case 1 : img.src = 'assets/img/galery/1square.avif'; break;
@@ -90,4 +93,4 @@ const fillGallery = _ => {
   }
 }
 
-fillGallery();
+fillGallery();}

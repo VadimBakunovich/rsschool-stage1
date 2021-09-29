@@ -1,4 +1,4 @@
-class BeerSlider {
+export class BeerSlider {
 
     constructor (element, {start = '61', prefix = 'beer'} = {}) {
         this.start = parseInt(start) ? Math.min(100, Math.max(0, parseInt(start))) : 50

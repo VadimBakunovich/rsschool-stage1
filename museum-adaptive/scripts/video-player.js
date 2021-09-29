@@ -1,4 +1,6 @@
-﻿let timerOverlay,
+﻿export function videoPlayer() {
+
+let timerOverlay,
     timerCursor;
 
 // mute control
@@ -204,4 +206,4 @@ document.addEventListener('fullscreenchange', () => {
     player.style.cursor = 'default';
     controls.style.opacity = 1;
   }
-});
+});}
