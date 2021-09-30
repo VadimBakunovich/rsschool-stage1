@@ -134,4 +134,191 @@
     width: 12px;
     height: 12px;
   }
+                                          /*Visiting section*/
+  
+  .visiting--padding { padding: 52px 20px 59px 20px; }
+
+  .visiting__title { margin-bottom: 12px; }
+
+  .visiting__list {
+    padding-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 62px;
+    column-gap: 0;
+    border-top: 3px solid var(--border-dark-red);
+  }
+  .card-photo__img {
+    margin-bottom: 25px;
+    flex-basis: 330px;
+    width: 330px;
+    height: 215px;
+  }
+  .card-photo__title.--ls {
+    letter-spacing: 3px;
+  }
+  .card-photo__title {
+    margin-bottom: 9px;
+    font-size: 28px;
+    line-height: 31px;
+    letter-spacing: 5px;
+  }
+  .card__border {
+    margin-bottom: 10px;
+    width: 150px;
+    border-top: 2px solid var(--border-dark-red);
+    transition: width .75s;
+  }
+  .card__descr1 {
+    font-size: 20px;
+    line-height: 23px;
+  }
+  .card__descr2 {
+    font-size: 16px;
+    line-height: 19px;
+  }
+                                        /*Explore section*/
+  
+  .explore__wrapper.--pad { padding: 53px 20px 60px 20px; }
+
+  .explore__wrapper { flex-direction: column; }
+
+  .explore__text-block { width: 100%; }
+
+  .explore__title { margin-bottom: 12px; }
+
+  .explore__border { margin-bottom: 59px; }
+  .explore__descr {
+    margin-bottom: 0px;
+    padding-right: 0;
+    font-size: 20px;
+    line-height: 38px;
+  }
+  .explore__descr.--hide { font-size: 0; }
+  .explore__img {
+    align-self: center;
+    margin-top: 20px;
+  }
+                                      /*Video section*/
+  
+  .video--padding { padding: 53px 20px 60px 20px; }
+
+  .video__text-block { margin-bottom: 32px; }
+
+  .video__descr { display: none; }
+
+  .video-container {
+    max-height: 504px;
+    overflow: hidden;
+  }
+  video {
+    width: 100%;
+    margin-top: 0px;
+  }
+  .overlay { top: 20%; }
+
+  .controls { padding: 15px 40px; }
+
+  .play { margin-right: 31px; }
+
+  .video-progress {
+    margin-right: 31px;
+    height: 5px;
+  }
+  .progress::-webkit-slider-thumb {
+    width: 13px;
+    height: 13px;
+  }
+  .volume {
+    width: 26px;
+    height: 20px;
+    margin-right: 31px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .volume-progress {
+    margin-right: 31px;
+    height: 5px;
+    width: 143px;
+  }
+  .fullscreen {
+    width: 26px;
+    height: 26px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+                  /*Video slider*/
+  .video__swiper {
+    width: 100%;
+    height: 170px;
+    margin-bottom: 40px;
+  }
+  .swiper-slide iframe {
+    width: 300px;
+    height: 170px;
+  }
+                                      /*Gallery section*/
+
+  .gallery::after { height: 239px; }
+
+  .gallery__container {
+    max-height: 1460px;
+    padding: 53px 20px 0 20px;
+  }
+  .gallery__title { margin-bottom: 52px; }
+
+                                      /*Tickets section*/
+  
+  .tickets--pad { padding: 53px 20px 60px 20px; }
+
+  .tickets__title { margin-bottom: 12px; }
+
+  .tickets__border { margin-bottom: 60px; }
+
+  .tickets__bg {
+    margin-right: 80px;
+    flex-basis: 700px;
+    background: no-repeat center / cover url(../assets/img/tickets.avif);
+  }
+
+  .tickets__type { display: none; }
+
+  .tickets__buying { flex-basis: 175px; }
+
+  .tickets-amount__title {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  .tickets-amount__descr { margin: 0 0 10px 0; }
+
+  .number {
+    margin: 0 0 30px 0;
+    width: 175px;
+    padding: 6px 14px;
+  }
+  .tickets-amount__total { margin: -7px 0 69px 0; }
+
+  .tickets-amount__total span { margin-right: 15px; }
+
+                                      /*Contacts section*/
+
+  .contacts-wrp-pad { padding: 53px 20px 60px 20px; }
+
+  .contacts__title { margin-bottom: 12px; }
+
+  .contacts__border { margin-bottom: 60px; }
+
+  .contacts-text-block__title {
+    margin-bottom: 35px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .contacts-text-block__descr {
+    margin-bottom: 15px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+  }
+
 }
