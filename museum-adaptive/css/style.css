@@ -243,8 +243,8 @@ button {
 .card-photo__img {
   margin-bottom: 25px;
   display: block;
-  width: 440px;
-  height: 285px;
+  width: clamp(330px, 31vw, 440px);
+  height: auto;
 }
 .card-photo__title {
   margin-bottom: 9px;
@@ -284,7 +284,6 @@ button {
   width: 660px;
   margin-right: 20px;
 }
-
 .explore__title { margin-bottom: 25px; }
 
 .explore__border {
@@ -512,7 +511,7 @@ video {
   z-index: 10;
 }
 .gallery__container {
-  max-height: 2200px;
+  max-height: clamp(1460px, 145vw, 2200px);
   overflow: hidden;
   padding: 75px 40px 0 40px;
 }
@@ -558,11 +557,12 @@ video {
 .tickets__wrapper { display: flex; }
 
 .tickets__bg {
-  /* width: 720px;
-  height: 550px; */
   margin-right: 60px;
-  flex-basis: 50%;
-  background: no-repeat top / contain url(../assets/img/tickets.avif);
+  width: clamp(700px, 50%, 720px);
+  height: clamp(440px, 36vw, 550px);
+  background-image: url(../assets/img/tickets.avif);
+  background-position: top right;
+  background-size: 720px 550px;
 }
 .tickets__buying {
   display: flex;
@@ -693,6 +693,9 @@ video {
   display: flex;
   justify-content: space-between;
 }
+
+.contacts__text-block { margin-right: 20px; }
+
 .contacts-text-block__title {
   margin-bottom: 50px;
   font-weight: 500;
@@ -731,26 +734,28 @@ video {
   padding: 84px 40px 53px 40px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .footer__logo { align-self: flex-start; }
 
 .footer__nav {
   padding-top: 2px;
-  flex-grow: 0.476;
+  flex-grow: 0.63;
 }
 .footer-nav__list {
-  width: clamp(313px, 61%, 363px);
+  width: clamp(313px, 65%, 363px);
   height: 128px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   row-gap: 25px;
-  column-gap: clamp(100px, 32%, 150px);
+  column-gap: clamp(100px, 40%, 150px);
 }
 .footer__socials {
   width: 340px;
-  padding-bottom: 4px;
+  padding: 40px 0 4px 0;
   align-self: flex-end;
+  justify-self: center;
   display: flex;
   justify-content: space-between;
 }
@@ -779,6 +784,12 @@ video {
 .socials__logo:active > .socials__svg > .path {
   fill: var(--dark-gold);
 }
-.copyright { padding: 49px 40px 53px 40px; }
+.copyright {
+  padding: 49px 40px 53px 40px;
+  display: flex;
+  justify-content: space-between;
+}
 
-.copyright__logo { margin-right: 124px; }
+.copyright__logo { margin-right: 20px; }
+
+.copyright__course { margin-right: 20px; }
