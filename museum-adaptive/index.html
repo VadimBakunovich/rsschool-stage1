@@ -33,7 +33,7 @@
       <section class="welcome" id="welcome">
         <div class="welcome__wrp container">
           <div class="welcome__swiper swiper">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper welcome__swiper-wrp">
               <div class="swiper-slide slide slide-1"></div>
               <div class="swiper-slide slide slide-2"></div>
               <div class="swiper-slide slide slide-3"></div>
@@ -111,7 +111,7 @@
                 <figure class="card__photo card-photo">
                   <img class="card-photo__img" src="assets/img/virtual/colonnade_perrault.avif" loading="lazy" alt="Colonnade Perrault" id="tour4">
                   <figcaption>
-                    <h3 class="card-photo__title --ls">Colonnade Perrault</h3>
+                    <h3 class="card-photo__title">Colonnade Perrault</h3>
                   </figcaption>
                 </figure>
                 <div class="card__border"></div>
@@ -137,7 +137,7 @@
                 <figure class="card__photo card-photo">
                   <img class="card-photo__img" src="assets/img/virtual/mona_lisa.avif" loading="lazy" alt="Mona Lisa" id="tour6">
                   <figcaption>
-                    <h3 class="card-photo__title --ls">Mona Lisa</h3>
+                    <h3 class="card-photo__title">Mona Lisa</h3>
                   </figcaption>
                 </figure>
                 <div class="card__border"></div>
@@ -150,7 +150,7 @@
                 <figure class="card__photo card-photo">
                   <img class="card-photo__img" src="assets/img/virtual/night_palace.avif" loading="lazy" alt="Night Palace" id="tour7">
                   <figcaption>
-                    <h3 class="card-photo__title --ls">Night Palace</h3>
+                    <h3 class="card-photo__title">Night Palace</h3>
                   </figcaption>
                 </figure>
                 <div class="card__border"></div>
@@ -316,7 +316,7 @@
                 mail: info@louvre.fr
               </a>
             </div>
-            <img class="contacts__map" src="assets/img/map.avif" loading="lazy" alt="Map">
+            <div class="contacts__map"></div>
           </div>
         </div>
       </section>
@@ -413,9 +413,9 @@
             </div>
             <div class="popup__input-wrp select-wrp">
               <select class="popup__select" name="Ticket Type">
-                <option value="0" disabled>Ticket Type</option>
+                <option value="0" selected disabled >Ticket Type</option>
                 <option value="0">Permanent exhibition</option>
-                <option value="1" selected>Temporary exhibition</option>
+                <option value="1">Temporary exhibition</option>
                 <option value="2">Combined Admission</option>
               </select>
               <div class="popup__select-logo"></div>

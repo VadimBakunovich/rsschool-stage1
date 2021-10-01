@@ -80,18 +80,15 @@
     background: url(../assets/svg/gt.svg);
   }
                                             /*Welcome section*/
-  .welcome__wrp {
-    position: relative;
-    height: 585px;
-  }
+  
+  .welcome__wrp { height: 585px; }
+
   .welcome__swiper {
-    position: absolute;
-    top: 0;
     right: 20px;
     width: 700px;
     height: 585px;
   }
-  .swiper-wrapper {
+  .welcome__swiper-wrp {
     width: 700px;
     height: 525px;
   }
@@ -155,14 +152,11 @@
     width: 330px;
     height: 215px;
   }
-  .card-photo__title.--ls {
-    letter-spacing: 3px;
-  }
   .card-photo__title {
     margin-bottom: 9px;
     font-size: 28px;
     line-height: 31px;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
   }
   .card__border {
     margin-bottom: 10px;
@@ -214,7 +208,7 @@
   }
   video {
     width: 100%;
-    margin-top: 0px;
+    margin-top: 0;
   }
   .overlay { top: 20%; }
 
@@ -301,9 +295,18 @@
 
   .tickets-amount__total span { margin-right: 15px; }
 
+                  /*Tickets booking popup*/
+
+  .popup__content {
+    width: 1024px;
+    height: 768px;
+    padding-top: 45px;
+  }
+  .popup__btn-close { right: 27px; }
+
                                       /*Contacts section*/
 
-  .contacts-wrp-pad { padding: 53px 20px 60px 20px; }
+  .contacts-wrp-pad { padding: 53px 20px 62px 20px; }
 
   .contacts__title { margin-bottom: 12px; }
 
@@ -320,5 +323,22 @@
     font-size: 20px;
     line-height: 23px;
   }
+                                      /*Footer*/
+  
+  .footer::after {
+    height: 3px;
+    bottom: 124px;
+  }
+  .footer-wrapper {
+    padding: 61px 20px 50px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer__nav {
+    padding-top: 4px;
+    flex-grow: 1;
+  }
+  .footer__socials { padding-bottom: 0; }
 
+  .copyright { padding: 50px 20px 50px 20px; }
 }
