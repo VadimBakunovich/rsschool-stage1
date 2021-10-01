@@ -4,20 +4,20 @@
   overflow: hidden;
 }
 
-  .beer-slider *, .beer-slider:before, .beer-slider:after,
-  .beer-slider *:before,
-  .beer-slider *:after {
-    box-sizing: border-box;
+.beer-slider *, .beer-slider:before, .beer-slider:after,
+.beer-slider *:before,
+.beer-slider *:after {
+  box-sizing: border-box;
 }
-  .beer-slider img, .beer-slider svg {
-    vertical-align: bottom;
+.beer-slider img, .beer-slider svg {
+  vertical-align: bottom;
 }
-  .beer-slider > * {
-    height: 100%;
+.beer-slider > * {
+  height: 100%;
 }
-  .beer-slider > img {
-    max-width: 100%;
-    height: auto;
+.beer-slider > img {
+  max-width: 100%;
+  height: auto;
 }
 .beer-reveal {
   position: absolute;
@@ -29,12 +29,13 @@
   opacity: 0;
   transition: opacity 0.35s;
 }
-  .beer-reveal > :first-child {
-    width: 200%;
-    max-width: none;
-    height: 100%; }
-  .beer-reveal > img:first-child {
-    height: auto;
+.beer-reveal > :first-child {
+  width: 200%;
+  max-width: none;
+  height: 100%;
+}
+.beer-reveal > img:first-child {
+  height: auto;
 }
 .beer-range {
   position: absolute;

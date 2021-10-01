@@ -65,7 +65,7 @@
   font-size: 18px;
   line-height: 21px;
   color: var(--dark-red);
-  border-bottom: 3px solid var(--border-dark-red);
+  border-bottom: 3px solid #740C11;
 }
 .popup__date-time {
   display: flex;
@@ -147,7 +147,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   height: 45px;
   margin-bottom: 20px;
 }
-
 .popup__input {
   position: absolute;
   top: 0;
@@ -181,7 +180,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   height: 23px;
   background: url(../assets/svg/tel.svg);
 }
-.select-wrp::after {
+/* .select-wrp::after {
   position: absolute;
   content: 'Ticket Type';
   width: 200px;
@@ -191,7 +190,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   left: 45px;
   top: 13px;
   background-color: var(--bg-light);
-}
+} */
 .popup__select {
   padding-left: 44px;
   position: absolute;
@@ -236,7 +235,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   color: var(--gold);
   font-size: 18px;
   text-transform: capitalize;
-  border-bottom: 2px solid var(--border-dark-red);
+  border-bottom: 2px solid #740C11;
 }
 .popup__amount-wrp {
   display: flex;

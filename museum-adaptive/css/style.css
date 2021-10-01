@@ -1,17 +1,7 @@
                                           /*Common*/
 
-html { 
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-*,
-*::after,
-*::before {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
 :root {
   --bg-light: #fff;
   --bg-dark: #030303;
@@ -27,13 +17,6 @@ html {
   --gold: #9D8665;
   --dark-gold: #7E6C51;
   --dark-red: #710707;
-}
-.body {
-  font-family: 'Roboto', Arial;
-  font-style: normal;
-  font-weight: normal;
-  color: var(--light);
-  background-color: var(--bg-dark);
 }
 .container {
   margin: 0 auto;
@@ -52,7 +35,7 @@ ul { list-style-type: none; }
 .section-title {
   font-family: 'Forum', Arial;
   font-weight: normal;
-  font-size: 80px;
+  font-size: clamp(50px, 4.88vw, 80px);
   line-height: 90px;
   letter-spacing: 5px;
   text-transform: uppercase;
@@ -98,17 +81,15 @@ button {
   padding: 62px 40px 58px 40px;
 }
 .louvre__logo {
-  width: 199px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1px;
+  align-items: baseline;
+  margin-right: 40px;
 }
 .louvre-logo__img {
-  margin-right: 22px;
-  width: 50px;
-  height: 34px;
-  background: url(../assets/svg/logo.svg) no-repeat;
+  margin-right: 25px;
+  width: 49px;
+  height: 26px;
+  background: url(../assets/svg/logo.svg);
 }
 .louvre-logo__text {
   font-family: 'Forum', Arial;
@@ -121,26 +102,31 @@ button {
   max-width: 775px;
   width: 100%;
 }
-.header___nav-list {
+.header__nav-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
                                           /*Welcome-section*/
-
 .welcome__wrp {
   position: relative;
-  height: 810px;
+  height: clamp(585px, 55vw, 810px);
 }
 .welcome__swiper {
   position: absolute;
   top: 0;
   right: 40px;
-  width: 1000px;
-  height: 810px;
+  width: clamp(700px, 66%, 1000px);
+  height: clamp(585px, 55vw, 810px);
 }
-.slide { background-repeat: no-repeat; }
-
+.swiper-wrapper {
+  width: clamp(700px, 66%, 1000px);
+  height: clamp(525px, 50vw, 750px);
+}
+.slide {
+  height: clamp(525px, 50vw, 750px);
+  background-size: contain;
+}
 .slide-1 {
   background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/1.avif);
 }
@@ -204,8 +190,6 @@ button {
 .swip-ctrl-btn > svg > path { transition: fill .3s; }
 
 .swip-ctrl-btn:hover > svg > path { fill: var(--gold); }
-
-.welcome--padding { padding: 150px 40px 272px 40px; }
 
 .welcome__text {
   position: absolute;
@@ -313,8 +297,7 @@ button {
 }
 .explore__img {
   margin-top: 14px;
-  width: 720px;
-  height: 700px;
+  height: 100%;
 }
                                           /*Video-section*/
 
@@ -374,7 +357,7 @@ video {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  transition: 500ms;
+  transition: .5s;
 }
 .hidden {
   opacity: 0;
@@ -430,14 +413,15 @@ video {
   width: 38px;
   height: 31px;
   margin-right: 50px;
-  background: no-repeat url(../assets/svg/video/volume.svg);
+  background-color: transparent;
+  background-image: url(../assets/svg/video/volume.svg);
   transition: filter .3s;
 }
 .volume:hover { filter: brightness(75%); }
 
-.vol50 { background: no-repeat url(../assets/svg/video/vol50.svg); }
+.vol50 { background-image: url(../assets/svg/video/vol50.svg); }
 
-.muted { background: no-repeat url(../assets/svg/video/muted.svg); }
+.muted { background-image: url(../assets/svg/video/muted.svg); }
 
 .volume-progress {
   margin-right: 50px;
@@ -450,7 +434,8 @@ video {
 .fullscreen {
   width: 35px;
   height: 35px;
-  background: no-repeat url(../assets/svg/video/fullscreen.svg);
+  background-color: transparent;
+  background-image: url(../assets/svg/video/fullscreen.svg);
   transition: .3s;
 }
 .fullscreen:hover { filter: brightness(75%); }
@@ -470,8 +455,11 @@ video {
   height: 254px;
   margin-bottom: 40px;
 }
-iframe { border: none; }
-
+.swiper-slide iframe {
+  width: clamp(300px, 100%, 452px);
+  height: clamp(170px, 16vw, 254px);
+  border: none;
+}
 .video-swiper__controls {
   width: 200px !important;
   margin: 0 auto;
@@ -537,7 +525,7 @@ iframe { border: none; }
 }
 .gallery__item {
   position: relative;
-  width: 456px;
+  width: 100%;
 }
 .gallery__item:nth-child(3n + 1) {
   grid-column-start: 1;
@@ -551,7 +539,9 @@ iframe { border: none; }
   top: 50px;
 }
 .horizo { grid-row-end: span 3; }
+
 .square { grid-row-end: span 4; }
+
 .vertic { grid-row-end: span 5; }
 
                                           /*Tickets-section*/
@@ -562,19 +552,19 @@ iframe { border: none; }
   margin-bottom: 75px;
   border-top: 3px solid var(--border-dark-red);
 }
-.tickets__wrapper {
-  display: flex;
-  justify-content: space-between;
-}
+.tickets__wrapper { display: flex; }
+
 .tickets__bg {
-  width: 720px;
-  height: 550px;
-  background: url(../assets/img/tickets.avif) no-repeat;
+  /* width: 720px;
+  height: 550px; */
+  margin-right: 60px;
+  flex-basis: 50%;
+  background: no-repeat top / contain url(../assets/img/tickets.avif);
 }
 .tickets__buying {
   display: flex;
   justify-content: space-between;
-  width: 660px;
+  flex-basis: 660px;
 }
 .tickets-type__title { margin-bottom: 52px; }
 
@@ -683,6 +673,7 @@ iframe { border: none; }
   width: 100%;
   height: 400px;
   background-image: url(../assets/img/parallax.avif);
+  background-position: center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -713,8 +704,9 @@ iframe { border: none; }
   line-height: 26px;
 }
 .contacts__map {
-  width: 960px;
-  height: 620px;
+  width: clamp(694px, 66.667%, 960px);
+  /* width: 960px;
+  height: 620px; */
 }
                                           /*Footer*/
 
@@ -738,11 +730,11 @@ iframe { border: none; }
   align-self: flex-start;
 }
 .footer__nav {
-  padding-top: 5px;
+  padding-top: 2px;
   flex-grow: 0.476;
 }
 .footer-nav__list {
-  width: 363px;
+  width: clamp(313px, 61%, 363px);
   height: 128px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -752,7 +744,7 @@ iframe { border: none; }
 }
 .footer__socials {
   width: 340px;
-  padding-bottom: 7px;
+  padding-bottom: 4px;
   align-self: flex-end;
   display: flex;
   justify-content: space-between;
@@ -782,6 +774,6 @@ iframe { border: none; }
 .socials__logo:active > .socials__svg > .path {
   fill: var(--dark-gold);
 }
-.copyright { padding: 47px 40px 53px 40px; }
+.copyright { padding: 49px 40px 53px 40px; }
 
 .copyright__logo { margin-right: 124px; }

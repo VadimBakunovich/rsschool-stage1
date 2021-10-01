@@ -6,14 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Louvre</title>
     <link rel="icon" href="assets/favicon.avif">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Forum:wght@400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="css/beerslider.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/popup.css">
+    <style>@font-face{font-family:Forum;font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/Forum-Regular.woff2) format('woff2');unicode-range:U+00-7F}@font-face{font-family:Roboto;font-style:normal;font-weight:100;font-display:swap;src:url(assets/fonts/Roboto-Thin.woff2) format('woff2');unicode-range:U+00-7F}@font-face{font-family:Roboto;font-style:normal;font-weight:300;font-display:swap;src:url(assets/fonts/Roboto-Light.woff2) format('woff2');unicode-range:U+00-7F}html{box-sizing:border-box}*,::after,::before{box-sizing:inherit;margin:0;padding:0}.body{font-family:Roboto,Arial;font-style:normal;font-weight:400;color:#fff;background-color:#030303}.visually-hidden{position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;margin:-1px}.container{margin:0 auto;max-width:1520px;padding:75px 40px}.nav-list-text{font-size:22px;font-weight:100;letter-spacing:2px;color:#fff}.section-title{font-family:Forum,Arial;font-weight:400;font-size:80px;line-height:90px;letter-spacing:5px;text-transform:uppercase}.text-color--gold{color:#9d8665}.text-color--black{color:#000}.bg-color--white{background-color:#fff}a{text-decoration:none}button{border:none}.header__wrapper{display:flex;justify-content:space-between;align-items:center;padding:62px 40px 58px 40px}.louvre__logo{width:199px;display:flex;justify-content:space-between;align-items:center;padding-top:1px}.louvre-logo__img{margin-right:22px;width:50px;height:34px;background:url(assets/svg/logo.svg) no-repeat}.louvre-logo__text{font-family:Forum,Arial;font-size:28px;letter-spacing:5px;color:#fff;text-transform:uppercase}.header__nav{max-width:775px;width:100%}.header__burger-icon {display: none}.header__nav-list{display:flex;justify-content:space-between;align-items:center;list-style-type:none}.welcome__wrp{position:relative;height:810px}.welcome__swiper{position:absolute;top:0;right:40px;width:1000px;height:810px}.swiper{overflow:hidden;z-index:1}.swiper-wrapper{width:100%;height:100%;z-index:1;display:flex;transition-property:transform}.swiper-pointer-events{touch-action:pan-y}.swiper-slide{flex-shrink:0;transition-property:transform}.slide{background-repeat:no-repeat}.slide-1{width: 1000px; background-image:linear-gradient(90deg,#000 0,rgba(0,0,0,.5) 16.19%,rgba(0,0,0,0) 30.73%),url(assets/img/welcome-slider/1.avif)}.swiper__controls{position:absolute;bottom:0;right:0;width:600px;height:120px;display:flex;align-items:center;justify-content:space-between;padding:45px 75px 45px 74px;background-color:#000;z-index:10}.swiper-fraction{font-size:22px}.swip-frac__other{margin-left:5px}.swip-ctrl__pagination{margin-right:5px;width:180px!important;display:flex;justify-content:space-between}.swip-ctrl-pag__bullet{width:16px;height:16px;background-color:#fff}.swip-ctrl-pag__bullet--active{background-color:#d2b183}.swip-ctrl__buttons{width:80px;display:flex;align-items:center;justify-content:space-between}.swip-ctrl-btn{display:flex;align-items:center;background-color:transparent}.welcome--padding{padding:150px 40px 272px 40px}.welcome__text{position:absolute;top:150px;left:40px;z-index:10}.welcome__title{margin-bottom:24px}.welcome__descr{margin-bottom:76px;font-weight:300;font-size:28px;line-height:33px;letter-spacing:2px}.welcome__btn{display:block;width:360px;font-weight:300;font-size:22px;line-height:75px;letter-spacing:2px;color:#fff;text-align:center;background-color:#710707;border-radius:10px}.visiting--padding{padding:75px 40px 73px 40px}.visiting__title{margin-bottom:25px}.visiting__list{padding-top:75px;display:flex;flex-wrap:wrap;justify-content:space-evenly;row-gap:76px;column-gap:60px;border-top:3px solid #710707}.card__ref{display:block}.card-photo__img{margin-bottom:25px;display:block;width:440px;height:285px}.popup{visibility:hidden}</style>
   </head>
   <body class="body">
     <h1 class="visually-hidden">Louvre Museum</h1>
@@ -24,7 +17,7 @@
           <p class="louvre-logo__text">Louvre</p>
         </div>
         <nav class="header__nav">
-          <ul class="header___nav-list header-nav-list">
+          <ul class="header__nav-list" id="burgerList">
             <li><a class="header-nav-list__item nav-list-text link" href="#visiting">Visiting</a></li>
             <li><a class="header-nav-list__item nav-list-text link" href="#explore">Explore</a></li>
             <li><a class="header-nav-list__item nav-list-text link" href="#videoJourney">Video</a></li>
@@ -32,12 +25,13 @@
             <li><a class="header-nav-list__item nav-list-text link" href="#tickets">Tickets</a></li>
             <li><a class="header-nav-list__item nav-list-text link" href="#contacts">Contacts</a></li>
           </ul>
+          <div class="header__burger-icon" id="burgerIcon"><span id="burgerItem"></span></div>
         </nav>
       </div>
     </header>
     <main>
       <section class="welcome" id="welcome">
-        <div class="welcome__wrp container welcome--padding">
+        <div class="welcome__wrp container">
           <div class="welcome__swiper swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide slide slide-1"></div>
@@ -53,7 +47,7 @@
                 <span class="swip-frac__other">05</span>
               </div>
               <div class="swip-ctrl__pagination swip-ctrl-pag">
-                <span class="swip-ctrl-pag__bullet"></span>
+                <span class="swip-ctrl-pag__bullet swip-ctrl-pag__bullet--active"></span>
                 <span class="swip-ctrl-pag__bullet"></span>
                 <span class="swip-ctrl-pag__bullet"></span>
                 <span class="swip-ctrl-pag__bullet"></span>
@@ -73,7 +67,7 @@
               </div>
             </div>
           </div>
-          <div class="welcome__text">
+          <div class="welcome__text" id="welcomeText">
             <h2 class="welcome__title section-title">Welcome<br>to the Louvre</h2>
             <p class="welcome__descr">From the castle to the museum</p>
             <a class="welcome__btn" href="tour.html" target="_blank" id="tour1">
@@ -89,7 +83,7 @@
             <li class="visiting-list__item card">
               <a class="card__ref" href="tour.html" target="_blank">
                 <figure class="card__photo card-photo">
-                  <img class="card-photo__img" src="assets/img/virtual/royal_palace.avif" alt="Royal Palace" id="tour2">
+                  <img class="card-photo__img" src="assets/img/virtual/royal_palace.avif" loading="lazy" alt="Royal Palace" id="tour2">
                   <figcaption class="card-photo__descr">
                     <h3 class="card-photo__title">Royal Palace</h3>
                   </figcaption>
@@ -115,9 +109,9 @@
             <li class="visiting-list__item card">
               <a class="card__ref" href="tour.html" target="_blank">
                 <figure class="card__photo card-photo">
-                  <img class="card-photo__img" src="assets/img/virtual/colonnade_perrault.avif" alt="Colonnade Perrault" id="tour4">
+                  <img class="card-photo__img" src="assets/img/virtual/colonnade_perrault.avif" loading="lazy" alt="Colonnade Perrault" id="tour4">
                   <figcaption>
-                    <h3 class="card-photo__title">Colonnade Perrault</h3>
+                    <h3 class="card-photo__title --ls">Colonnade Perrault</h3>
                   </figcaption>
                 </figure>
                 <div class="card__border"></div>
@@ -128,7 +122,7 @@
             <li class="visiting-list__item card">
               <a class="card__ref" href="tour.html" target="_blank">
                 <figure class="card__photo card-photo">
-                  <img class="card-photo__img" src="assets/img/virtual/greek_hall.avif" alt="Greek hall" id="tour5">
+                  <img class="card-photo__img" src="assets/img/virtual/greek_hall.avif" loading="lazy" alt="Greek hall" id="tour5">
                   <figcaption>
                     <h3 class="card-photo__title">Greek hall</h3>
                   </figcaption>
@@ -141,9 +135,9 @@
             <li class="visiting-list__item card">
               <a class="card__ref" href="tour.html" target="_blank">
                 <figure class="card__photo card-photo">
-                  <img class="card-photo__img" src="assets/img/virtual/mona_lisa.avif" alt="Mona Lisa" id="tour6">
+                  <img class="card-photo__img" src="assets/img/virtual/mona_lisa.avif" loading="lazy" alt="Mona Lisa" id="tour6">
                   <figcaption>
-                    <h3 class="card-photo__title">Mona Lisa</h3>
+                    <h3 class="card-photo__title --ls">Mona Lisa</h3>
                   </figcaption>
                 </figure>
                 <div class="card__border"></div>
@@ -154,9 +148,9 @@
             <li class="visiting-list__item card">
               <a class="card__ref" href="tour.html" target="_blank">
                 <figure class="card__photo card-photo">
-                  <img class="card-photo__img" src="assets/img/virtual/night_palace.avif" alt="Night Palace" id="tour7">
+                  <img class="card-photo__img" src="assets/img/virtual/night_palace.avif" loading="lazy" alt="Night Palace" id="tour7">
                   <figcaption>
-                    <h3 class="card-photo__title">Night Palace</h3>
+                    <h3 class="card-photo__title --ls">Night Palace</h3>
                   </figcaption>
                 </figure>
                 <div class="card__border"></div>
@@ -168,7 +162,7 @@
         </div>
       </section>
       <section class="explore" id="explore">
-        <div class="container explore__wrapper">
+        <div class="container explore__wrapper --pad">
           <div class="explore__text-block">
             <h2 class="explore__title section-title">Picture explore</h2>
             <div class="explore__border"></div>
@@ -180,15 +174,15 @@
               <span class="text-color--gold">"yellow veil"</span> 
               of dust that had gathered since the previous restoration in the 19th century.
             </p>
-            <p class="explore__descr">
+            <p class="explore__descr --hide">
               The cleaning provoked furious protests, not because the picture had been damaged in any way, 
               but because it looked different.
             </p>
           </div>
           <div id="slider" class="explore__img beer-slider">
-            <img src="assets/img/explore-slider/after.avif" alt="Velazques: The family of Philip IV">
+            <img src="assets/img/explore-slider/after.avif" loading="lazy" alt="Velazques: The family of Philip IV">
             <div class="beer-reveal">
-              <img src="assets/img/explore-slider/before.avif" alt="Velazques: The family of Philip IV">
+              <img src="assets/img/explore-slider/before.avif" loading="lazy" alt="Velazques: The family of Philip IV">
             </div>
           </div>
         </div>
@@ -202,7 +196,7 @@
             </p>
           </div>
           <div class="video-container" id="player">
-            <video src="assets/video/video0.mp4" poster="assets/video/poster0.avif" preload="metadata" id="video"></video>
+            <video src="assets/video/video0.mp4" poster="assets/video/poster0.avif" preload="none" id="video"></video>
             <button class="big-play" id="playBtnBig" title="play / pause"></button>
             <div class="overlay hidden" id="overlay"></div>
             <div class="controls" id="controls">
@@ -216,19 +210,19 @@
           <div class="video__swiper swiper">
             <div class="swiper-wrapper video__swip-wrp">
               <div class="swiper-slide">
-                <iframe loading="lazy" width="452" height="254" src="https://www.youtube.com/embed/zp1BXPX8jcU"></iframe>
+                <iframe loading="lazy" id="yt1"></iframe>
               </div>
               <div class="swiper-slide">
-                <iframe loading="lazy" width="452" height="254" src="https://www.youtube.com/embed/Vi5D6FKhRmo"></iframe>
+                <iframe loading="lazy" id="yt2"></iframe>
               </div>
               <div class="swiper-slide">
-                <iframe loading="lazy" width="452" height="254" src="https://www.youtube.com/embed/NOhDysLnTvY"></iframe>
+                <iframe loading="lazy" id="yt3"></iframe>
               </div>
               <div class="swiper-slide">
-                <iframe loading="lazy" width="452" height="254" src="https://www.youtube.com/embed/aWmJ5DgyWPI"></iframe>
+                <iframe loading="lazy" id="yt4"></iframe>
               </div>
               <div class="swiper-slide">
-                <iframe loading="lazy" width="452" height="254" src="https://www.youtube.com/embed/2OR0OCr6uRE"></iframe>
+                <iframe loading="lazy" id="yt5"></iframe>
               </div>
             </div>
           </div>
@@ -260,7 +254,7 @@
         </div>
       </section>
       <section class="tickets bg-color--white text-color--black" id="tickets">
-        <div class="container">
+        <div class="container tickets--pad">
           <h2 class="tickets__title section-title text-color--gold">Buy tickets</h2>
           <div class="tickets__border"></div>
           <div class="tickets__wrapper">
@@ -299,7 +293,7 @@
                     +
                   </button>
                 </div>
-                <p class="tickets-amount__total">Total &#8364;220</p>
+                <p class="tickets-amount__total"><span>Total &#8364;</span>220</p>
                 <button type="button" class="tickets-amount__buy-btn" id="buyBtn">Buy Now</button>
               </div>
             </form>
@@ -308,7 +302,7 @@
       </section>
       <div class="parallax"></div>
       <section class="contacts bg-color--white" id="contacts">
-        <div class="container">
+        <div class="container contacts-wrp-pad">
           <h2 class="contacts__title section-title text-color--gold">Contacts</h2>
           <div class="contacts__border"></div>
           <div class="contacts__wrapper">
@@ -322,7 +316,7 @@
                 mail: info@louvre.fr
               </a>
             </div>
-            <img class="contacts__map" src="assets/img/map.avif" alt="Map">
+            <img class="contacts__map" src="assets/img/map.avif" loading="lazy" alt="Map">
           </div>
         </div>
       </section>
@@ -419,6 +413,7 @@
             </div>
             <div class="popup__input-wrp select-wrp">
               <select class="popup__select" name="Ticket Type">
+                <option value="0" disabled>Ticket Type</option>
                 <option value="0">Permanent exhibition</option>
                 <option value="1" selected>Temporary exhibition</option>
                 <option value="2">Combined Admission</option>
@@ -506,9 +501,34 @@
         </form>
       </div>
     </div>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="scripts/beerslider.js"></script>
-    <script src="scripts/video-player.js"></script>
-    <script src="scripts/gallery.js"></script>
-    <script src="scripts/main.js"></script>
+    <script type="module">
+      window.onload = function() {
+        let runs = 0;
+        const loadAssets = _ => {
+          runs += 1;
+          if (runs === 1) {
+            ['css/fonts.css','css/beerslider.css','css/style.css','css/popup.css','css/1024.css'].map(i => {
+              let link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = i;
+              document.head.append(link);
+            });
+            import('./scripts/video-player.js').then(i => i.videoPlayer());
+            import('./scripts/gallery.js').then(i => i.gallery());
+            import('./scripts/beerslider.js').then(i => {
+              new i.BeerSlider(document.getElementById('slider'));
+            });
+            import('./scripts/main.js').then(i => i.main());
+            yt1.src = 'https://www.youtube.com/embed/zp1BXPX8jcU';
+            yt2.src = 'https://www.youtube.com/embed/Vi5D6FKhRmo';
+            yt3.src = 'https://www.youtube.com/embed/NOhDysLnTvY';
+            yt4.src = 'https://www.youtube.com/embed/aWmJ5DgyWPI';
+            yt5.src = 'https://www.youtube.com/embed/2OR0OCr6uRE';
+          }
+        }
+        document.addEventListener('mouseenter', _ => loadAssets());
+        document.addEventListener('scroll', _ => loadAssets());
+        document.addEventListener('touchstart', _ => loadAssets());
+      }
+    </script>
   </body>
