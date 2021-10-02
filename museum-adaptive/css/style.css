@@ -107,6 +107,7 @@ button {
   justify-content: space-between;
   align-items: center;
 }
+.header-nav-768 { display: none; }
                                           /*Welcome-section*/
 .welcome__wrp {
   position: relative;
@@ -480,7 +481,6 @@ video {
 
 .video-swp-ctrl__pagination {
   width: 140px !important;
-  height: 12px;
   display: flex;
   justify-content: space-between;
 }

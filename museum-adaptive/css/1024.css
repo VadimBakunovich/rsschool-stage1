@@ -58,7 +58,8 @@
     background-color: transparent;
     z-index: 100;
   }
-  .header__nav-list--active { transform: translateX(0); }
+  .nav--active { transform: translateX(0); }
+
   .header-nav-list__item {
     position: relative;
     display: block;
@@ -138,12 +139,8 @@
 
   .visiting__list {
     padding-top: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
     row-gap: 60px;
     column-gap: 0;
-    border-top: 3px solid var(--border-dark-red);
   }
   .card-photo__img {
     margin-bottom: 25px;
@@ -158,8 +155,6 @@
   .card__border {
     margin-bottom: 10px;
     width: 150px;
-    border-top: 2px solid var(--border-dark-red);
-    transition: width .75s;
   }
   .card__descr1 {
     font-size: 20px;
@@ -180,6 +175,7 @@
   .explore__title { margin-bottom: 12px; }
 
   .explore__border { margin-bottom: 59px; }
+
   .explore__descr {
     margin-bottom: 0px;
     padding-right: 0;
@@ -187,6 +183,7 @@
     line-height: 38px;
   }
   .explore__descr.--hide { font-size: 0; }
+  
   .explore__img {
     align-self: center;
     margin-top: 20px;
@@ -199,10 +196,8 @@
 
   .video__descr { display: none; }
 
-  .video-container {
-    max-height: 504px;
-    overflow: hidden;
-  }
+  .video-container { max-height: 504px; }
+  
   video {
     width: 100%;
     margin-top: 0;
@@ -342,6 +337,38 @@
     margin-left: auto;
     padding-bottom: 0;
   }
-
   .copyright { padding: 50px 20px 50px 20px; }
+}
+@media (max-width: 1000px) {
+
+                      /*Tickets booking popup*/
+  
+  .popup__content {
+    width: 590px;
+    height: 1479px;
+    overflow-y: auto;
+    height: 100%;
+    display: unset;
+    padding: 80px 30px 40px 30px;
+  }
+  .popup__form {
+    width: unset;
+    display: unset;
+  }
+  .popup__descr { margin-bottom: 40px; }
+
+  .popup__input-date,
+  .popup__input-time { width: 251px; }
+
+  .popup__input-date { margin-right: 28px; }
+
+  .popup__amount { margin-bottom: 50px; }
+
+  .popup__booking { width: unset; }
+
+  .popup__payment { padding: 25px 14px; }
+
+  .popup__payment::before { right: 14px; }
+
+  .popup__payment-total { margin: 1px 0 14px 0; }
 }
