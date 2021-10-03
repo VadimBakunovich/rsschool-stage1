@@ -3,8 +3,9 @@ export function main() {
 //  Burger handling
 const toggleBurger = _ => {
   burgerIcon.classList.toggle('header__burger-icon--active');
-  burgerList.classList.toggle('header__nav-list--active');
+  burgerList.classList.toggle('nav--active');
   welcomeText.classList.toggle('welcome__text--hide');
+  nav768.classList.toggle('nav--active');
 }
   burgerIcon.onclick = _ => toggleBurger();
 
@@ -13,6 +14,7 @@ const toggleBurger = _ => {
   document.body.onclick = e => {
     if (e.target.id != 'burgerIcon'
       && e.target.id != 'burgerItem'
+      && !e.target.classList.contains('nav--show')
       && burgerIcon.classList.contains('header__burger-icon--active')) toggleBurger();
   }
 
@@ -55,9 +57,21 @@ const toggleBurger = _ => {
         prevEl: '.video-swp-ctrl__prev',
       },
       slidesPerView: 3,
+      spaceBetween: 42,
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        // when window width is >= 769px
+        769: {
+          slidesPerView: 3,
+          spaceBetween: 42
+        },
+      },
       loop: true,
       simulateTouch: false,
-      spaceBetween: 42,
       on: {
         slideChange: function() {
           video.src = `assets/video/video${this.realIndex}.mp4`;

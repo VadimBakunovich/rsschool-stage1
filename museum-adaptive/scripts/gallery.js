@@ -2,38 +2,6 @@ export function gallery() {
 
 const fillGallery = _ => {
 
-  let templates = [
-    ['vertic', 'square', 'vertic',
-     'square', 'horizo', 'square',
-     'vertic', 'square', 'vertic',
-     'others', 'vertic', 'others',
-     'others', 'others', 'others'],
-
-    ['square', 'vertic', 'square',
-     'vertic', 'horizo', 'vertic',
-     'square', 'square', 'square',
-     'vertic', 'vertic', 'vertic',
-     'others', 'others', 'others'],
-
-    ['vertic', 'square', 'vertic',
-     'horizo', 'vertic', 'horizo',
-     'vertic', 'vertic', 'vertic',
-     'vertic', 'square', 'vertic',
-     'others', 'others', 'others'],
-
-    ['vertic', 'square', 'vertic',
-     'vertic', 'vertic', 'square',
-     'vertic', 'vertic', 'square',
-     'horizo', 'square', 'vertic',
-     'others', 'others', 'others'],
-
-    ['vertic', 'square', 'vertic',
-     'square', 'vertic', 'vertic',
-     'square', 'vertic', 'vertic',
-     'vertic', 'square', 'horizo',
-     'others', 'others', 'others']
-  ];
-
   let idxs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   const shuffle = arr => {
@@ -42,8 +10,6 @@ const fillGallery = _ => {
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
   }
-
-  shuffle(templates);
   shuffle(idxs);
 
   let gallery = [];
@@ -72,25 +38,14 @@ const fillGallery = _ => {
       case 15 : img.src = 'assets/img/galery/15square.avif'; break;
       default : break;
     }
-
     if (img.src.includes('horizo')) img.classList.add('horizo');
     else if (img.src.includes('square')) img.classList.add('square');
     else if (img.src.includes('vertic')) img.classList.add('vertic');
 
     gallery.push(img);
   }
-
   const container = document.querySelector('.gallery__inner');
 
-  for (let i of templates[0]) {
-    for (let j of gallery) {
-      if (j.classList.contains(i) || i == 'others') {
-        container.append(j);
-        gallery = gallery.filter(el => el.src != j.src);
-        break;
-      } else continue;
-    }
-  }
+  gallery.map(i => container.append(i));
 }
-
 fillGallery();}

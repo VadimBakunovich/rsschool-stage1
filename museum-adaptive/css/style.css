@@ -1,6 +1,16 @@
                                           /*Common*/
 
-html { scroll-behavior: smooth; }
+html { 
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
 
 :root {
   --bg-light: #fff;
@@ -18,6 +28,13 @@ html { scroll-behavior: smooth; }
   --dark-gold: #7E6C51;
   --dark-red: #710707;
 }
+.body {
+  font-family: 'Roboto', Arial;
+  font-style: normal;
+  font-weight: normal;
+  color: var(--light);
+  background-color: var(--bg-dark);
+}
 .container {
   margin: 0 auto;
   max-width: 1520px;
@@ -29,7 +46,6 @@ html { scroll-behavior: smooth; }
   letter-spacing: 2px;
   color: var(--light);
 }
-
 ul { list-style-type: none; }
 
 .section-title {
@@ -55,6 +71,7 @@ a {
 .link:active { color: var(--dark-gold) }
 
 button {
+  font-family: 'Roboto', Arial;
   border: none;
   cursor: pointer;
 }
@@ -89,7 +106,7 @@ button {
   margin-right: 25px;
   width: 49px;
   height: 26px;
-  background: url(../assets/svg/logo.svg);
+  background-image: url(../assets/svg/logo.svg);
 }
 .louvre-logo__text {
   font-family: 'Forum', Arial;
@@ -107,6 +124,8 @@ button {
   justify-content: space-between;
   align-items: center;
 }
+.header-nav-768 { display: none; }
+
                                           /*Welcome-section*/
 .welcome__wrp {
   position: relative;
@@ -119,13 +138,14 @@ button {
   width: clamp(700px, 66%, 1000px);
   height: clamp(585px, 55vw, 810px);
 }
-.swiper-wrapper {
+.welcome__swiper-wrp {
   width: clamp(700px, 66%, 1000px);
   height: clamp(525px, 50vw, 750px);
 }
 .slide {
   height: clamp(525px, 50vw, 750px);
   background-size: contain;
+  background-repeat: no-repeat;
 }
 .slide-1 {
   background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.5) 16.19%, rgba(0, 0, 0, 0) 30.73%), url(../assets/img/welcome-slider/1.avif);
@@ -243,8 +263,8 @@ button {
 .card-photo__img {
   margin-bottom: 25px;
   display: block;
-  width: 440px;
-  height: 285px;
+  width: clamp(330px, 31vw, 440px);
+  height: auto;
 }
 .card-photo__title {
   margin-bottom: 9px;
@@ -280,8 +300,10 @@ button {
   display: flex;
   justify-content: space-between;
 }
-.explore__text-block { width: 660px; }
-
+.explore__text-block {
+  width: 660px;
+  margin-right: 20px;
+}
 .explore__title { margin-bottom: 25px; }
 
 .explore__border {
@@ -310,8 +332,8 @@ button {
   margin-bottom: 75px;
 }
 .video__descr {
-  width: min(720px, calc(100% - 720px));
-  padding-right: 10px;
+  flex-basis: 740px;
+  padding-left: 20px;
   font-weight: 300;
   font-size: 22px;
   line-height: 38px;
@@ -382,7 +404,9 @@ video {
   width: 23px;
   height: 31px;
   margin-right: 50px;
-  background: no-repeat url(../assets/svg/video/play.svg);
+  background-color: transparent;
+  background-image: url(../assets/svg/video/play.svg);
+  background-repeat: no-repeat;
   transition: filter .3s;
 }
 .play:hover { filter: brightness(75%); }
@@ -415,6 +439,7 @@ video {
   margin-right: 50px;
   background-color: transparent;
   background-image: url(../assets/svg/video/volume.svg);
+  background-repeat: no-repeat;
   transition: filter .3s;
 }
 .volume:hover { filter: brightness(75%); }
@@ -436,6 +461,7 @@ video {
   height: 35px;
   background-color: transparent;
   background-image: url(../assets/svg/video/fullscreen.svg);
+  background-repeat: no-repeat;
   transition: .3s;
 }
 .fullscreen:hover { filter: brightness(75%); }
@@ -452,7 +478,7 @@ video {
 
 .video__swiper {
   width: 100%;
-  height: 254px;
+  height: clamp(170px, 16vw, 254px);
   margin-bottom: 40px;
 }
 .swiper-slide iframe {
@@ -478,7 +504,6 @@ video {
 
 .video-swp-ctrl__pagination {
   width: 140px !important;
-  height: 12px;
   display: flex;
   justify-content: space-between;
 }
@@ -509,7 +534,7 @@ video {
   z-index: 10;
 }
 .gallery__container {
-  max-height: 2200px;
+  max-height: clamp(1460px, 145vw, 2200px);
   overflow: hidden;
   padding: 75px 40px 0 40px;
 }
@@ -555,11 +580,12 @@ video {
 .tickets__wrapper { display: flex; }
 
 .tickets__bg {
-  /* width: 720px;
-  height: 550px; */
   margin-right: 60px;
-  flex-basis: 50%;
-  background: no-repeat top / contain url(../assets/img/tickets.avif);
+  width: clamp(700px, 50%, 720px);
+  height: clamp(440px, 36vw, 550px);
+  background-image: url(../assets/img/tickets.avif);
+  background-position: top right;
+  background-size: 720px 550px;
 }
 .tickets__buying {
   display: flex;
@@ -690,6 +716,9 @@ video {
   display: flex;
   justify-content: space-between;
 }
+
+.contacts__text-block { margin-right: 20px; }
+
 .contacts-text-block__title {
   margin-bottom: 50px;
   font-weight: 500;
@@ -705,9 +734,12 @@ video {
 }
 .contacts__map {
   width: clamp(694px, 66.667%, 960px);
-  /* width: 960px;
-  height: 620px; */
+  height: clamp(454px, 40vw, 620px);
+  background-image: url(../assets/img/map.avif);
+  background-position: top right;
+  background-size: 960px 620px;
 }
+
                                           /*Footer*/
 
 .footer { position: relative; }
@@ -725,27 +757,28 @@ video {
   padding: 84px 40px 53px 40px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
-.footer__logo {
-  align-self: flex-start;
-}
+.footer__logo { align-self: flex-start; }
+
 .footer__nav {
   padding-top: 2px;
-  flex-grow: 0.476;
+  flex-grow: 0.63;
 }
 .footer-nav__list {
-  width: clamp(313px, 61%, 363px);
+  width: clamp(313px, 65%, 363px);
   height: 128px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   row-gap: 25px;
-  column-gap: 150px;
+  column-gap: clamp(100px, 40%, 150px);
 }
 .footer__socials {
   width: 340px;
-  padding-bottom: 4px;
+  padding: 40px 0 4px 0;
   align-self: flex-end;
+  justify-self: center;
   display: flex;
   justify-content: space-between;
 }
@@ -774,6 +807,12 @@ video {
 .socials__logo:active > .socials__svg > .path {
   fill: var(--dark-gold);
 }
-.copyright { padding: 49px 40px 53px 40px; }
+.copyright {
+  padding: 49px 40px 53px 40px;
+  display: flex;
+  justify-content: space-between;
+}
 
-.copyright__logo { margin-right: 124px; }
+.copyright__logo { margin-right: 20px; }
+
+.copyright__course { margin-right: 20px; }
