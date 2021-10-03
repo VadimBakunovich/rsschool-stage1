@@ -10,14 +10,18 @@
   .header__wrapper { position: relative; }
 
   .louvre__logo { z-index: 91; }
-  
+
+  .header__nav-list {
+    top: 96px;
+    left: -204px;
+  }
   .header-nav-768 {
     display: block;
     position: absolute;
-    top: 20px;
+    top: 17px;
     left: 20px;
     width: 94.9%;
-    padding-top: 426px;
+    padding-top: clamp(406px, 56%, 426px);
     background-color: var(--bg-dark);
     transform: translateX(-100vw);
     transition: transform .3s;
@@ -28,8 +32,7 @@
   .nav-768__img-block {
     margin: 0 auto;
     width: 90.3%;
-    height: 410px;
-    padding-bottom: 35px;
+    padding-bottom: clamp(10px, 5%, 35px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     display: grid;
     grid-template-areas: "img1 img1"  
@@ -39,27 +42,27 @@
   .nav-768__img-block .--img1 {
     grid-area: img1;
     width: 100%;
-    height: 194px;
-    background: url(../assets/img/menu/nav768-1.avif);
+    height: clamp(10px, 26vw, 194px);
+    background-image: url(../assets/img/menu/nav768-1.avif);
   }
   .nav-768__img-block .--img2 {
     grid-area: img2;
     max-width: 319px;
-    height: 161px;
-    background: url(../assets/img/menu/nav768-2.avif);
+    height: clamp(10px, 22vw, 161px);
+    background-image: url(../assets/img/menu/nav768-2.avif);
   }
   .nav-768__img-block .--img3 {
     grid-area: img3;
     max-width: 319px;
-    height: 161px;
-    background: url(../assets/img/menu/nav768-3.avif);
+    height: clamp(10px, 22vw, 161px);
+    background-image: url(../assets/img/menu/nav768-3.avif);
   }
   .nav-768_socials {
     margin: 0 auto;
     width: 340px;
     display: flex;
     justify-content: space-between;
-    padding: 35px 0 15px 0;
+    padding: clamp(10px, 5%, 35px) 0 15px 0;
   }
                                                 /*Welcome section*/
   
@@ -93,7 +96,7 @@
   }
   .welcome__swiper-wrp {
     width: 100%;
-    height: 546px;
+    height: clamp(285px, 72vw, 546px);
   }
   .slide {
     height: 546px;
@@ -117,7 +120,7 @@
   .swiper__controls {
     position: initial;
     margin: 0 auto;
-    width: 400px;
+    width: clamp(350px, 95%, 400px);
     height: 100px;
     padding: 30px 0;
   }
@@ -188,12 +191,12 @@
   }
                   /*Video slider*/
   .video__swiper {
-    height: 199px;
+    height: clamp(101px, 26vw, 199px);
     margin-bottom: 20px;
   }
   .swiper-slide iframe {
-    width: clamp(150px, 100%, 354px);
-    height: clamp(90px, 26vw, 199px);
+    width: clamp(180px, 100%, 354px);
+    height: clamp(101px, 26vw, 199px);
   }
   .video-swiper__controls { width: 190px !important; }
 
@@ -318,6 +321,34 @@
   .copyright { padding: 42px 20px 37px 20px; }
 }
 @media (max-width: 680px) {
+
+  .header-nav-768 {
+    top: 17px;
+    left: 20px;
+    width: 94.9%;
+    padding-top: clamp(406px, 56%, 426px);
+  }
+  .nav-768__img-block {
+    margin: 0 auto;
+    max-width: 100%;
+    padding-bottom: 20px;
+    grid-template-areas: "img2 img1 img3";
+    gap: 12px;
+  }
+  .nav-768__img-block .--img1,
+  .nav-768__img-block .--img2,
+  .nav-768__img-block .--img3 {
+    max-width: 100%;
+    height: clamp(95px, 22vw, 161px);
+    background-position: center;
+  }
+  .nav-768_socials {
+    margin: 0 auto;
+    width: 260px;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 0 15px 0;
+  }
   .visiting__list {
     padding-top: 50px;
     display: flex;
@@ -328,6 +359,23 @@
     row-gap: 40px;
     column-gap: unset;
     border-top: 2px solid var(--border-dark-red);
+  }
+  .tickets__wrapper { flex-direction: column; }
+
+  .tickets__bg {
+    margin-right: unset;
+    margin-bottom: 41px;
+    flex-basis: unset;
+    width: initial;
+    height: 38vw;
+  }
+  .tickets__buying { align-self: center; }
+
+  .tickets-amount__title { text-align: center; }
+
+  .contacts__map {
+    background-position: center center;
+    background-size: 960px 620px;
   }
   .copyright__course { display: none; }
 }

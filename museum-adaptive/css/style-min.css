@@ -1,0 +1,208 @@
+html { 
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-light: #fff;
+  --bg-dark: #030303;
+  --bg-dark-red: #710707;
+  --bg-gold: #9D8665;
+  --border-light: #fff;
+  --border-dark-red: #710707;
+  --border-gold: #9D8665;
+  --light: #fff;
+  --black: #000;
+  --dark: #030303;
+  --light-gold: #D2B183;
+  --gold: #9D8665;
+  --dark-gold: #7E6C51;
+  --dark-red: #710707;
+}
+.body {
+  font-family: 'Roboto', Arial;
+  font-style: normal;
+  font-weight: normal;
+  color: var(--light);
+  background-color: var(--bg-dark);
+}
+.container {
+  margin: 0 auto;
+  max-width: 1520px;
+  padding: 75px 40px;
+}
+.nav-list-text {
+  font-size: 22px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: var(--light);
+}
+ul { list-style-type: none; }
+
+.section-title {
+  font-family: 'Forum', Arial;
+  font-weight: normal;
+  font-size: clamp(50px, 4.88vw, 80px);
+  line-height: 90px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.text-color--gold { color: var(--gold); }
+
+.text-color--black { color: var(--black); }
+
+.bg-color--white { background-color: var(--bg-light); }
+
+a {
+  text-decoration: none;
+  transition: color .3s;
+}
+.link:hover { color: var(--gold); }
+
+.link:active { color: var(--dark-gold) }
+
+button {
+  font-family: 'Roboto', Arial;
+  border: none;
+  cursor: pointer;
+}
+.h3-style {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+}
+                                          /*Hide heading*/
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+                                          /*Header*/
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 62px 40px 58px 40px;
+}
+.louvre__logo {
+  display: flex;
+  align-items: baseline;
+  margin-right: 40px;
+}
+.louvre-logo__img {
+  margin-right: 25px;
+  width: 49px;
+  height: 26px;
+  background-image: url(../assets/svg/logo.svg);
+}
+.louvre-logo__text {
+  font-family: 'Forum', Arial;
+  font-size: 28px;
+  letter-spacing: 5px;
+  color: var(--light);
+  text-transform: uppercase;
+}
+.header__nav {
+  max-width: 775px;
+  width: 100%;
+}
+.header__nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-nav-768 { display: none; }
+.welcome__text {
+  position: absolute;
+  top: 150px;
+  left: 40px;
+  z-index: 10;
+}
+.welcome__title { margin-bottom: 24px; }
+
+.welcome__descr {
+  margin-bottom: 76px;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 2px;
+}
+.welcome__btn {
+  display: block;
+  width: 360px;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 75px;
+  letter-spacing: 2px;
+  color: var(--light);
+  text-align: center;
+  background-color: var(--bg-dark-red);
+  border-radius: 10px;
+  transition: background-color .3s;
+}
+.welcome__btn:hover { background-color: var(--bg-gold); }
+
+                                          /*Visiting-section*/
+
+.visiting--padding { padding: 75px 40px 73px 40px; }
+
+.visiting__title { margin-bottom: 25px; }
+
+.visiting__list {
+  padding-top: 75px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 76px;
+  column-gap: 60px;
+  border-top: 3px solid var(--border-dark-red);
+}
+.card__ref {
+  display: block;
+  color: var(--black);
+}
+.card-photo__img {
+  margin-bottom: 25px;
+  display: block;
+  width: clamp(330px, 31vw, 440px);
+  height: auto;
+}
+.card-photo__title {
+  margin-bottom: 9px;
+  font-family: 'Forum', Arial;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 35px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.card__border {
+  margin-bottom: 11px;
+  width: 300px;
+  border-top: 2px solid var(--border-dark-red);
+  transition: width .75s;
+}
+.card__ref:hover > .card__border { width: 100%; }
+
+.card__descr1 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 100;
+}
+.card__descr2 {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 100;
+}
