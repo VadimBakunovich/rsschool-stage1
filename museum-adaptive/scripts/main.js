@@ -1,12 +1,12 @@
 export function main() {
 
-//  Burger handling
-const toggleBurger = _ => {
-  burgerIcon.classList.toggle('header__burger-icon--active');
-  burgerList.classList.toggle('nav--active');
-  welcomeText.classList.toggle('welcome__text--hide');
-  nav768.classList.toggle('nav--active');
-}
+  //Burger handling
+  const toggleBurger = _ => {
+    burgerIcon.classList.toggle('header__burger-icon--active');
+    burgerList.classList.toggle('nav--active');
+    welcomeText.classList.toggle('welcome__text--hide');
+    nav768.classList.toggle('nav--active');
+  }
   burgerIcon.onclick = _ => toggleBurger();
 
   burgerList.onclick = _ => toggleBurger();

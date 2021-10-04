@@ -22,7 +22,7 @@
   .header__burger-icon::before,
   .header__burger-icon::after {
     position: absolute;
-    height: 10%;
+    height: 2px;
     width: 100%;
     transition: all 0.3s ease;
     background-color: var(--bg-light);
