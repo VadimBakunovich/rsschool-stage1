@@ -11,8 +11,10 @@
 
   .louvre__logo { z-index: 91; }
 
+  .louvre-logo__text { align-self: flex-end; }
+
   .header__nav-list {
-    top: 96px;
+    top: 100px;
     left: -204px;
   }
   .header-nav-768 {
