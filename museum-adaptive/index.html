@@ -566,6 +566,11 @@
           yt4.src = 'https://www.youtube.com/embed/aWmJ5DgyWPI';
           yt5.src = 'https://www.youtube.com/embed/2OR0OCr6uRE';
         }
+      } else {
+        let link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = 'css/mobile.css';
+              document.head.append(link);
       }
       // window.onload = function() {
       //   let runs = 0;
