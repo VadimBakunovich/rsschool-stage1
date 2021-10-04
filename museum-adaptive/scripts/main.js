@@ -59,8 +59,8 @@ export function main() {
       slidesPerView: 3,
       spaceBetween: 42,
       breakpoints: {
-        // when window width is >= 320px
-        320: {
+        // when window width is >= 300px
+        300: {
           slidesPerView: 2,
           spaceBetween: 20
         },
