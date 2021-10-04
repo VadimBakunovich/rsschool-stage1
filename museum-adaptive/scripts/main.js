@@ -1,47 +1,47 @@
 export function main() {
 
   //Burger handling
-  const toggleBurger = _ => {
-    burgerIcon.classList.toggle('header__burger-icon--active');
-    burgerList.classList.toggle('nav--active');
-    welcomeText.classList.toggle('welcome__text--hide');
-    nav768.classList.toggle('nav--active');
-  }
-  burgerIcon.onclick = _ => toggleBurger();
+  // const toggleBurger = _ => {
+  //   burgerIcon.classList.toggle('header__burger-icon--active');
+  //   burgerList.classList.toggle('nav--active');
+  //   welcomeText.classList.toggle('welcome__text--hide');
+  //   nav768.classList.toggle('nav--active');
+  // }
+  // burgerIcon.onclick = _ => toggleBurger();
 
-  burgerList.onclick = _ => toggleBurger();
+  // burgerList.onclick = _ => toggleBurger();
 
-  document.body.onclick = e => {
-    if (e.target.id != 'burgerIcon'
-      && e.target.id != 'burgerItem'
-      && !e.target.classList.contains('nav--show')
-      && burgerIcon.classList.contains('header__burger-icon--active')) toggleBurger();
-  }
+  // document.body.onclick = e => {
+  //   if (e.target.id != 'burgerIcon'
+  //     && e.target.id != 'burgerItem'
+  //     && !e.target.classList.contains('nav--show')
+  //     && burgerIcon.classList.contains('header__burger-icon--active')) toggleBurger();
+  // }
 
   import('./swiper-min.js').then(obj => {
     obj.swiper();
     
-    // Initialize swiper in welcome section
-    new Swiper('.welcome__swiper', {
-      pagination: {
-        el: '.swip-ctrl-pag',
-        type: 'bullets',
-        bulletClass: 'swip-ctrl-pag__bullet',
-        bulletActiveClass: 'swip-ctrl-pag__bullet--active',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swip-ctrl-btns__next',
-        prevEl: '.swip-ctrl-btns__prev',
-      },
-      loop: true,
-      grabCursor: true,
-      on: {
-        slideChange: function() {
-          swipFracCurr.textContent = `0${this.realIndex + 1}`;
-        }
-      },
-    });
+    // // Initialize swiper in welcome section
+    // new Swiper('.welcome__swiper', {
+    //   pagination: {
+    //     el: '.swip-ctrl-pag',
+    //     type: 'bullets',
+    //     bulletClass: 'swip-ctrl-pag__bullet',
+    //     bulletActiveClass: 'swip-ctrl-pag__bullet--active',
+    //     clickable: true,
+    //   },
+    //   navigation: {
+    //     nextEl: '.swip-ctrl-btns__next',
+    //     prevEl: '.swip-ctrl-btns__prev',
+    //   },
+    //   loop: true,
+    //   grabCursor: true,
+    //   on: {
+    //     slideChange: function() {
+    //       swipFracCurr.textContent = `0${this.realIndex + 1}`;
+    //     }
+    //   },
+    // });
 
     // Initialize swiper in video section
     new Swiper('.video__swiper', {
@@ -91,6 +91,7 @@ export function main() {
       },
     });
   });
+  
   // Popup handling
   buyBtn.addEventListener('click', _ => {
     popup.style.visibility = 'visible';
