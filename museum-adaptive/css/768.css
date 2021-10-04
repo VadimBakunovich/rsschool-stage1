@@ -10,6 +10,8 @@
   .header__wrapper { position: relative; }
 
   .louvre__logo { z-index: 91; }
+  
+  .louvre-logo__text { align-self: flex-end; }
 
   .header__nav-list {
     top: 100px;
