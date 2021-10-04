@@ -558,17 +558,7 @@
             link.href = i;
             document.head.append(link);
           });
-          import('./scripts/video-player.js').then(i => i.videoPlayer());
-          import('./scripts/gallery.js').then(i => i.gallery());
-          import('./scripts/beerslider.js').then(i => {
-            new i.BeerSlider(document.getElementById('slider'));
-          });
-          import('./scripts/main.js').then(i => i.main());
-          yt1.src = 'https://www.youtube.com/embed/zp1BXPX8jcU';
-          yt2.src = 'https://www.youtube.com/embed/Vi5D6FKhRmo';
-          yt3.src = 'https://www.youtube.com/embed/NOhDysLnTvY';
-          yt4.src = 'https://www.youtube.com/embed/aWmJ5DgyWPI';
-          yt5.src = 'https://www.youtube.com/embed/2OR0OCr6uRE';
+          import('./scripts/start.js').then(i => i.start());
         } else runs = 2;
       } 
       if (!isMobile || isMobile == 'false') window.onload = function() { loadAssets(); }
