@@ -79,19 +79,6 @@ button {
   font-size: 28px;
   line-height: 33px;
 }
-                                          /*Restore visibility*/
-
-.header__nav-list,
-.welcome__btn,
-.visiting,
-.explore,
-.video,
-.gallery,
-.tickets,
-.parallax,
-.contacts,
-.footer,
-.popup { display: block; }
 
                                           /*Header*/
 .header__wrapper {
@@ -226,7 +213,6 @@ button {
   justify-content: space-between;
 }
 .swip-ctrl-btn {
-  width: unset;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -241,10 +227,7 @@ button {
   left: 40px;
   z-index: 10;
 }
-.welcome__title {
-  margin-bottom: 24px;
-  text-align: unset;
-}
+.welcome__title { margin-bottom: 24px; }
 
 .welcome__descr {
   margin-bottom: 76px;
@@ -252,7 +235,6 @@ button {
   font-size: 28px;
   line-height: 33px;
   letter-spacing: 2px;
-  text-align: unset;
 }
 .welcome__btn {
   display: block;
