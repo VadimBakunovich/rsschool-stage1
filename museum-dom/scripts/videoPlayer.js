@@ -39,25 +39,27 @@ document.addEventListener('click', (e) => {
 video.addEventListener('dblclick', () => document.fullscreenElement ? document.exitFullscreen() : player.requestFullscreen());
 
 // add control of the video player using the keyboard (first group)
-player.addEventListener('keyup', (e) => {
-  switch (e.code) {
-    case 'Space':
-    case 'KeyK': return video.paused ? video.play() : video.pause();
-    case 'KeyM': muteAudio(); break;
-    case 'KeyF': return document.fullscreenElement ? document.exitFullscreen() : player.requestFullscreen();
-    default: break;
-  }
-  if (e.key >= 0 && e.code !== 'Space') video.currentTime = e.key * video.duration / 10;
-  if (e.shiftKey && e.code === 'Period') {
-    video.playbackRate === 2 ? video.playbackRate = 2 : video.playbackRate += 0.25;
-  }
-  if (e.shiftKey && e.code === 'Comma') {
-    video.playbackRate === 0.25 ? video.playbackRate = 0.25 : video.playbackRate -= 0.25;
+document.addEventListener('keyup', (e) => {
+  if (window.scrollY > 2800 && window.scrollY < 4000) {
+    switch (e.code) {
+      case 'Space':
+      case 'KeyK': return video.paused ? video.play() : video.pause();
+      case 'KeyM': muteAudio(); break;
+      case 'KeyF': return document.fullscreenElement ? document.exitFullscreen() : player.requestFullscreen();
+      default: break;
+    }
+    if (e.key >= 0 && e.code !== 'Space') video.currentTime = e.key * video.duration / 10;
+    if (e.shiftKey && e.code === 'Period') {
+      video.playbackRate === 2 ? video.playbackRate = 2 : video.playbackRate += 0.25;
+    }
+    if (e.shiftKey && e.code === 'Comma') {
+      video.playbackRate === 0.25 ? video.playbackRate = 0.25 : video.playbackRate -= 0.25;
+    }
   }
 });
 
 // add control of the video player using the keyboard (second group)
-player.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', (e) => {
   if (document.fullscreenElement) {
     player.style.cursor = 'default';
     controls.style.opacity = 1;
@@ -67,53 +69,57 @@ player.addEventListener('keydown', (e) => {
       controls.style.opacity = 0;
     }, 3000);
   }
-  switch (e.code) {
-    case 'Space': return e.preventDefault();
-    case 'ArrowUp':
-      if (document.activeElement.id !== 'progress') {
-        if (!video.muted) video.volume > 0.95 ? video.volume = 1 : video.volume += 0.05;
-        else {
-          video.muted = false;
-          video.volume = 0.05;
+  if (window.scrollY > 2800 && window.scrollY < 4000) {
+    switch (e.code) {
+      case 'Space': return e.preventDefault();
+      case 'ArrowUp':
+        e.preventDefault();
+        if (document.activeElement.id !== 'progress') {
+          if (!video.muted) video.volume > 0.95 ? video.volume = 1 : video.volume += 0.05;
+          else {
+            video.muted = false;
+            video.volume = 0.05;
+          }
         }
-      }
-      break;
-    case 'ArrowDown':
-      if (document.activeElement.id !== 'progress') {
-        if (!video.muted) video.volume < 0.05 ? video.volume = 0 : video.volume -= 0.05;
-      }
-      break;
-    case 'ArrowLeft':
-      if (document.activeElement.id !== 'progress') {
-        video.currentTime > 5 ? video.currentTime -= 5 : video.currentTime = 0;
-        displayOverlay('<< 5 sec');
-      }
-      break;
-    case 'ArrowRight':
-      if (document.activeElement.id !== 'progress') {
-        video.currentTime < video.duration - 5 ? video.currentTime += 5 : video.currentTime = video.duration;
-        displayOverlay('>> 5 sec');
-      }
-      break;
-    case 'KeyJ':
-      video.currentTime > 10 ? video.currentTime -= 10 : video.currentTime = 0;
-      displayOverlay('<< 10 sec');
-      break;
-    case 'KeyL':
-      video.currentTime < video.duration - 10 ? video.currentTime += 10 : video.currentTime = video.duration;
-      displayOverlay('>> 10 sec');
-      break;
-    case 'Period':
-      if (video.paused && !e.shiftKey) {
-        video.currentTime += 0.17;
-        displayOverlay('>>');
-      } break;
-    case 'Comma': 
-      if (video.paused && !e.shiftKey) {
-        video.currentTime -= 0.17;
-        displayOverlay('<<');
-      } break;
-    default: break;
+        break;
+      case 'ArrowDown':
+        e.preventDefault();
+        if (document.activeElement.id !== 'progress') {
+          if (!video.muted) video.volume < 0.05 ? video.volume = 0 : video.volume -= 0.05;
+        }
+        break;
+      case 'ArrowLeft':
+        if (document.activeElement.id !== 'progress') {
+          video.currentTime > 5 ? video.currentTime -= 5 : video.currentTime = 0;
+          displayOverlay('<< 5 sec');
+        }
+        break;
+      case 'ArrowRight':
+        if (document.activeElement.id !== 'progress') {
+          video.currentTime < video.duration - 5 ? video.currentTime += 5 : video.currentTime = video.duration;
+          displayOverlay('>> 5 sec');
+        }
+        break;
+      case 'KeyJ':
+        video.currentTime > 10 ? video.currentTime -= 10 : video.currentTime = 0;
+        displayOverlay('<< 10 sec');
+        break;
+      case 'KeyL':
+        video.currentTime < video.duration - 10 ? video.currentTime += 10 : video.currentTime = video.duration;
+        displayOverlay('>> 10 sec');
+        break;
+      case 'Period':
+        if (video.paused && !e.shiftKey) {
+          video.currentTime += 0.17;
+          displayOverlay('>>');
+        } break;
+      case 'Comma': 
+        if (video.paused && !e.shiftKey) {
+          video.currentTime -= 0.17;
+          displayOverlay('<<');
+        } break;
+      default: break;
+    }
   }
 });
 

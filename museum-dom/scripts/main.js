@@ -1,47 +1,7 @@
 export function main() {
 
-  //Burger handling
-  // const toggleBurger = _ => {
-  //   burgerIcon.classList.toggle('header__burger-icon--active');
-  //   burgerList.classList.toggle('nav--active');
-  //   welcomeText.classList.toggle('welcome__text--hide');
-  //   nav768.classList.toggle('nav--active');
-  // }
-  // burgerIcon.onclick = _ => toggleBurger();
-
-  // burgerList.onclick = _ => toggleBurger();
-
-  // document.body.onclick = e => {
-  //   if (e.target.id != 'burgerIcon'
-  //     && e.target.id != 'burgerItem'
-  //     && !e.target.classList.contains('nav--show')
-  //     && burgerIcon.classList.contains('header__burger-icon--active')) toggleBurger();
-  // }
-
   import('./swiper-min.js').then(obj => {
     obj.swiper();
-    
-    // // Initialize swiper in welcome section
-    // new Swiper('.welcome__swiper', {
-    //   pagination: {
-    //     el: '.swip-ctrl-pag',
-    //     type: 'bullets',
-    //     bulletClass: 'swip-ctrl-pag__bullet',
-    //     bulletActiveClass: 'swip-ctrl-pag__bullet--active',
-    //     clickable: true,
-    //   },
-    //   navigation: {
-    //     nextEl: '.swip-ctrl-btns__next',
-    //     prevEl: '.swip-ctrl-btns__prev',
-    //   },
-    //   loop: true,
-    //   grabCursor: true,
-    //   on: {
-    //     slideChange: function() {
-    //       swipFracCurr.textContent = `0${this.realIndex + 1}`;
-    //     }
-    //   },
-    // });
 
     // Initialize swiper in video section
     new Swiper('.video__swiper', {
@@ -74,12 +34,15 @@ export function main() {
       simulateTouch: false,
       on: {
         slideChange: function() {
+          for (let i of this.slides) {
+            i.firstElementChild.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+          }
           video.src = `assets/video/video${this.realIndex}.mp4`;
           video.poster = `assets/video/poster${this.realIndex}.avif`;
           video.currentTime = 0;
-          // progress.value = 0;
-          // progress.style.background = `
-          //   linear-gradient(to right, #710707 0%, #710707 0%, #c4c4c4 0%, #c4c4c4 100%)`;
+          progress.value = 0;
+          progress.style.background = `
+            linear-gradient(to right, #710707 0%, #710707 0%, #c4c4c4 0%, #c4c4c4 100%)`;
           if (video.paused) {
             playBtn.className = 'play';
             playBtnBig.className = 'big-play';
@@ -159,24 +122,10 @@ export function main() {
 
     setTimeout(() => circle.remove(), 500);
   });
-  console.log(`
-    1.Вёрстка соответствует макету. Ширина экрана 1024px +40
-    2.Вёрстка соответствует макету. Ширина экрана 768px +40
-    3.Вёрстка соответствует макету. Ширина экрана 420px +40
-    4.Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +6
-    5.Совмещается адаптивная и респонсивная (резиновая) вёрстка +14
-    6.На ширине экрана 1024рх и меньше реализовано адаптивное меню +12
-    7.Скорость загрузки страницы для мобильных устройств составляет 99 (согласно данным https://developers.google.com/speed/pagespeed/insights/) +8
 
-    Итого: 160 баллов.
-
-    Важно!
-    Есть несоответствия с макетом, которые не являются ошибкой: положение прогрессбара на разрешении <=1024px.
-    Это ошибка в макете. Данный вопрос уточнялся у Ирины Ининой: https://discord.com/channels/516715744646660106/861527425481310258/893215293730607114
-    Название курса в футере не должно соответствовать макету: смотри видеопример кроссчека из первой части задания начиная с 9:45 (https://www.youtube.com/watch?v=y_xnDUaNXps)
-
-    PS: все изображения на странице и favicon, кроме иконок, пережаты в новейший формат avif для минимизации трафика и времени загрузки страницы.
-    Этот формат поддерживает актуальная версия google chrome. По заданию сайт должен проверяться на последней версии chrome. Так что противоречий нет.
-    Если у вас есть проблемы с отображением картинок, то установите себе последнюю версию chrome.
-  `);
+  // console.log(`
+  //   PS: все изображения на странице и favicon, кроме иконок, пережаты в новейший формат avif для минимизации трафика и времени загрузки страницы.
+  //   Этот формат поддерживает актуальная версия google chrome. По заданию сайт должен проверяться на последней версии chrome. Так что противоречий нет.
+  //   Если у вас есть проблемы с отображением картинок, то установите себе последнюю версию chrome.
+  // `);
 }

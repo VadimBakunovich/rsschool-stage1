@@ -246,14 +246,14 @@
             <div class="overlay hidden" id="overlay"></div>
             <div class="controls" id="controls">
               <button class="play" id="playBtn" title="play / pause"></button>
-              <input class="video-progress progress" id="progress" type="range" value="54" step="0.01">
+              <input class="video-progress progress" id="progress" type="range" value="0" step="0.01">
               <button class="volume" id="muteBtn" title="mute on / off"></button>
-              <input class="volume-progress progress" id="vol" type="range" value="43" step="1">
+              <input class="volume-progress progress" id="vol" type="range" value="50" step="1">
               <button class="fullscreen" id="fullscreenBtn" title="fullscreen on / off"></button>
             </div>
           </div>
           <div class="video__swiper swiper">
-            <div class="swiper-wrapper video__swip-wrp">
+            <div class="swiper-wrapper video__swip-wrp" id="ytVideos">
               <div class="swiper-slide">
                 <iframe loading="lazy" id="yt1"></iframe>
               </div>
@@ -570,12 +570,13 @@
             new i.ImgCompSlider(document.getElementById('imgComp'));
           });
           import('./scripts/main.js').then(i => i.main());
-          yt1.src = 'https://www.youtube.com/embed/zp1BXPX8jcU';
-          yt2.src = 'https://www.youtube.com/embed/Vi5D6FKhRmo';
-          yt3.src = 'https://www.youtube.com/embed/NOhDysLnTvY';
-          yt4.src = 'https://www.youtube.com/embed/aWmJ5DgyWPI';
-          yt5.src = 'https://www.youtube.com/embed/2OR0OCr6uRE';
-          } else loads = 2;}
+          yt1.src = 'https://www.youtube.com/embed/zp1BXPX8jcU?enablejsapi=1';
+          yt2.src = 'https://www.youtube.com/embed/Vi5D6FKhRmo?enablejsapi=1';
+          yt3.src = 'https://www.youtube.com/embed/NOhDysLnTvY?enablejsapi=1';
+          yt4.src = 'https://www.youtube.com/embed/aWmJ5DgyWPI?enablejsapi=1';
+          yt5.src = 'https://www.youtube.com/embed/2OR0OCr6uRE?enablejsapi=1';
+        } else loads = 2;
+      }
       document.addEventListener('mouseenter', _ => loadOther());
       document.addEventListener('scroll', _ => { loadAssets(); loadOther(); });
       document.addEventListener('touchstart', _ => { loadAssets(); loadOther(); });

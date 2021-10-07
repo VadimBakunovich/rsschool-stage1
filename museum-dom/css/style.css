@@ -426,7 +426,7 @@ video {
 .video-progress {
   margin-right: 50px;
   flex-grow: 1;
-  background: linear-gradient(to right, #710707 0%, #710707 54%, #c4c4c4 54%, #c4c4c4 100%);
+  background: linear-gradient(to right, #710707 0%, #710707 0%, #c4c4c4 0%, #c4c4c4 100%);
   height: 8px;
   appearance: none;
   cursor: pointer;
@@ -438,10 +438,10 @@ video {
   appearance: none;
   cursor: ew-resize;
   background: #fff;
-  /* opacity: 0;
-  transition: opacity .5s; */
+  opacity: 0;
+  transition: opacity .5s; 
 }
-/* .controls:hover > .progress::-webkit-slider-thumb { opacity: 1; } */
+.controls:hover > .progress::-webkit-slider-thumb { opacity: 1; }
 
 .volume {
   width: 38px;
@@ -460,7 +460,7 @@ video {
 
 .volume-progress {
   margin-right: 50px;
-  background: linear-gradient(to right, #710707 0%, #710707 43%, #c4c4c4 43%, #c4c4c4 100%);
+  background: linear-gradient(to right, #710707 0%, #710707 50%, #c4c4c4 50%, #c4c4c4 100%);
   height: 8px;
   width: 155px;
   appearance: none;
