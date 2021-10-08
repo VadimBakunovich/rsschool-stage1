@@ -122,7 +122,22 @@ export function main() {
 
     setTimeout(() => circle.remove(), 500);
   });
-
+  
+  // add map
+  mapboxgl.accessToken = 'pk.eyJ1IjoidmFkemltYmEiLCJhIjoiY2t1aTdnNTB3MGp4ZzJvb3pvMWx0NWcwayJ9.t8pFSafWsERcOYoF8EOwzQ';
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/light-v10', // style URL
+    center: [2.3363, 48.86095], // starting position [lng, lat]
+    zoom: 15.75 // starting zoom
+  });
+  map.addControl(new mapboxgl.NavigationControl());
+  new mapboxgl.Marker({color: "#222"}).setLngLat([2.3364, 48.86091]).addTo(map);
+  new mapboxgl.Marker({color: "#777"}).setLngLat([2.3333, 48.8602]).addTo(map);
+  new mapboxgl.Marker({color: "#777"}).setLngLat([2.3397, 48.8607]).addTo(map);
+  new mapboxgl.Marker({color: "#777"}).setLngLat([2.3330, 48.8619]).addTo(map);
+  new mapboxgl.Marker({color: "#777"}).setLngLat([2.3365, 48.8625]).addTo(map);
+  
   // console.log(`
   //   PS: все изображения на странице и favicon, кроме иконок, пережаты в новейший формат avif для минимизации трафика и времени загрузки страницы.
   //   Этот формат поддерживает актуальная версия google chrome. По заданию сайт должен проверяться на последней версии chrome. Так что противоречий нет.

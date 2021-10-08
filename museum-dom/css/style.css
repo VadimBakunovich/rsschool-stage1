@@ -733,7 +733,6 @@ video {
   display: flex;
   justify-content: space-between;
 }
-
 .contacts__text-block { margin-right: 20px; }
 
 .contacts-text-block__title {
@@ -752,9 +751,6 @@ video {
 .contacts__map {
   width: clamp(694px, 66.667%, 960px);
   height: clamp(454px, 40vw, 620px);
-  background-image: url(../assets/img/map.avif);
-  background-position: top right;
-  background-size: 960px 620px;
 }
 
                                           /*Footer*/
