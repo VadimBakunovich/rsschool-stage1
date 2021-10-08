@@ -561,6 +561,13 @@ video {
 .gallery__item {
   position: relative;
   width: 100%;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: .7s;
+}
+.gallery__item.--item-show {
+  opacity: 1;
+  transform: none;
 }
 .gallery__item:nth-child(3n + 1) {
   grid-column-start: 1;
