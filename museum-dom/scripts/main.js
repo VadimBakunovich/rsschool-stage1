@@ -54,25 +54,6 @@ export function main() {
       },
     });
   });
-  
-  // Popup handling
-  buyBtn.addEventListener('click', _ => {
-    popup.style.visibility = 'visible';
-    popup.style.opacity = 1;
-    popupContent.classList.add('open');
-  });
-
-  const closePopup = _ => {
-    popupContent.classList.remove('open');
-    setTimeout(function() {
-      popup.style.opacity = 0;
-      setTimeout(function() { popup.style.visibility = 'hidden'; }, 500);
-    }, 200);
-  }
-
-  popup.addEventListener('click', function(e) {
-    if (e.target == this || e.target.id == 'btnClose') closePopup();
-  });
 
   // Virtual tour hadling
   document.addEventListener('click', e => {
@@ -109,6 +90,99 @@ export function main() {
     }
   });
 
+  // Ticket section handling
+  let ticketType = 'permanent';
+  let ticketPrice = 20;
+  let summPrice = basicNum.value * 20 + seniorNum.value * 10;
+
+  if (localStorage.ticketType) ticketType = JSON.parse(localStorage.getItem('ticketType'));
+  if (localStorage.basicNum) basicNum.value = JSON.parse(localStorage.getItem('basicNum'));
+  if (localStorage.seniorNum) seniorNum.value = JSON.parse(localStorage.getItem('seniorNum'));
+
+  const showTotalPrice = _ => {
+    summPrice = basicNum.value * ticketPrice + seniorNum.value * ticketPrice / 2;
+    totalPrice.textContent = summPrice;
+  }
+  switch (ticketType) {
+    case 'permanent':
+      permanent.checked = true;
+      ticketPrice = 20;
+      showTotalPrice();
+      break;
+    case 'temporary':
+      temporary.checked = true;
+      ticketPrice = 25;
+      showTotalPrice();
+      break;
+    case 'combined':
+      combined.checked = true;
+      ticketPrice = 40;
+      showTotalPrice();
+      break;
+    default: break;
+  }
+  permanent.onchange = _ => {
+    if (permanent.checked) {
+      localStorage.setItem('ticketType', JSON.stringify('permanent'));
+      ticketPrice = 20;
+      showTotalPrice();
+    }
+  }
+  temporary.onchange = _ => {
+    if (temporary.checked) {
+      localStorage.setItem('ticketType', JSON.stringify('temporary'));
+      ticketPrice = 25;
+      showTotalPrice();
+    }
+  }
+  combined.onchange = _ => {
+    if (combined.checked) {
+      localStorage.setItem('ticketType', JSON.stringify('combined'));
+      ticketPrice = 40;
+      showTotalPrice();
+    }
+  }
+  basicMinus.onclick = _ => {
+    basicNum.stepDown();
+    localStorage.setItem('basicNum', JSON.stringify(`${basicNum.value}`));
+    showTotalPrice();
+  }
+  basicPlus.onclick = _ => {
+    basicNum.stepUp();
+    localStorage.setItem('basicNum', JSON.stringify(`${basicNum.value}`));
+    showTotalPrice();
+  }
+  seniorMinus.onclick = _ => {
+    seniorNum.stepDown();
+    localStorage.setItem('seniorNum', JSON.stringify(`${seniorNum.value}`));
+    showTotalPrice();
+  }
+  seniorPlus.onclick = _ => {
+    seniorNum.stepUp();
+    localStorage.setItem('seniorNum', JSON.stringify(`${seniorNum.value}`));
+    showTotalPrice();
+  }
+  buyingForm.onsubmit = e => e.preventDefault();
+
+  // Popup handling
+  buyBtn.addEventListener('click', _ => {
+    popup.style.visibility = 'visible';
+    popup.style.opacity = 1;
+    popupContent.classList.add('open');
+  });
+
+  const closePopup = _ => {
+    popupContent.classList.remove('open');
+    setTimeout(function() {
+      popup.style.opacity = 0;
+      setTimeout(function() { popup.style.visibility = 'hidden'; }, 500);
+    }, 200);
+  }
+
+  popup.addEventListener('click', function(e) {
+    if (e.target == this || e.target.id == 'btnClose') closePopup();
+  });
+
   // ripple effect for the button 'Book'
   bookBtn.addEventListener('click', function (e) {
 
@@ -122,7 +196,20 @@ export function main() {
 
     setTimeout(() => circle.remove(), 500);
   });
-  
+
+  // Form validation
+  const today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;
+  inputDate.min = yyyy + '-' + mm + '-' + dd;
+
+  const nameRegExp = /^[a-zA-Zа-яёА-ЯЁ ]{3,15}$/;
+  const emailRegExp = /^[-\w]{3,15}@[a-zA-Z]{4,}\.[a-zA-Z]{2,}$/;
+  const phoneRegExp = /(^\d{1,10}$)|(^(\d{2}-){1,4}\d{2}$)|(^(\d{2}\s){1,4}\d{2}$)|(^(\d{3}-){1,2}\d{3}$)|(^(\d{3}\s){1,2}\d{3}$)/;
+
   // add map
   mapboxgl.accessToken = 'pk.eyJ1IjoidmFkemltYmEiLCJhIjoiY2t1aTdnNTB3MGp4ZzJvb3pvMWx0NWcwayJ9.t8pFSafWsERcOYoF8EOwzQ';
   const map = new mapboxgl.Map({
@@ -137,7 +224,7 @@ export function main() {
   new mapboxgl.Marker({color: "#777"}).setLngLat([2.3397, 48.8607]).addTo(map);
   new mapboxgl.Marker({color: "#777"}).setLngLat([2.3330, 48.8619]).addTo(map);
   new mapboxgl.Marker({color: "#777"}).setLngLat([2.3365, 48.8625]).addTo(map);
-  
+
   // console.log(`
   //   PS: все изображения на странице и favicon, кроме иконок, пережаты в новейший формат avif для минимизации трафика и времени загрузки страницы.
   //   Этот формат поддерживает актуальная версия google chrome. По заданию сайт должен проверяться на последней версии chrome. Так что противоречий нет.

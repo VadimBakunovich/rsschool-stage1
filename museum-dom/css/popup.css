@@ -88,12 +88,6 @@
   line-height: 22px;
 	color: var(--dark);
 }
-.placeholder[type="time"]::before {
-  width: 71px;
-  top: 11px;
-  left: 14px;
-  line-height: 22px;
-}
 .placeholder[type="date"]::before {
   background: no-repeat left url(../assets/svg/date.svg);
 }
@@ -103,10 +97,12 @@
 .placeholder:focus,
 input[type="date"]:valid,
 input[type="time"]:valid {
-	color: #777;
+  font-family: 'Roboto', Arial;
+  font-size: 18px;
+	color: var(--dark);
 }
-.placeholder:focus:before,
-.placeholder:valid:before {
+.placeholder:focus::before,
+.placeholder:valid::before {
 	content: '' !important;
   background: none;
 }

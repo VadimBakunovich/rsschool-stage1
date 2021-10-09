@@ -306,11 +306,11 @@
           <div class="tickets__border"></div>
           <div class="tickets__wrapper">
             <div class="tickets__bg"></div>
-            <form class="tickets__buying" action="#" onsubmit="event.preventDefault()">
+            <form class="tickets__buying" action="#" id="buyingForm">
               <div class="tickets__type tickets-type">
                 <p class="tickets-type__title h3-style">Ticket Type</p>
                 <div class="tickets-type__inputs">
-                  <input class="tickets-type__radio" type="radio" name="type" id="permanent" checked>
+                  <input class="tickets-type__radio" type="radio" name="type" id="permanent">
                   <label class="tickets-type__label" for="permanent">Permanent exhibition</label>
                   <input class="tickets-type__radio" type="radio" name="type" id="temporary">
                   <label class="tickets-type__label" for="temporary">Temporary exhibition</label>
@@ -322,25 +322,25 @@
                 <p class="tickets-amount__title h3-style">Amount</p>
                 <p class="tickets-amount__descr">Basic 18+</p>
                 <div class="number">
-                  <button class="number__btn" onclick="this.nextElementSibling.stepDown()">
+                  <button class="number__btn" id="basicMinus">
                     &#8722;
                   </button>
-                  <input class="number__input" type="number" min="0" value="1" max="20">
-                  <button class="number__btn" onclick="this.previousElementSibling.stepUp()">
+                  <input class="number__input" id="basicNum" type="number" min="0" value="1" max="20">
+                  <button class="number__btn" id="basicPlus">
                     +
                   </button>
                 </div>
                 <p class="tickets-amount__descr">Senior 65+</p>
                 <div class="number">
-                  <button class="number__btn" onclick="this.nextElementSibling.stepDown()">
+                  <button class="number__btn" id="seniorMinus">
                     &#8722;
                   </button>
-                  <input class="number__input" type="number" min="0" value="1" max="20">
-                  <button class="number__btn" onclick="this.previousElementSibling.stepUp()">
+                  <input class="number__input" id="seniorNum" type="number" min="0" value="1" max="20">
+                  <button class="number__btn" id="seniorPlus">
                     +
                   </button>
                 </div>
-                <p class="tickets-amount__total"><span>Total &#8364;</span>220</p>
+                <p class="tickets-amount__total">Total &#8364;<span id="totalPrice"></span> </p>
                 <button type="button" class="tickets-amount__buy-btn" id="buyBtn">Buy Now</button>
               </div>
             </form>
@@ -443,11 +443,11 @@
             <h2 class="popup__title">Booking tickets</h2>
             <p class="popup__descr">Tour to Louvre</p>
             <div class="popup__date-time">
-              <input class="popup__input-date placeholder" type="date" required data-placeholder="Date">
-              <input class="popup__input-time placeholder" type="time" required data-placeholder="Time">
+              <input class="popup__input-date placeholder" type="date" required data-placeholder="Date" id="inputDate">
+              <input class="popup__input-time placeholder" type="time" min="09:00" max="18:00" required data-placeholder="Time">
             </div>
             <div class="popup__input-wrp">
-              <input class="popup__input" type="text" placeholder="Name">
+              <input class="popup__input" type="text" placeholder="Name" minlength="3" maxlength="15" pattern="[a-z]{1,15}" required>
               <div class="popup__input-name-logo"></div>
             </div>
             <div class="popup__input-wrp">

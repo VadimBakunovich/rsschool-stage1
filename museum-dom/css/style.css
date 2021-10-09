@@ -689,7 +689,7 @@ video {
 .number__btn:hover { color: var(--gold); }
 
 .tickets-amount__total {
-  margin: 50px 0 60px 25px;
+  margin: 50px 0 60px 0;
   font-weight: bold;
   font-size: 28px;
   line-height: 33px;
