@@ -1,0 +1,328 @@
+@media (max-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding: 49px 20px;
+  }
+  .section-title { font-size: 50px; }
+  
+                                                /*Burger*/
+  
+  .header__nav { position: relative; }
+
+  .header__burger-icon {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    width: 32px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 100;
+  }
+  .header__burger-icon span,
+  .header__burger-icon::before,
+  .header__burger-icon::after {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    transition: all 0.3s ease;
+    background-color: var(--bg-light);
+  }
+  .header__burger-icon::before,
+  .header__burger-icon::after { content: ''; }
+  .header__burger-icon::before { top: 0; }
+  .header__burger-icon::after { bottom: 0; }
+  .header__burger-icon span {
+    top: 50%;
+    transform: scale(1) translateY(-50%);
+  }
+  .header__burger-icon--active span { transform: scale(0); }
+  .header__burger-icon--active::before {
+    top: 50%;
+    transform: rotate(-45deg) translateY(-50%);
+  }
+  .header__burger-icon--active::after {
+    bottom: 50%;
+    transform: rotate(45deg) translateY(50%);
+  }
+  .header__nav-list {
+    position: absolute;
+    top: 107px;
+    left: -205px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 122px;
+    height: 280px;
+    transform: translateX(-100vw);
+    transition: transform .3s;
+    background-color: transparent;
+    z-index: 100;
+  }
+  .nav--active { transform: translateX(0); }
+
+  .header-nav-list__item {
+    position: relative;
+    display: block;
+    width: 100px;
+    height: 40px;
+    align-self: center;
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 23px;
+  }
+  .header-nav-list__item::after {
+    position: absolute;
+    content: '';
+    top: 4px;
+    right: -19px;
+    width: 8px;
+    height: 12px;
+    background: url(../assets/svg/gt.svg);
+  }
+                                            /*Welcome section*/
+  
+  .welcome__wrp { height: 585px; }
+
+  .welcome__swiper {
+    right: 20px;
+    width: 700px;
+    height: 585px;
+  }
+  .welcome__swiper-wrp {
+    width: 700px;
+    height: 525px;
+  }
+  .slide {
+    width: 700px;
+    height: 525px;
+  }
+  .welcome__text {
+    top: 50px;
+    left: 20px;
+    opacity: 1;
+    transition: opacity .3s;
+  }
+  .welcome__text--hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .welcome__descr {
+    margin-bottom: 50px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .welcome__btn {
+    width: 300px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 60px;
+  }
+  .swiper__controls {
+    width: 700px;
+    padding: 40px 75px 40px 224px;
+  }
+  .swiper-fraction { font-size: 20px; }
+
+  .swip-ctrl__pagination {
+    margin-right: 0;
+    width: 160px !important;
+  }
+  .swip-ctrl-pag__bullet {
+    width: 12px;
+    height: 12px;
+  }
+                                          /*Visiting section*/
+  
+  .visiting--padding { padding: 52px 20px 61px 20px; }
+
+  .visiting__title { margin-bottom: 12px; }
+
+  .visiting__list {
+    padding-top: 60px;
+    row-gap: 60px;
+    column-gap: 0;
+  }
+  .card-photo__img {
+    margin-bottom: 25px;
+    width: clamp(280px, 33vw, 330px);
+  }
+  .card-photo__title {
+    margin-bottom: 11px;
+    font-size: 28px;
+    line-height: 31px;
+    letter-spacing: 3px;
+  }
+  .card__border {
+    margin-bottom: 10px;
+    width: 150px;
+  }
+  .card__descr1 {
+    font-size: 20px;
+    line-height: 23px;
+  }
+  .card__descr2 {
+    font-size: 16px;
+    line-height: 19px;
+  }
+                                        /*Explore section*/
+  
+  .explore__wrapper.--pad { padding: 53px 20px 60px 20px; }
+
+  .explore__wrapper { flex-direction: column; }
+
+  .explore__text-block { width: 100%; }
+
+  .explore__title { margin-bottom: 12px; }
+
+  .explore__border { margin-bottom: 59px; }
+
+  .explore__descr {
+    margin-bottom: 0px;
+    padding-right: 0;
+    font-size: 20px;
+    line-height: 38px;
+  }
+  .explore__descr.--hide { font-size: 0; }
+  
+  .explore__img {
+    align-self: center;
+    margin-top: 20px;
+  }
+                                      /*Video section*/
+  
+  .video--padding { padding: 53px 20px 60px 20px; }
+
+  .video__text-block { margin-bottom: 32px; }
+
+  .video__descr { display: none; }
+
+  .video-container { max-height: 504px; }
+  
+  video {
+    width: 100%;
+    margin-top: 0;
+  }
+  .overlay { top: 20%; }
+
+  .controls { padding: 15px 40px; }
+
+  .play { margin-right: 31px; }
+
+  .video-progress {
+    margin-right: 31px;
+    height: 5px;
+  }
+  .progress::-webkit-slider-thumb {
+    width: 13px;
+    height: 13px;
+  }
+  .volume {
+    width: 26px;
+    height: 20px;
+    margin-right: 31px;
+    background-size: contain;
+  }
+  .volume-progress {
+    margin-right: 31px;
+    height: 5px;
+    width: 143px;
+  }
+  .fullscreen {
+    width: 26px;
+    height: 26px;
+    background-size: contain;
+  }
+                  /*Video slider*/
+  .video__swiper {
+    width: 100%;
+    height: 170px;
+    margin-bottom: 40px;
+  }
+  .swiper-slide iframe {
+    width: clamp(200px, 100%, 300px);
+    height: clamp(90px, 17vw, 170px);
+  }
+                                      /*Gallery section*/
+
+  .gallery::after { height: 239px; }
+
+  .gallery__container {
+    max-height: clamp(1220px, 145vw, 1460px);
+    padding: 53px 20px 0 20px;
+  }
+  .gallery__title { margin-bottom: 52px; }
+
+                                      /*Tickets section*/
+  
+  .tickets--pad { padding: 53px 20px 60px 20px; }
+
+  .tickets__title { margin-bottom: 12px; }
+
+  .tickets__border { margin-bottom: 60px; }
+
+  .tickets__bg {
+    margin-right: 80px;
+    flex-basis: 700px;
+    background: no-repeat center / cover url(../assets/img/tickets.avif);
+  }
+  .tickets__type { display: none; }
+
+  .tickets__buying { flex-basis: 175px; }
+
+  .tickets-amount__title {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  .tickets-amount__descr { margin: 0 0 10px 0; }
+
+  .number {
+    margin: 0 0 30px 0;
+    width: 175px;
+    padding: 6px 14px;
+  }
+  .tickets-amount__total { margin: -7px 0 69px 0; }
+
+                                      /*Contacts section*/
+
+  .contacts-wrp-pad { padding: 53px 20px 62px 20px; }
+
+  .contacts__title { margin-bottom: 12px; }
+
+  .contacts__border { margin-bottom: 60px; }
+
+  .contacts-text-block__title {
+    margin-bottom: 35px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .contacts-text-block__descr {
+    margin-bottom: 15px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+  }
+                                      /*Footer*/
+  
+  .footer::after {
+    height: 3px;
+    bottom: 124px;
+  }
+  .footer-wrapper {
+    padding: 61px 20px 50px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer__nav {
+    padding-top: 4px;
+    flex-grow: 1;
+  }
+  .footer-nav__list {
+    width: 313px;
+    column-gap: clamp(20px, 32%, 100px);
+  }
+  .footer__socials {
+    margin-left: auto;
+    padding-bottom: 0;
+  }
+  .copyright { padding: 50px 20px 50px 20px; }
+}
