@@ -40,7 +40,7 @@ video.addEventListener('dblclick', () => document.fullscreenElement ? document.e
 
 // add control of the video player using the keyboard (first group)
 document.addEventListener('keyup', (e) => {
-  if (scrollY > 2800 && scrollY < 4000) {
+  if (scrollY > 2200 && scrollY < 4000) {
     switch (e.code) {
       case 'Space':
       case 'KeyK': return video.paused ? video.play() : video.pause();

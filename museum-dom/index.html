@@ -13,7 +13,7 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet'>
   </head>
   <body class="body">
-    <header class="header">
+    <header class="header" id="header">
       <div class="container header__wrapper">
         <div class="louvre__logo louvre-logo">
           <div class="louvre-logo__img"></div>
@@ -574,6 +574,13 @@
         </form>
       </div>
     </div>
+    <div class="up-btn-wrp">
+      <a class="up-btn" href="#header" id="upBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20px" height="20px">
+          <path d="M3.7 6.7l3.8-3.8V15h1V2.9l3.8 3.8.7-.7-5-5-5 5z"></path>
+        </svg>
+      </a>
+    </div>
     <script type="module">
       let runs = 0;
       let loads = 0;
@@ -587,13 +594,14 @@
             document.head.append(link);
           });
           import('./scripts/start.js').then(i => i.start());
-        } else runs = 2;} 
-      window.onload = function() { loadAssets(); }
+        } else runs = 2;}
+      
       const loadOther = _ => {
         loads += 1;
         if (loads === 1) {
           import('./scripts/videoPlayer.js').then(i => i.videoPlayer());
           import('./scripts/gallery.js').then(i => i.gallery());
+          import('./scripts/tickets.js').then(i => i.tickets());
           import('./scripts/imgCompSlider.js').then(i => {
             new i.ImgCompSlider(document.getElementById('imgComp'));
           });
@@ -605,8 +613,9 @@
           yt5.src = 'https://www.youtube.com/embed/2OR0OCr6uRE?enablejsapi=1';
         } else loads = 2;
       }
-      document.addEventListener('mouseenter', _ => loadOther());
-      document.addEventListener('scroll', _ => { loadAssets(); loadOther(); });
-      document.addEventListener('touchstart', _ => { loadAssets(); loadOther(); });
+      window.onload = _ => loadAssets();
+      document.onmouseenter = _ => loadOther();
+      document.onscroll = _ => loadOther();
+      document.ontouchstart = _ => loadOther();
     </script>
   </body>
