@@ -437,14 +437,38 @@
     <div class="popup" id="popup">
       <div class="popup__content" id="popupContent">
         <button type="button" class="popup__btn-close" id="btnClose"></button>
-        <form class="popup__form" action="#" onsubmit="event.preventDefault()">
+        <form class="popup__form" action="#" id="bookingForm">
           <div class="popup__booking">
             <div class="popup__logo"></div>
             <h2 class="popup__title">Booking tickets</h2>
             <p class="popup__descr">Tour to Louvre</p>
             <div class="popup__date-time">
               <input class="popup__input-date placeholder" type="date" required data-placeholder="Date" id="inputDate">
-              <input class="popup__input-time placeholder" type="time" min="09:00" max="18:00" required data-placeholder="Time">
+              <!-- <input class="popup__input-time placeholder" type="time" min="09:00" max="18:00" required data-placeholder="Time"> -->
+              <div class="timeSel-wrp">
+                <select class="popup__timeSel" name="time" id="timeSel">
+                <option value="0" disabled selected>Time</option>
+                <option value="09 : 00">09:00</option>
+                <option value="09 : 30">09:30</option>
+                <option value="10 : 00">10:00</option>
+                <option value="10 : 30">10:30</option>
+                <option value="11 : 00">11:00</option>
+                <option value="11 : 30">11:30</option>
+                <option value="12 : 00">12:00</option>
+                <option value="12 : 30">12:30</option>
+                <option value="13 : 00">13:00</option>
+                <option value="13 : 30">13:30</option>
+                <option value="14 : 00">14:00</option>
+                <option value="14 : 30">14:30</option>
+                <option value="15 : 00">15:00</option>
+                <option value="15 : 30">15:30</option>
+                <option value="16 : 00">16:00</option>
+                <option value="16 : 30">16:30</option>
+                <option value="17 : 00">17:00</option>
+                <option value="17 : 30">17:30</option>
+                <option value="18 : 00">18:00</option>
+              </select>
+              </div>
             </div>
             <div class="popup__input-wrp">
               <input class="popup__input" type="text" placeholder="Name" minlength="3" maxlength="15" pattern="[a-z]{1,15}" required>
@@ -459,36 +483,36 @@
               <div class="popup__input-phone-logo"></div>
             </div>
             <div class="popup__input-wrp select-wrp">
-              <select class="popup__select" name="Ticket Type">
-                <option value="0" selected disabled >Ticket Type</option>
-                <option value="0">Permanent exhibition</option>
-                <option value="1">Temporary exhibition</option>
-                <option value="2">Combined Admission</option>
+              <select class="popup__select" id="ticketTypeSel">
+                <option value="0" disabled>Ticket Type</option>
+                <option value="perm" selected>Permanent exhibition</option>
+                <option value="temp">Temporary exhibition</option>
+                <option value="comb">Combined Admission</option>
               </select>
               <div class="popup__select-logo"></div>
             </div>
             <div class="popup__amount">
               <p class="popup__amount-title">entry ticket</p>
               <div class="popup__amount-wrp popup__amount--margin">
-                <p class="popup__amount-descr">Basic 18+ (20 €)</p>
+                <p class="popup__amount-descr">Basic 18+ (<span id="basicPrice">20</span> €)</p>
                 <div class="popup__amount-number">
-                  <button class="popup__amount-number-btn" onclick="this.nextElementSibling.stepDown()">
+                  <button class="popup__amount-number-btn" id="basicSub">
                     &#8722;
                   </button>
-                  <input class="popup__amount-number-input" type="number" min="0" value="1" max="20">
-                  <button class="popup__amount-number-btn" onclick="this.previousElementSibling.stepUp()">
+                  <input class="popup__amount-number-input" type="number" min="0" value="1" max="20" id="basicN">
+                  <button class="popup__amount-number-btn" id="basicAdd">
                     +
                   </button>
                 </div>
               </div>
               <div class="popup__amount-wrp">
-                <p class="popup__amount-descr">Senior 65+ (10 €)</p>
+                <p class="popup__amount-descr">Senior 65+ (<span id="seniorPrice">10</span> €)</p>
                 <div class="popup__amount-number">
-                  <button class="popup__amount-number-btn" onclick="this.nextElementSibling.stepDown()">
+                  <button class="popup__amount-number-btn" id="seniorSub">
                     &#8722;
                   </button>
-                  <input class="popup__amount-number-input" type="number" min="0" value="1" max="20">
-                  <button class="popup__amount-number-btn" onclick="this.previousElementSibling.stepUp()">
+                  <input class="popup__amount-number-input" type="number" min="0" value="1" max="20" id="seniorN">
+                  <button class="popup__amount-number-btn" id="seniorAdd">
                     +
                   </button>
                 </div>
@@ -498,20 +522,23 @@
           <div class="popup__payment">
             <h3 class="popup__payment-title">Overview</h3>
             <p class="popup__payment-descr">Tour to Louvre</p>
-            <p class="popup__payment-text popup__payment--date">Friday, August 19</p>
-            <p class="popup__payment-text popup__payment--time">16 : 30</p>
-            <p class="popup__payment-text popup__payment--temp">Temporary exhibition</p>
+            <p class="popup__payment-text popup__payment--date">
+              <span id="weekDay">Friday</span>, <span id="month">August</span> <span id="dateNum">19</span></p>
+            <p class="popup__payment-text popup__payment--time" id="paymTime">16 : 30</p>
+            <p class="popup__payment-text popup__payment--temp" id="bookTickType">Permanent exhibition</p>
             <div class="popup__payment-price-wrp popup__payment-price-wrp--margin">
-              <p class="popup__payment-price">Basic (20 €)</p>
-              <p class="popup__payment-summ">40 €</p>
+              <span class="popup__payment-dig" id="basicDig">1</span>
+              <p class="popup__payment-price">Basic (<span id="basicPriceN">20</span> €)</p>
+              <p class="popup__payment-summ"><span id="basicTotal">40</span> €</p>
             </div>
             <div class="popup__payment-price-wrp">
-              <p class="popup__payment-price">Senior (10 €)</p>
-              <p class="popup__payment-summ">20 €</p>
+              <span class="popup__payment-dig" id="seniorDig">1</span>
+              <p class="popup__payment-price">Senior (<span id="seniorPriceN">10</span> €)</p>
+              <p class="popup__payment-summ"><span id="seniorTotal">20</span> €</p>
             </div>
             <div class="popup__payment-total">
               <p>Total:</p>
-              <p>60 €</p>
+              <p><span id="totalPr">60</span> €</p>
             </div>
             <div class="popup__payment-card-wrp">
               <div class="popup__payment-card --back">

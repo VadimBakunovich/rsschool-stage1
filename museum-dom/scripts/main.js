@@ -90,34 +90,52 @@ export function main() {
     }
   });
 
-  // Ticket section handling
+  // Ticket section handling (calculator)
   let ticketType = 'permanent';
   let ticketPrice = 20;
-  let summPrice = basicNum.value * 20 + seniorNum.value * 10;
 
   if (localStorage.ticketType) ticketType = JSON.parse(localStorage.getItem('ticketType'));
-  if (localStorage.basicNum) basicNum.value = JSON.parse(localStorage.getItem('basicNum'));
-  if (localStorage.seniorNum) seniorNum.value = JSON.parse(localStorage.getItem('seniorNum'));
-
-  const showTotalPrice = _ => {
-    summPrice = basicNum.value * ticketPrice + seniorNum.value * ticketPrice / 2;
-    totalPrice.textContent = summPrice;
+  if (localStorage.basicNum) {
+    basicNum.value = JSON.parse(localStorage.getItem('basicNum'));
+    basicN.value = basicNum.value;
+    basicDig.textContent = basicNum.value;
+  }
+  if (localStorage.seniorNum) {
+    seniorNum.value = JSON.parse(localStorage.getItem('seniorNum'));
+    seniorN.value = seniorNum.value;
+    seniorDig.textContent = seniorNum.value;
+  }
+  const showPrices = _ => {
+    totalPrice.textContent = basicNum.value * ticketPrice + seniorNum.value * ticketPrice / 2;
+    totalPr.textContent = basicN.value * ticketPrice + seniorN.value * ticketPrice / 2;
+    basicPrice.textContent = ticketPrice;
+    seniorPrice.textContent = ticketPrice / 2;
+    basicPriceN.textContent = ticketPrice;
+    seniorPriceN.textContent = ticketPrice / 2;
+    basicTotal.textContent = ticketPrice * basicN.value;
+    seniorTotal.textContent = ticketPrice * seniorN.value / 2;
   }
   switch (ticketType) {
     case 'permanent':
       permanent.checked = true;
       ticketPrice = 20;
-      showTotalPrice();
+      showPrices();
+      ticketTypeSel.options[1].selected = true;
+      bookTickType.textContent = 'Permanent exhibition';
       break;
     case 'temporary':
       temporary.checked = true;
       ticketPrice = 25;
-      showTotalPrice();
+      showPrices();
+      ticketTypeSel.options[2].selected = true;
+      bookTickType.textContent = 'Temporary exhibition';
       break;
     case 'combined':
       combined.checked = true;
       ticketPrice = 40;
-      showTotalPrice();
+      showPrices();
+      ticketTypeSel.options[3].selected = true;
+      bookTickType.textContent = 'Combined Admission';
       break;
     default: break;
   }
@@ -125,44 +143,120 @@ export function main() {
     if (permanent.checked) {
       localStorage.setItem('ticketType', JSON.stringify('permanent'));
       ticketPrice = 20;
-      showTotalPrice();
+      showPrices();
+      ticketTypeSel.options[1].selected = true;
+      bookTickType.textContent = 'Permanent exhibition';
     }
   }
   temporary.onchange = _ => {
     if (temporary.checked) {
       localStorage.setItem('ticketType', JSON.stringify('temporary'));
       ticketPrice = 25;
-      showTotalPrice();
+      showPrices();
+      ticketTypeSel.options[2].selected = true;
+      bookTickType.textContent = 'Temporary exhibition';
     }
   }
   combined.onchange = _ => {
     if (combined.checked) {
       localStorage.setItem('ticketType', JSON.stringify('combined'));
       ticketPrice = 40;
-      showTotalPrice();
+      showPrices();
+      ticketTypeSel.options[3].selected = true;
+      bookTickType.textContent = 'Combined Admission';
     }
   }
   basicMinus.onclick = _ => {
     basicNum.stepDown();
+    basicN.stepDown();
     localStorage.setItem('basicNum', JSON.stringify(`${basicNum.value}`));
-    showTotalPrice();
+    showPrices();
+    basicDig.textContent = basicNum.value;
   }
   basicPlus.onclick = _ => {
     basicNum.stepUp();
+    basicN.stepUp();
     localStorage.setItem('basicNum', JSON.stringify(`${basicNum.value}`));
-    showTotalPrice();
+    showPrices();
+    basicDig.textContent = basicNum.value;
   }
   seniorMinus.onclick = _ => {
     seniorNum.stepDown();
+    seniorN.stepDown();
     localStorage.setItem('seniorNum', JSON.stringify(`${seniorNum.value}`));
-    showTotalPrice();
+    showPrices();
+    seniorDig.textContent = seniorNum.value;
   }
   seniorPlus.onclick = _ => {
     seniorNum.stepUp();
+    seniorN.stepUp();
     localStorage.setItem('seniorNum', JSON.stringify(`${seniorNum.value}`));
-    showTotalPrice();
+    showPrices();
+    seniorDig.textContent = seniorNum.value;
+  }
+  basicSub.onclick = _ => {
+    basicNum.stepDown();
+    basicN.stepDown();
+    localStorage.setItem('basicNum', JSON.stringify(`${basicNum.value}`));
+    showPrices();
+    basicDig.textContent = basicNum.value;
+  }
+  basicAdd.onclick = _ => {
+    basicNum.stepUp();
+    basicN.stepUp();
+    localStorage.setItem('basicNum', JSON.stringify(`${basicNum.value}`));
+    showPrices();
+    basicDig.textContent = basicNum.value;
+  }
+  seniorSub.onclick = _ => {
+    seniorNum.stepDown();
+    seniorN.stepDown();
+    localStorage.setItem('seniorNum', JSON.stringify(`${seniorNum.value}`));
+    showPrices();
+    seniorDig.textContent = seniorNum.value;
+  }
+  seniorAdd.onclick = _ => {
+    seniorNum.stepUp();
+    seniorN.stepUp();
+    localStorage.setItem('seniorNum', JSON.stringify(`${seniorNum.value}`));
+    showPrices();
+    seniorDig.textContent = seniorNum.value;
+  }
+  ticketTypeSel.onchange = _ => {
+    if (ticketTypeSel.options[1].selected) {
+      localStorage.setItem('ticketType', JSON.stringify('permanent'));
+      ticketPrice = 20;
+      showPrices();
+      permanent.checked = true;
+      bookTickType.textContent = 'Permanent exhibition';
+    }
+    if (ticketTypeSel.options[2].selected) {
+      localStorage.setItem('ticketType', JSON.stringify('temporary'));
+      ticketPrice = 25;
+      showPrices();
+      temporary.checked = true;
+      bookTickType.textContent = 'Temporary exhibition';
+    }
+    if (ticketTypeSel.options[3].selected) {
+      localStorage.setItem('ticketType', JSON.stringify('combined'));
+      ticketPrice = 40;
+      showPrices();
+      combined.checked = true;
+      bookTickType.textContent = 'Combined Admission';
+    }
+  }
+  inputDate.onchange = _ => {
+    weekDay.textContent = new Date(inputDate.value).toLocaleDateString('en-us', {weekday: 'long'});
+    month.textContent = new Date(inputDate.value).toLocaleDateString('en-us', {month: 'long'});
+    dateNum.textContent = new Date(inputDate.value).getDate();
+  }
+  timeSel.onchange = _ => {
+    for (let i = 0; i < timeSel.options.length; i++) {
+      if (timeSel.options[i].selected) paymTime.textContent = timeSel.value;
+    }
   }
   buyingForm.onsubmit = e => e.preventDefault();
+  bookingForm.onsubmit = e => e.preventDefault();
 
   // Popup handling
   buyBtn.addEventListener('click', _ => {

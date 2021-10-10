@@ -134,6 +134,39 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .popup__input-time:focus.popup__input-time::-webkit-calendar-picker-indicator {
   background:  no-repeat center url(../assets/svg/picker-up.svg);
 }
+.timeSel-wrp { position: relative; }
+
+.timeSel-wrp::before {
+  position: absolute;
+  content: '';
+  top: 15px;
+  left: 15px;
+  width: 15px;
+  height: 15px;
+  background: no-repeat url(../assets/svg/time.svg);
+  z-index: 10;
+}
+.popup__timeSel {
+  position: absolute;
+  width: 190px;
+  height: 45px;
+  padding-left: 45px;
+  background-image: url(../assets/svg/input-picker.svg);
+  background-repeat: no-repeat;
+  background-size: 17px 17px;
+  background-position: 93% center;
+  cursor: pointer;
+  appearance: none;
+}
+.popup__timeSel:focus { background-image: url(../assets/svg/picker-up.svg); }
+
+.popup__timeSel option {
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--dark);
+}
+.popup__timeSel option:checked { background-color: #e7e7e7; }
+
 .popup__input-wrp {
   position: relative;
   height: 45px;
@@ -320,9 +353,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 .popup__payment-price-wrp {
   display: flex;
-  justify-content: space-between;
   font-size: 22px;
-  line-height: 26px;
+  line-height: 22px;
   color: var(--dark);
 }
 .popup__payment-price-wrp--margin {
@@ -331,23 +363,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .popup__payment-price {
   position: relative;
   margin-bottom: 7px;
-  padding-left: 42px;
+  padding-left: 5px;
 }
-.popup__payment-price::before {
-  position: absolute;
-  content: '2';
+.popup__payment-dig {
+  margin-right: 5px;
+  width: 32px;
+  height: 20px;
   font-size: 18px;
   line-height: 21px;
   color: #A4A4A3;
   text-align: center;
-  display: block;
-  top: 2.5px;
-  left: 0;
-  width: 32px;
-  height: 20px;
   background-color: var(--dark);
   border-radius: 5px;
 }
+.popup__payment-summ { margin-left: auto; }
 .popup__payment-total {
   margin: 1px 0 9px 0;
   display: flex;
