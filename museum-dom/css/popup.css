@@ -134,8 +134,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .popup__input-time:focus.popup__input-time::-webkit-calendar-picker-indicator {
   background:  no-repeat center url(../assets/svg/picker-up.svg);
 }
-.timeSel-wrp { position: relative; }
-
+.timeSel-wrp {
+  position: relative;
+  height: 45px;
+}
 .timeSel-wrp::before {
   position: absolute;
   content: '';
@@ -172,6 +174,27 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   height: 45px;
   margin-bottom: 20px;
 }
+.name-warn::after {
+  position: absolute;
+  bottom: -15px;
+  content: 'Allowed Eng or Rus letters (not at the same time) from 3 to 15 char.';
+  font-size: 12px;
+  color: red;
+}
+.email-warn::after {
+  position: absolute;
+  bottom: -15px;
+  content: 'Pattern: name_0-9(3-15 char)@example(min 4 char).com(min 2 char)';
+  font-size: 12px;
+  color: red;
+}
+.phone-warn::after {
+  position: absolute;
+  bottom: -15px;
+  content: 'Pattern: 0-9 or 12-34-56-78-90 or 123-456-789 (- or space; max 10 digits)';
+  font-size: 12px;
+  color: red;
+}
 .popup__input {
   position: absolute;
   top: 0;
@@ -179,7 +202,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   width: 100%;
   height: 45px;
   padding-left: 43px;
+  font-size: 18px;
   border: 1px solid var(--dark);
+}
+.not-valid {
+  border: none;
+  outline: 1px solid red;
 }
 .popup__input-name-logo {
   position: absolute;
@@ -268,12 +296,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   align-items: center;
 	width: 105px;
   height: 25px;
-  padding: 0 12px;
+  padding: 0 6px;
   background-color: var(--bg-dark);
   border: 1px solid var(--dark);
 }
 .popup__amount-number-input {
-	width: 33px;
+	width: 35px;
   font-size: 18px;
   line-height: 21px;
 	text-align: center;
@@ -285,6 +313,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .popup__amount-number input::-webkit-inner-spin-button { display: none; }
 
 .popup__amount-number-btn {
+  width: 21px;
 	font-size: 18px;
 	line-height: 18px;
   color: var(--light);

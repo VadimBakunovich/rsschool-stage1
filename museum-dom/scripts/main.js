@@ -300,9 +300,37 @@ export function main() {
   if (mm < 10) mm = '0' + mm;
   inputDate.min = yyyy + '-' + mm + '-' + dd;
 
-  const nameRegExp = /^[a-zA-Zа-яёА-ЯЁ ]{3,15}$/;
+  const nameRegExp = /(^[a-zA-Z ]{3,15}$)|(^[а-яёА-ЯЁ ]{3,15}$)/;
   const emailRegExp = /^[-\w]{3,15}@[a-zA-Z]{4,}\.[a-zA-Z]{2,}$/;
   const phoneRegExp = /(^\d{1,10}$)|(^(\d{2}-){1,4}\d{2}$)|(^(\d{2}\s){1,4}\d{2}$)|(^(\d{3}-){1,2}\d{3}$)|(^(\d{3}\s){1,2}\d{3}$)/;
+  
+  inputName.oninput = _ => {
+    if (nameRegExp.test(inputName.value)) {
+      inputName.classList.remove('not-valid');
+      nameWarn.classList.remove('name-warn');
+    } else {
+      inputName.classList.add('not-valid');
+      nameWarn.classList.add('name-warn');
+      }
+  }
+  inputEmail.oninput = _ => {
+    if (emailRegExp.test(inputEmail.value)) {
+      inputEmail.classList.remove('not-valid');
+      emailWarn.classList.remove('email-warn');
+    } else {
+      inputEmail.classList.add('not-valid');
+      emailWarn.classList.add('email-warn');
+      }
+  }
+  inputPhone.oninput = _ => {
+    if (phoneRegExp.test(inputPhone.value)) {
+      inputPhone.classList.remove('not-valid');
+      phoneWarn.classList.remove('phone-warn');
+    } else {
+      inputPhone.classList.add('not-valid');
+      phoneWarn.classList.add('phone-warn');
+      }
+  }
 
   // add map
   mapboxgl.accessToken = 'pk.eyJ1IjoidmFkemltYmEiLCJhIjoiY2t1aTdnNTB3MGp4ZzJvb3pvMWx0NWcwayJ9.t8pFSafWsERcOYoF8EOwzQ';

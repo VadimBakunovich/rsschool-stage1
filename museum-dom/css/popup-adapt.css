@@ -24,7 +24,7 @@
   .popup__descr { margin-bottom: 40px; }
 
   .popup__input-date,
-  .popup__input-time { width: 251px; }
+  .popup__timeSel { width: 251px; }
 
   .popup__input-date { margin-right: 28px; }
 
@@ -63,7 +63,9 @@
     margin-bottom: 20px;
   }
   .popup__input-date,
-  .popup__input-time { width: 100%; }
+  .popup__timeSel { width: 100%; }
+
+  .popup__timeSel { background-position: 95.5% center; }
 
   .popup__input-date { margin-bottom: 20px; }
 

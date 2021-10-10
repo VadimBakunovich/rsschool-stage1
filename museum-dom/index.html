@@ -444,42 +444,41 @@
             <p class="popup__descr">Tour to Louvre</p>
             <div class="popup__date-time">
               <input class="popup__input-date placeholder" type="date" required data-placeholder="Date" id="inputDate">
-              <!-- <input class="popup__input-time placeholder" type="time" min="09:00" max="18:00" required data-placeholder="Time"> -->
               <div class="timeSel-wrp">
-                <select class="popup__timeSel" name="time" id="timeSel">
-                <option value="0" disabled selected>Time</option>
-                <option value="09 : 00">09:00</option>
-                <option value="09 : 30">09:30</option>
-                <option value="10 : 00">10:00</option>
-                <option value="10 : 30">10:30</option>
-                <option value="11 : 00">11:00</option>
-                <option value="11 : 30">11:30</option>
-                <option value="12 : 00">12:00</option>
-                <option value="12 : 30">12:30</option>
-                <option value="13 : 00">13:00</option>
-                <option value="13 : 30">13:30</option>
-                <option value="14 : 00">14:00</option>
-                <option value="14 : 30">14:30</option>
-                <option value="15 : 00">15:00</option>
-                <option value="15 : 30">15:30</option>
-                <option value="16 : 00">16:00</option>
-                <option value="16 : 30">16:30</option>
-                <option value="17 : 00">17:00</option>
-                <option value="17 : 30">17:30</option>
-                <option value="18 : 00">18:00</option>
-              </select>
+                <select class="popup__timeSel" name="time" id="timeSel" required>
+                  <option value="0" disabled selected>Time</option>
+                  <option value="09 : 00">09:00</option>
+                  <option value="09 : 30">09:30</option>
+                  <option value="10 : 00">10:00</option>
+                  <option value="10 : 30">10:30</option>
+                  <option value="11 : 00">11:00</option>
+                  <option value="11 : 30">11:30</option>
+                  <option value="12 : 00">12:00</option>
+                  <option value="12 : 30">12:30</option>
+                  <option value="13 : 00">13:00</option>
+                  <option value="13 : 30">13:30</option>
+                  <option value="14 : 00">14:00</option>
+                  <option value="14 : 30">14:30</option>
+                  <option value="15 : 00">15:00</option>
+                  <option value="15 : 30">15:30</option>
+                  <option value="16 : 00">16:00</option>
+                  <option value="16 : 30">16:30</option>
+                  <option value="17 : 00">17:00</option>
+                  <option value="17 : 30">17:30</option>
+                  <option value="18 : 00">18:00</option>
+                </select>
               </div>
             </div>
-            <div class="popup__input-wrp">
-              <input class="popup__input" type="text" placeholder="Name" minlength="3" maxlength="15" pattern="[a-z]{1,15}" required>
+            <div class="popup__input-wrp" id="nameWarn">
+              <input class="popup__input" id="inputName" type="text" placeholder="Name" required>
               <div class="popup__input-name-logo"></div>
             </div>
-            <div class="popup__input-wrp">
-              <input class="popup__input" type="email" placeholder="E-mail">
+            <div class="popup__input-wrp" id="emailWarn">
+              <input class="popup__input" id="inputEmail" type="email" placeholder="E-mail" required>
               <div class="popup__input-mail-logo"></div>
             </div>
-            <div class="popup__input-wrp">
-              <input class="popup__input" type="tel" placeholder="Phone">
+            <div class="popup__input-wrp" id="phoneWarn">
+              <input class="popup__input" id="inputPhone" type="tel" placeholder="Phone" required>
               <div class="popup__input-phone-logo"></div>
             </div>
             <div class="popup__input-wrp select-wrp">
