@@ -1,4 +1,5 @@
 export function bgSlider() {
+  
   const getTimeOfDay = _ => {
     const hours = new Date().getHours();
     if (hours < 6) return 'night';
@@ -11,7 +12,7 @@ export function bgSlider() {
   const setBg = (timeOfDay, bgNum) => {
     bgNum = `${bgNum}`.padStart(2, '0');
     const img = new Image();
-    img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
+    img.src = `https://raw.githubusercontent.com/VadimBakunovich/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
     img.onload = _ => body.style.backgroundImage = `url(${img.src})`;
   }
   setBg(getTimeOfDay(), randomNum);
@@ -24,4 +25,12 @@ export function bgSlider() {
     randomNum === 20 ? randomNum = 1 : randomNum += 1;
     setBg(getTimeOfDay(), randomNum);
   }
+  let timeOfDay = getTimeOfDay();
+
+  setInterval(_ => {
+    if (timeOfDay !== getTimeOfDay()) {
+      setBg(getTimeOfDay(), randomNum);
+      timeOfDay = getTimeOfDay();
+    }
+  }, 1000);
 }

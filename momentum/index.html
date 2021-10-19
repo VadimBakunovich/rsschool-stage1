@@ -9,11 +9,19 @@
 </head>
 <body id="body">
   <main>
-    <button class="btn btn-prev" id="sliderPrev"></button>
-    <div class="center-block"></div>
-    <button class="btn btn-next" id="sliderNext"></button>
+    <button class="btn-slider btn-prev" id="sliderPrev"></button>
+    <div class="center-block">
+      <div class="time" id="currTime"></div>
+      <div class="date" id="currDate"></div>
+      <div class="greetings">
+        <span class="greetings__text" id="greeting"></span>
+        <input class="greetings__name" id="userName" placeholder="[Enter name]" autocomplete="off" spellcheck=false size="7">
+      </div>
+    </div>
+    <button class="btn-slider btn-next" id="sliderNext"></button>
   </main>
   <script type="module">
+    import('./scripts/main.js').then(i => i.main());
     import('./scripts/bgSlider.js').then(i => i.bgSlider());
   </script>
 </body>
