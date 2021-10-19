@@ -1,5 +1,4 @@
 html { box-sizing: border-box; }
-
 *,
 *::after,
 *::before {
@@ -7,3 +6,41 @@ html { box-sizing: border-box; }
   margin: 0;
   padding: 0;
 }
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: no-repeat center/cover, rgba(0, 0, 0, .5);
+  background-blend-mode: multiply;
+  transition: background-image 1s ease-in-out;
+}
+main {
+  margin: 0 auto;
+  width: 99vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn {
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+  background-position: center center;
+  background-color: transparent;
+  border: none;
+  opacity: .8;
+  cursor: pointer;
+  transition: .3s;
+}
+.btn:hover { opacity: 1; }
+
+.btn-prev { background-image: url(../assets/svg/slider-prev.svg); }
+
+.btn-prev:active { transform: translateX(-1vh); }
+
+.btn-next { background-image: url(../assets/svg/slider-next.svg); }
+
+.btn-next:active { transform: translateX(1vh); }
