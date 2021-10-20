@@ -11,20 +11,15 @@ export function main() {
     else if (hours < 18) return 'afternoon';
     else return 'evening';
   }
-  currTime.textContent = new Date().toLocaleTimeString();
-  currDate.textContent = getDate();
-  greeting.textContent = `Good ${getTimeOfDay()},`;
-  
-  setTimeout(function timeMonitor() {
-    currTime.textContent = new Date().toLocaleTimeString();
-
+  const timeMonitor = _ => {
+    currTime.textContent = new Date().toLocaleTimeString('en-GB');
     if (currDate.textContent !== getDate()) currDate.textContent = getDate();
-    
     if (greeting.textContent !== `Good ${getTimeOfDay()},`) {
       greeting.textContent = `Good ${getTimeOfDay()},`;
     }
     setTimeout(timeMonitor, 1000);
-  }, 1000);
+  };
+  timeMonitor();
   
   if (localStorage.userName) userName.value = localStorage.getItem('userName') + '!';
 

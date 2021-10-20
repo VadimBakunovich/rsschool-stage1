@@ -1,5 +1,5 @@
 export function bgSlider() {
-  
+
   const getTimeOfDay = _ => {
     const hours = new Date().getHours();
     if (hours < 6) return 'night';
@@ -7,14 +7,14 @@ export function bgSlider() {
     else if (hours < 18) return 'afternoon';
     else return 'evening';
   }
-  let randomNum = Math.floor(Math.random() * 20) + 1;
-
   const setBg = (timeOfDay, bgNum) => {
     bgNum = `${bgNum}`.padStart(2, '0');
     const img = new Image();
     img.src = `https://raw.githubusercontent.com/VadimBakunovich/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
     img.onload = _ => body.style.backgroundImage = `url(${img.src})`;
   }
+  let randomNum = Math.floor(Math.random() * 20) + 1;
+  
   setBg(getTimeOfDay(), randomNum);
 
   sliderPrev.onclick = _ => {

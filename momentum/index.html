@@ -5,9 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Momentum</title>
+  <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body id="body">
+  <header>
+    <div class="player" id="audioPlayer">
+      <audio src="assets/music/Secret Garden - The Promise.mp3" id="audio"></audio>
+      <p class="curr-track-name" id="currTrack"></p>
+      <div class="controls">
+        <button class="controls__prev prev-next-btn" id="prevTrack" title="prev track"></button>
+        <button class="controls__play" id="playBtn" title="play / pause"></button>
+        <button class="controls__next prev-next-btn" id="nextTrack" title="next track"></button>
+        <input class="controls__progress audio-progress" id="progress" type="range" value="0" step="0.01">
+        <div class="duration">
+          <span id="audioCurrTime"></span> / <span id="audioDuration"></span>
+        </div>
+        <button class="controls__mute" id="muteBtn" title="mute on / off"></button>
+        <input class="controls__progress vol-progress" id="vol" type="range" value="70" step="1">
+      </div>
+      <ul class="playlist" id="trackList"></ul>
+    </div>
+  </header>
   <main>
     <button class="btn-slider btn-prev" id="sliderPrev"></button>
     <div class="center-block">
@@ -23,6 +42,7 @@
   <script type="module">
     import('./scripts/main.js').then(i => i.main());
     import('./scripts/bgSlider.js').then(i => i.bgSlider());
+    import('./scripts/player.js').then(i => i.player());
   </script>
 </body>
 </html>
