@@ -20,7 +20,9 @@ body {
   transition: background-image 1s ease-in-out;
 }
 button {
+  background-size: 100%;
   background-position: center center;
+  background-repeat: no-repeat;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -39,7 +41,7 @@ header {
                                                                     /*Audio player*/
 
 .player {
-  width: 600px;
+  width: 560px;
 }
 .curr-track-name {
   margin-bottom: 10px;
@@ -54,7 +56,6 @@ header {
 .prev-next-btn {
   width: 32px;
   height: 32px;
-  background-size: 32px 32px;
 }
 .controls__prev { background-image: url(../assets/svg/play-prev.svg); }
 
@@ -63,7 +64,6 @@ header {
 .controls__play {
   width: 40px;
   height: 40px;
-  background-size: 40px 40px;
   background-image: url(../assets/svg/play.svg);
 }
 .pause { background-image: url(../assets/svg/pause.svg); }
@@ -83,7 +83,7 @@ header {
   opacity: .8;
 }
 .audio-progress {
-  width: 200px;
+  width: 220px;
   background: linear-gradient(to right, #FDAC53 0%, #FDAC53 0%, #c4c4c4 0%, #c4c4c4 100%);
 }
 .duration {
@@ -91,15 +91,14 @@ header {
   text-align: center;
 }
 .controls__mute {
-  width: 30px;
-  height: 30px;
-  background-size: 30px 30px;
+  width: 26px;
+  height: 26px;
   background-image: url(../assets/svg/volume.svg);
 }
 .muted { background-image: url(../assets/svg/muted.svg); }
 
 .vol-progress {
-  width: 80px;
+  width: 70px;
   background: linear-gradient(to right, #FDAC53 0%, #FFA500 70%, #c4c4c4 70%, #c4c4c4 100%);
 }
 .playlist {
@@ -110,15 +109,18 @@ header {
   display: flex;
   align-items: center;
 }
-.playing { color: #FDAC53; }
+.track-duration { margin-left: auto; }
 
-.play-track {
+.curr-track { color: #FDAC53; }
+
+.btn-play-track {
   margin-right: 20px;
   width: 30px;
   height: 30px;
-  background-size: 30px 30px;
   background-image: url(../assets/svg/play.svg);
 }
+.--pause-track { background-image: url(../assets/svg/pause.svg); }
+
                                                                     /*Main*/
 
 main {

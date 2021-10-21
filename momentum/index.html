@@ -39,10 +39,8 @@
     </div>
     <button class="btn-slider btn-next" id="sliderNext"></button>
   </main>
-  <script type="module">
-    import('./scripts/main.js').then(i => i.main());
-    import('./scripts/bgSlider.js').then(i => i.bgSlider());
-    import('./scripts/player.js').then(i => i.player());
-  </script>
+  <script src="scripts/bgSlider.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+  <script src="scripts/player.js" type="module" defer></script>
 </body>
 </html>
