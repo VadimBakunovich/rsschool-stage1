@@ -32,7 +32,7 @@ button {
 button:hover { opacity: 1; }
 
 header {
-  height: 30vh;
+  height: 39vh;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -160,7 +160,7 @@ header {
 
 main {
   width: 99vw;
-  height: 40vh;
+  height: 22vh;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -199,17 +199,15 @@ main {
   text-align: center;
 }
 .greetings {
-  display: flex;
+  margin: 0 auto;
+  width: fit-content;
   font-size: 40px;
-  flex-wrap: wrap;
 }
 .greetings__text {
-  flex: 1;
   padding-right: 10px;
   text-align: right;
 }
 .greetings__name {
-  flex: 1;
   font-size: 40px;
   color: #fff;
   background-color: transparent;
@@ -225,12 +223,66 @@ main {
 footer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 30vh;
+  height: 39vh;
   min-height: 160px;  
   padding: 20px;
+}
+.todo-inputs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 5px;
+}
+.input-todo {
+  margin-right: 10px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.input-todo::placeholder {
+  color: #fff;
+  opacity: .6;
+}
+.btn-add-todo {
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+.todo-list {
+  height: 17vh;
+  list-style-type: none;
+  overflow-y: auto;
+}
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5px;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, .8);
+}
+.btn-del-todo {
+  width: 32px;
+  height: 32px;
+  background-image: url(../assets/svg/bin.svg);
+}
+.btn-del-todo:active { filter: invert(75%); }
+
+.quote-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .btn-upd-quote {
   width: 32px;

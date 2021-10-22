@@ -27,11 +27,16 @@ const timeMonitor = _ => {
 };
 timeMonitor();
 
-if (localStorage.userName) userName.value = localStorage.getItem('userName') + '!';
+if (localStorage.userName) {
+  userName.value = localStorage.getItem('userName') + '!';
+  userName.value.length > 2 ? userName.size = userName.value.length - 2 : userName.size = userName.value.length;
+}
 
 userName.oninput = _ => {
-  if (userName.value.length > 7) userName.size = userName.value.length;
-  else userName.size = 7;
+  if (userName.value) {
+    if (userName.value.length > 2) userName.size = userName.value.length - 1;
+    else userName.size = userName.value.length;
+  } else userName.size = 9;
   localStorage.setItem('userName', userName.value);
 }
 userName.onchange = _ => userName.value ? userName.value += '!' : '';

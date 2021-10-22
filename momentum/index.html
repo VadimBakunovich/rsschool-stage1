@@ -46,16 +46,25 @@
       <div class="date" id="currDate"></div>
       <div class="greetings">
         <span class="greetings__text" id="greeting"></span>
-        <input class="greetings__name" id="userName" placeholder="[Enter name]" autocomplete="off" spellcheck=false size="7">
+        <input class="greetings__name" id="userName" placeholder="[Enter name]" autocomplete="off" spellcheck=false size="9">
       </div>
     </div>
     <button class="btn-slider btn-next" id="sliderNext"></button>
   </main>
   <footer>
-    <button class="btn-upd-quote" id="updQuote"></button>
     <div>
-      <p class="quote" id="quote"></p>
-      <p class="author" id="author"></p>
+      <div class="todo-inputs">
+        <input class="input-todo" id="inputToDo" placeholder="Введите задачу" autocomplete="off" spellcheck=false size="40">
+        <button class="btn-add-todo" id="addTodo">+</button>
+      </div>
+      <ul class="todo-list" id="todoList"></ul>
+    </div>
+    <div class="quote-wrp">
+      <button class="btn-upd-quote" id="updQuote"></button>
+      <div>
+        <p class="quote" id="quote"></p>
+        <p class="author" id="author"></p>
+      </div>
     </div>
   </footer>
   <script src="scripts/settings.js"></script>
@@ -64,5 +73,6 @@
   <script src="scripts/player.js" type="module"></script>
   <script src="scripts/weather.js" async></script>
   <script src="scripts/quotes.js" async></script>
+  <script src="scripts/toDoList.js" defer></script>
 </body>
 </html>
