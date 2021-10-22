@@ -1,12 +1,27 @@
+const getLocale = lang => lang === 'en' ? 'en-US' : 'ru-RU';
+
+const getStartGreet = lang => {
+  if (lang === 'en') return 'Good';
+  else {
+    switch(getTimeOfDay(lang)) {
+      case 'ночи': return 'Доброй';
+      case 'утро': return 'Доброе';
+      case 'день':
+      case 'вечер': return 'Добрый';
+      default: break;
+    }
+  }
+}
 const getDate = _ => {
   const options = { weekday: 'long', month: 'long', day: 'numeric' };
-  return new Date().toLocaleDateString('en-US', options);
+  return new Date().toLocaleDateString(getLocale(), options);
 }
 const timeMonitor = _ => {
+  lang === 'en' ? userName.placeholder = '[Enter name]' : userName.placeholder = '[Введите имя]';
   currTime.textContent = new Date().toLocaleTimeString('en-GB');
   if (currDate.textContent !== getDate()) currDate.textContent = getDate();
-  if (greeting.textContent !== `Good ${getTimeOfDay()},`) {
-    greeting.textContent = `Good ${getTimeOfDay()},`;
+  if (greeting.textContent !== `${getStartGreet(lang)} ${getTimeOfDay(lang)},`) {
+    greeting.textContent = `${getStartGreet(lang)} ${getTimeOfDay(lang)},`;
   }
   setTimeout(timeMonitor, 1000);
 };

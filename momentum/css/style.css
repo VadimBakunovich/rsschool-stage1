@@ -220,3 +220,27 @@ main {
   color: #fff;
   opacity: .6;
 }
+                                                              /*Footer*/
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 30vh;
+  min-height: 160px;  
+  padding: 20px;
+}
+.btn-upd-quote {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 30px;
+  background-image: url(../assets/svg/reload.svg);  
+}
+.btn-upd-quote:active {
+  transform: rotate(450deg);
+}
+.quote { margin-bottom: 15px; }
+
+.author { text-align: center; }
