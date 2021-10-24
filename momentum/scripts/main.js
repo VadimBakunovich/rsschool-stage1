@@ -14,10 +14,10 @@ const getStartGreet = lang => {
 }
 const getDate = _ => {
   const options = { weekday: 'long', month: 'long', day: 'numeric' };
-  return new Date().toLocaleDateString(getLocale(), options);
+  return new Date().toLocaleDateString(getLocale(lang), options);
 }
 const timeMonitor = _ => {
-  lang === 'en' ? userName.placeholder = '[Enter name]' : userName.placeholder = '[Введите имя]';
+  lang === 'ru' ? userName.placeholder = '[Введите имя]': userName.placeholder = '[Enter name]';
   currTime.textContent = new Date().toLocaleTimeString('en-GB');
   if (currDate.textContent !== getDate()) currDate.textContent = getDate();
   if (greeting.textContent !== `${getStartGreet(lang)} ${getTimeOfDay(lang)},`) {
@@ -31,7 +31,6 @@ if (localStorage.userName) {
   userName.value = localStorage.getItem('userName') + '!';
   userName.value.length > 2 ? userName.size = userName.value.length - 2 : userName.size = userName.value.length;
 }
-
 userName.oninput = _ => {
   if (userName.value) {
     if (userName.value.length > 2) userName.size = userName.value.length - 1;
@@ -40,3 +39,5 @@ userName.oninput = _ => {
   localStorage.setItem('userName', userName.value);
 }
 userName.onchange = _ => userName.value ? userName.value += '!' : '';
+
+//console.log('https://discord.com/channels/516715744646660106/873089666394513429/901725685582790656')

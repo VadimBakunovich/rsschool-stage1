@@ -25,6 +25,7 @@ const getWeather = (city, lang) => {
   });
 }
 if (localStorage.city) inputCity.value = localStorage.getItem('city');
+else inputCity.value = lang === 'ru' ? 'Минск' : 'Minsk';
 
 getWeather(inputCity.value, lang);
 
@@ -32,3 +33,12 @@ inputCity.onchange = _ => {
   getWeather(inputCity.value, lang);
   localStorage.setItem('city', inputCity.value);
 }
+btnEn.addEventListener('click', _ => {
+  if (inputCity.value === 'Минск') inputCity.value = 'Minsk';
+  getWeather(inputCity.value, lang);
+});
+
+btnRu.addEventListener('click', _ => {
+  if (inputCity.value === 'Minsk') inputCity.value = 'Минск';
+  getWeather(inputCity.value, lang)
+});

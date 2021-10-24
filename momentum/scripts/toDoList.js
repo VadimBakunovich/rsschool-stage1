@@ -1,9 +1,11 @@
+inputToDo.placeholder = lang === 'ru' ? 'Введите задачу' : 'Enter the task';
+
 let tasks = localStorage.tasks ? JSON.parse(localStorage.getItem('tasks')) : [];
 
 const createTodo = todo =>
   `<li class="todo">
     <p class="todo-text">${todo}</p>
-    <button class="btn-del-todo" id="delTodo"></button>
+    <button class="btn-del-todo"></button>
   </li>`;
 
 for(let i of tasks) todoList.innerHTML += createTodo(i);
@@ -21,12 +23,17 @@ addTodo.onclick = _ => {
 }
 todoList.onclick = e => {
   if (e.target.classList.contains('btn-del-todo')) {
-    const currToDoText = e.target.previousElementSibling.textContent;
+    const delBtns = document.querySelectorAll('.btn-del-todo');
     const todos = document.querySelectorAll('.todo');
-    for (let i = 0; i < todos.length; i++) {
-      if (currToDoText === todos[i].textContent.trim()) todos[i].remove();
+    for (let i = 0; i < delBtns.length; i++) {
+      if (delBtns[i] === e.target) {
+        todos[i].remove();
+        tasks = tasks.filter((item, index) => index !== i);
+      }
     }
-    tasks = tasks.filter(i => i !== currToDoText);
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 }
+btnEn.addEventListener('click', _ => inputToDo.placeholder = 'Enter the task');
+
+btnRu.addEventListener('click', _ => inputToDo.placeholder = 'Введите задачу');
