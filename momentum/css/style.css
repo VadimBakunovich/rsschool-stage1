@@ -41,7 +41,7 @@ header {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 40px;
+  padding: min(3vh, 6vw);
 }
                                                               /*Audio player*/
 
@@ -52,11 +52,11 @@ header {
 .player button:active { filter: invert(75%); }
 
 .curr-track-name {
-  margin-bottom: 10px;
+  margin-bottom: min(1vh, 2vw);
   text-align: center;
 }
 .controls {
-  margin-bottom: 20px;
+  margin-bottom: min(2vh, 4vw);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -112,7 +112,7 @@ header {
 .playlist { list-style-type: none; }
 
 .track-name {
-  margin-bottom: 15px;
+  margin-bottom: 1.1vh;
   display: flex;
   align-items: center;
 }
@@ -177,9 +177,9 @@ main {
                                                               /*Bg slider controls*/
 
 .btn-slider {
-  width: 40px;
-  height: 40px;
-  background-size: 40px 40px;
+  width: min(3.5vh, 7vw);
+  height: min(3.5vh, 7vw);
+  background-size: min(3.5vh, 7vw) min(3.5vh, 7vw);
 }
 .btn-prev { background-image: url(../assets/svg/slider-prev.svg); }
 
@@ -194,32 +194,32 @@ main {
 .center-block { width: 90vw; }
 
 .time {
-  margin-bottom: 24px;
+  margin-bottom: min(2vh, 4vw);
   font-family: 'Arial-MT';
-  font-size: 100px;
-  line-height: 100px;
+  font-size: min(9vh, 15vw);
+  line-height: min(9vh, 15vw);
   letter-spacing: -4px;
   text-align: center;
   transition: .4s ease-in-out;
 }
 .date {
-  margin-bottom: 30px;
-  font-size: 24px;
+  margin-bottom: min(2vh, 4vw);
+  font-size: min(2.5vh, 5vw);
   text-align: center;
   transition: .4s ease-in-out;
 }
 .greetings {
   margin: 0 auto;
   width: fit-content;
-  font-size: 40px;
+  font-size: min(3.5vh, 5.8vw);
   transition: .4s ease-in-out;
 }
 .greetings__text {
-  padding-right: 10px;
+  padding-right: min(1vh, 2vw);
   text-align: right;
 }
 .greetings__name {
-  font-size: 40px;
+  font-size: min(3.5vh, 5.8vw);
   color: inherit;
   background-color: transparent;
   border: none;
@@ -237,29 +237,28 @@ footer {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 39vh;
-  min-height: 160px;  
-  padding: 20px;
+  height: 39vh; 
+  padding: 1.7vh;
 }
                                                               /*To-Do List*/
 
 .todo-wrp {
-  width: 560px;
+  width: min(50vh, 90vw);
   transition: .4s ease-in-out;
 }
 .todo-inputs {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: min(1vh, 2vw);
   padding: 5px;
   border: 1px solid rgba(255, 255, 255, .8);
   border-radius: 5px;
 }
 .input-todo {
-  margin-right: 10px;
-  font-size: 24px;
-  line-height: 24px;
+  margin-right: min(1vh, 2vw);
+  font-size: min(2.3vh, 4.6vw);
+  line-height: min(2.3vh, 4.6vw);
   color: inherit;
   background-color: transparent;
   border: none;
@@ -277,7 +276,7 @@ footer {
   border-radius: 5px;
 }
 .todo-list {
-  height: 17vh;
+  height: min(17vh, 34vw);
   list-style-type: none;
   overflow-y: auto;
 }
@@ -318,7 +317,7 @@ footer {
                                                               /*Quotes*/
 
 .quote-wrp {
-  width: 90vw;
+  width: 85vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -327,13 +326,13 @@ footer {
 .btn-upd-quote {
   width: 32px;
   height: 32px;
-  margin-bottom: 30px;
+  margin-bottom: 2.2vh;
   background-image: url(../assets/svg/reload.svg);  
 }
 .btn-upd-quote:active {
   transform: rotate(450deg);
 }
-.quote { margin-bottom: 15px; }
+.quote { margin-bottom: 1.3vh; }
 
 .author { text-align: center; }
 
@@ -356,7 +355,7 @@ footer {
   width: 300px;
   height: 33vh;
   overflow-y: scroll;
-  right: 20px;
+  right: min(2vh, 4vw);
   bottom: 80px;
   padding: 15px 20px;
   background-color: #333;
@@ -428,6 +427,7 @@ footer {
 
 .slider {
   position: relative;
+  display: block;
   width: 100%;
   height: 100%;
   border-radius: 24px;
@@ -499,7 +499,7 @@ input:checked + .slider:before {
 .select-tag {
   width: 95%;
   height: 26px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   font-size: 16px;
   background-color: rgba(255, 255, 255, .9);
   border: none;
@@ -508,4 +508,41 @@ input:checked + .slider:before {
 }
 .select-tag option:checked {
   background-color: #FDAC53;
+}
+.warning {
+  width: 95%;
+  margin-bottom: 5px;
+  line-height: 21px;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+                                              /* Mobile */
+
+@media (max-width: 1023px) {
+
+  .player { width: initial; }
+
+  .audio-progress,
+  .track-duration { display: none; }
+}
+@media (max-width: 767px) {
+
+  .controls {
+    height: 120px;
+    flex-direction: column;
+  }
+  .curr-track-name,
+  .duration,
+  .controls__mute,
+  .vol-progress,
+  .playlist { display: none; }
+
+  .weather { height: 150px; }
+
+  .time {
+    font-size: min(7vh, 14vw);
+    line-height: min(7vh, 14vw);
+    letter-spacing: -1px;
+  }
+  .quote-wrp { display: none; }
 }

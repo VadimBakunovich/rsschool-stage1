@@ -33,6 +33,7 @@ const translateSettings = lang => {
     selectTag.options[16].textContent = 'кошки';
     selectTag.options[17].textContent = 'птицы';
     selectTag.options[18].textContent = 'фильмы';
+    warnTxt.textContent = 'Внимание! Время ожидания ответа от сервера API может достигать 5 секунд. Необходимо подождать смены фонового изображения.';
   } else {
       btnRu.classList.remove('highlighted');
       btnEn.classList.add('highlighted');
@@ -50,6 +51,7 @@ const translateSettings = lang => {
       for (let i = 1; i < selectTag.options.length; i++) {
         selectTag.options[i].textContent = selectTag.options[i].value;
       }
+      warnTxt.textContent = 'Attention! The waiting time for a response from the API server can be up to 5 seconds. You need to wait for the background image to change.';
     }
 }
 translateSettings(lang);
