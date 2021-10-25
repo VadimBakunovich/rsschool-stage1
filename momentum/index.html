@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momentum</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/owfont-regular-min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="body">
+  <header>
+    <div class="player" id="audioPlayer">
+      <audio src="assets/music/Secret Garden - The Promise.mp3" id="audio"></audio>
+      <p class="curr-track-name" id="currTrack"></p>
+      <div class="controls">
+        <button class="controls__prev prev-next-btn" id="prevTrack"></button>
+        <button class="controls__play" id="playBtn"></button>
+        <button class="controls__next prev-next-btn" id="nextTrack"></button>
+        <input class="controls__progress audio-progress" id="progress" type="range" value="0" step="0.01">
+        <div class="duration">
+          <span id="audioCurrTime"></span> / <span id="audioDuration"></span>
+        </div>
+        <button class="controls__mute" id="muteBtn"></button>
+        <input class="controls__progress vol-progress" id="vol" type="range" value="70" step="1">
+      </div>
+      <ul class="playlist" id="trackList"></ul>
+    </div>
+    <div class="weather" id="weather">
+      <input class="city" id="inputCity">
+      <i class="weather-icon owf" id="weatherIcon"></i>
+      <div class="weather-error" id="cityError"></div>
+      <div class="description-container">
+        <span class="temperature" id="temperature"></span>
+        <span class="weather-description" id="weatherDescr"></span>
+      </div>
+      <div class="wind" id="wind"></div>
+      <div class="humidity" id="humidity"></div>
+    </div>
+  </header>
+  <main>
+    <button class="btn-slider btn-prev" id="sliderPrev"></button>
+    <div class="center-block">
+      <div class="time" id="currTime"></div>
+      <div class="date" id="currDate"></div>
+      <div class="greetings" id="greetings">
+        <span class="greetings__text" id="greeting"></span>
+        <input class="greetings__name" id="userName" placeholder="[Enter name]" autocomplete="off" spellcheck=false size="9">
+      </div>
+    </div>
+    <button class="btn-slider btn-next" id="sliderNext"></button>
+  </main>
+  <footer>
+    <div class="todo-wrp" id="toDo">
+      <div class="todo-inputs">
+        <input class="input-todo" id="inputToDo" autocomplete="off" spellcheck=false size="37">
+        <button class="btn-add-todo" id="addTodo">+</button>
+      </div>
+      <ul class="todo-list" id="todoList"></ul>
+    </div>
+    <div class="quote-wrp" id="quoteWrp">
+      <button class="btn-upd-quote" id="updQuote"></button>
+      <div>
+        <p class="quote" id="quote"></p>
+        <p class="author" id="author"></p>
+      </div>
+    </div>
+  </footer>
+  <div class="settings-wrp">
+    <button class="btn-settings" id="btnSettings"></button>
+    <div class="settings hidden" id="settings">
+      <div class="language">
+        <span class="language__text" id="langTitle">Язык</span>
+        <div class="language__btns">
+          <button class="btn-en" id="btnEn">EN</button>
+          <span>|</span>
+          <button class="btn-ru highlighted" id="btnRu">RU</button>
+        </div>
+      </div>
+      <div class="elems">
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsPlayer">Проигрыватель</span>
+          <label class="switch">
+            <input type="checkbox" id="hidePlayer" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsWeather">Погода</span>
+          <label class="switch">
+            <input type="checkbox" id="hideWeather" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsTime">Время</span>
+          <label class="switch">
+            <input type="checkbox" id="hideTime" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsDate">Дата</span>
+          <label class="switch">
+            <input type="checkbox" id="hideDate" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsGreet">Приветствие</span>
+          <label class="switch">
+            <input type="checkbox" id="hideGreet" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsTodo">Список дел</span>
+          <label class="switch">
+            <input type="checkbox" id="hideToDo" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsQuote">Цитаты</span>
+          <label class="switch">
+            <input type="checkbox" id="hideQuote" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+      <div class="bg-src">
+        <p class="bg-src__title" id="bgSrcTitle">Источник фоновых изображений</p>
+        <div class="bg-src__inputs">
+          <input class="bg-src__radio" type="radio" name="bgSrc" id="srcGitHub" checked>
+          <label class="bg-src__label" for="srcGitHub">GitHub</label>
+          <input class="bg-src__radio" type="radio" name="bgSrc" id="srcUnsplash">
+          <label class="bg-src__label" for="srcUnsplash">Unsplash API</label>
+          <input class="bg-src__radio" type="radio" name="bgSrc" id="srcFlickr">
+          <label class="bg-src__label" for="srcFlickr">Flickr API</label>
+        </div>
+        <p class="sel-tag-txt" id="selTagTxt">Выберите тэг (только для API):</p>
+        <select class="select-tag" name="tags" id="selectTag">
+          <option value="default" selected>время суток</option>
+          <option value="nature">природа</option>
+          <option value="forest">лес</option>
+          <option value="sea">море</option>
+          <option value="beach">пляж</option>
+          <option value="sky">небо</option>
+          <option value="fields">поля</option>
+          <option value="meadows">луга</option>
+          <option value="flowers">цветы</option>
+          <option value="mountains">горы</option>
+          <option value="cars">автомобили</option>
+          <option value="sport">спорт</option>
+          <option value="city">город</option>
+          <option value="food">еда</option>
+          <option value="horses">лошади</option>
+          <option value="dogs">собаки</option>
+          <option value="cats">кошки</option>
+          <option value="birds">птицы</option>
+          <option value="movies">фильмы</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <script src="scripts/settings.js"></script>
+  <script src="scripts/bgSlider.js" async></script>
+  <script src="scripts/main.js" defer></script>
+  <script src="scripts/player.js" type="module"></script>
+  <script src="scripts/weather.js" async></script>
+  <script src="scripts/quotes.js" async></script>
+  <script src="scripts/toDoList.js" defer></script>
+</body>
+</html>
