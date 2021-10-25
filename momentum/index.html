@@ -28,7 +28,7 @@
       <ul class="playlist" id="trackList"></ul>
     </div>
     <div class="weather" id="weather">
-      <input class="city" id="inputCity">
+      <input class="city" id="inputCity" spellcheck=false>
       <i class="weather-icon owf" id="weatherIcon"></i>
       <div class="weather-error" id="cityError"></div>
       <div class="description-container">
@@ -54,7 +54,7 @@
   <footer>
     <div class="todo-wrp" id="toDo">
       <div class="todo-inputs">
-        <input class="input-todo" id="inputToDo" autocomplete="off" spellcheck=false size="37">
+        <input class="input-todo" id="inputToDo" autocomplete="off" spellcheck=false>
         <button class="btn-add-todo" id="addTodo">+</button>
       </div>
       <ul class="todo-list" id="todoList"></ul>
@@ -83,49 +83,49 @@
           <span class="elems-item__text" id="elemsPlayer">Проигрыватель</span>
           <label class="switch">
             <input type="checkbox" id="hidePlayer" checked>
-            <div class="slider"></div>
+            <span class="slider"></span>
           </label>
         </div>
         <div class="elems__item">
           <span class="elems-item__text" id="elemsWeather">Погода</span>
           <label class="switch">
             <input type="checkbox" id="hideWeather" checked>
-            <div class="slider"></div>
+            <span class="slider"></span>
           </label>
         </div>
         <div class="elems__item">
           <span class="elems-item__text" id="elemsTime">Время</span>
           <label class="switch">
             <input type="checkbox" id="hideTime" checked>
-            <div class="slider"></div>
+            <span class="slider"></span>
           </label>
         </div>
         <div class="elems__item">
           <span class="elems-item__text" id="elemsDate">Дата</span>
           <label class="switch">
             <input type="checkbox" id="hideDate" checked>
-            <div class="slider"></div>
+            <span class="slider"></span>
           </label>
         </div>
         <div class="elems__item">
           <span class="elems-item__text" id="elemsGreet">Приветствие</span>
           <label class="switch">
             <input type="checkbox" id="hideGreet" checked>
-            <div class="slider"></div>
+            <span class="slider"></span>
           </label>
         </div>
         <div class="elems__item">
           <span class="elems-item__text" id="elemsTodo">Список дел</span>
           <label class="switch">
             <input type="checkbox" id="hideToDo" checked>
-            <div class="slider"></div>
+            <span class="slider"></span>
           </label>
         </div>
         <div class="elems__item">
           <span class="elems-item__text" id="elemsQuote">Цитаты</span>
           <label class="switch">
             <input type="checkbox" id="hideQuote" checked>
-            <div class="slider"></div>
+            <span class="slider"></span>
           </label>
         </div>
       </div>
@@ -161,6 +161,7 @@
           <option value="birds">птицы</option>
           <option value="movies">фильмы</option>
         </select>
+        <p class="warning" id="warnTxt">Внимание! Время ожидания ответа от сервера API может достигать 5 секунд. Необходимо подождать смены фонового изображения.</p>
       </div>
     </div>
   </div>
