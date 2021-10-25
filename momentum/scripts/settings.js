@@ -13,6 +13,26 @@ const translateSettings = lang => {
     elemsTodo.textContent = 'Список дел';
     elemsQuote.textContent = 'Цитаты';
     bgSrcTitle.textContent = 'Источник фоновых изображений';
+    selTagTxt.textContent = 'Выберите тэг (только для API):';
+    selectTag.options[0].textContent = 'время суток';
+    selectTag.options[1].textContent = 'природа';
+    selectTag.options[2].textContent = 'лес';
+    selectTag.options[3].textContent = 'море';
+    selectTag.options[4].textContent = 'пляж';
+    selectTag.options[5].textContent = 'небо';
+    selectTag.options[6].textContent = 'поля';
+    selectTag.options[7].textContent = 'луга';
+    selectTag.options[8].textContent = 'цветы';
+    selectTag.options[9].textContent = 'горы';
+    selectTag.options[10].textContent = 'автомобили';
+    selectTag.options[11].textContent = 'спорт';
+    selectTag.options[12].textContent = 'город';
+    selectTag.options[13].textContent = 'еда';
+    selectTag.options[14].textContent = 'лошади';
+    selectTag.options[15].textContent = 'собаки';
+    selectTag.options[16].textContent = 'кошки';
+    selectTag.options[17].textContent = 'птицы';
+    selectTag.options[18].textContent = 'фильмы';
   } else {
       btnRu.classList.remove('highlighted');
       btnEn.classList.add('highlighted');
@@ -25,6 +45,11 @@ const translateSettings = lang => {
       elemsTodo.textContent = 'To-do list';
       elemsQuote.textContent = 'Quotes';
       bgSrcTitle.textContent = 'Source of background images';
+      selTagTxt.textContent = 'Select tag (only for API):';
+      selectTag.options[0].textContent = 'times of day';
+      for (let i = 1; i < selectTag.options.length; i++) {
+        selectTag.options[i].textContent = selectTag.options[i].value;
+      }
     }
 }
 translateSettings(lang);
@@ -126,3 +151,38 @@ hideQuote.onchange = _ => {
   quoteWrp.classList.toggle('hidden');
   localStorage.setItem('quotesClassName', quoteWrp.className);
 }
+// Bg src
+
+switch (localStorage.bgSrc) {
+  case 'Unsplash':
+    srcUnsplash.checked = true;
+    break;
+  case 'Flickr':
+    srcFlickr.checked = true;
+    break;
+  default: break;
+}
+srcGitHub.checked ? selectTag.disabled = true : selectTag.disabled = false;
+
+if (localStorage.bgTag) selectTag.value = localStorage.getItem('bgTag');
+
+srcGitHub.addEventListener('change', _ => {
+  selectTag.disabled = true;
+  localStorage.setItem('bgSrc', 'GitHub');
+});
+
+srcUnsplash.addEventListener('change', _ => {
+  selectTag.disabled = false;
+  localStorage.setItem('bgSrc', 'Unsplash');
+});
+
+srcFlickr.addEventListener('change', _ => {
+  selectTag.disabled = false;
+  localStorage.setItem('bgSrc', 'Flickr');
+});
+
+selectTag.addEventListener('change', _ => {
+  localStorage.setItem('bgTag', selectTag.value);
+});
+
+btnSettings.onclick = _ => settings.classList.toggle('hidden');

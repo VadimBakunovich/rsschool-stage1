@@ -11,7 +11,6 @@ html { box-sizing: border-box; }
   padding: 0;
 }
 body {
-  position: relative;
   width: 100vw;
   height: 100vh;
   font-family: Arial, sans-serif;
@@ -50,7 +49,6 @@ header {
   width: 560px;
   transition: .4s ease-in-out;
 }
-
 .player button:active { filter: invert(75%); }
 
 .curr-track-name {
@@ -341,6 +339,8 @@ footer {
 
                                                               /*Settings*/
 
+.settings-wrp { position: relative; }
+
 .btn-settings {
   position: absolute;
   width: 40px;
@@ -362,6 +362,7 @@ footer {
   background-color: #333;
   border-radius: 10px;
   box-shadow: -5px 5px 5px rgba(0, 0, 0, .8);
+  transition: .3s ease-in-out;
 }
 .settings::-webkit-scrollbar {
   width: 6px;
@@ -493,12 +494,14 @@ input:checked + .slider:before {
   background-position: center center;
   background-size: 12px;
 }
+.sel-tag-txt { margin-bottom: 15px; }
+
 .select-tag {
   width: 95%;
   height: 26px;
   margin-bottom: 5px;
   font-size: 16px;
-  background-color: rgba(255, 255, 255, .8);
+  background-color: rgba(255, 255, 255, .9);
   border: none;
   outline: none;
   border-radius: 4px;

@@ -67,97 +67,101 @@
       </div>
     </div>
   </footer>
-  <button class="btn-settings" id="btnSettings"></button>
-  <div class="settings">
-    <div class="language">
-      <span class="language__text" id="langTitle">Язык</span>
-      <div class="language__btns">
-        <button class="btn-en" id="btnEn">EN</button>
-        <span>|</span>
-        <button class="btn-ru highlighted" id="btnRu">RU</button>
+  <div class="settings-wrp">
+    <button class="btn-settings" id="btnSettings"></button>
+    <div class="settings hidden" id="settings">
+      <div class="language">
+        <span class="language__text" id="langTitle">Язык</span>
+        <div class="language__btns">
+          <button class="btn-en" id="btnEn">EN</button>
+          <span>|</span>
+          <button class="btn-ru highlighted" id="btnRu">RU</button>
+        </div>
       </div>
-    </div>
-    <div class="elems">
-      <div class="elems__item">
-        <span class="elems-item__text" id="elemsPlayer">Проигрыватель</span>
-        <label class="switch">
-          <input type="checkbox" id="hidePlayer" checked>
-          <div class="slider"></div>
-        </label>
+      <div class="elems">
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsPlayer">Проигрыватель</span>
+          <label class="switch">
+            <input type="checkbox" id="hidePlayer" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsWeather">Погода</span>
+          <label class="switch">
+            <input type="checkbox" id="hideWeather" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsTime">Время</span>
+          <label class="switch">
+            <input type="checkbox" id="hideTime" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsDate">Дата</span>
+          <label class="switch">
+            <input type="checkbox" id="hideDate" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsGreet">Приветствие</span>
+          <label class="switch">
+            <input type="checkbox" id="hideGreet" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsTodo">Список дел</span>
+          <label class="switch">
+            <input type="checkbox" id="hideToDo" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
+        <div class="elems__item">
+          <span class="elems-item__text" id="elemsQuote">Цитаты</span>
+          <label class="switch">
+            <input type="checkbox" id="hideQuote" checked>
+            <div class="slider"></div>
+          </label>
+        </div>
       </div>
-      <div class="elems__item">
-        <span class="elems-item__text" id="elemsWeather">Погода</span>
-        <label class="switch">
-          <input type="checkbox" id="hideWeather" checked>
-          <div class="slider"></div>
-        </label>
+      <div class="bg-src">
+        <p class="bg-src__title" id="bgSrcTitle">Источник фоновых изображений</p>
+        <div class="bg-src__inputs">
+          <input class="bg-src__radio" type="radio" name="bgSrc" id="srcGitHub" checked>
+          <label class="bg-src__label" for="srcGitHub">GitHub</label>
+          <input class="bg-src__radio" type="radio" name="bgSrc" id="srcUnsplash">
+          <label class="bg-src__label" for="srcUnsplash">Unsplash API</label>
+          <input class="bg-src__radio" type="radio" name="bgSrc" id="srcFlickr">
+          <label class="bg-src__label" for="srcFlickr">Flickr API</label>
+        </div>
+        <p class="sel-tag-txt" id="selTagTxt">Выберите тэг (только для API):</p>
+        <select class="select-tag" name="tags" id="selectTag">
+          <option value="default" selected>время суток</option>
+          <option value="nature">природа</option>
+          <option value="forest">лес</option>
+          <option value="sea">море</option>
+          <option value="beach">пляж</option>
+          <option value="sky">небо</option>
+          <option value="fields">поля</option>
+          <option value="meadows">луга</option>
+          <option value="flowers">цветы</option>
+          <option value="mountains">горы</option>
+          <option value="cars">автомобили</option>
+          <option value="sport">спорт</option>
+          <option value="city">город</option>
+          <option value="food">еда</option>
+          <option value="horses">лошади</option>
+          <option value="dogs">собаки</option>
+          <option value="cats">кошки</option>
+          <option value="birds">птицы</option>
+          <option value="movies">фильмы</option>
+        </select>
       </div>
-      <div class="elems__item">
-        <span class="elems-item__text" id="elemsTime">Время</span>
-        <label class="switch">
-          <input type="checkbox" id="hideTime" checked>
-          <div class="slider"></div>
-        </label>
-      </div>
-      <div class="elems__item">
-        <span class="elems-item__text" id="elemsDate">Дата</span>
-        <label class="switch">
-          <input type="checkbox" id="hideDate" checked>
-          <div class="slider"></div>
-        </label>
-      </div>
-      <div class="elems__item">
-        <span class="elems-item__text" id="elemsGreet">Приветствие</span>
-        <label class="switch">
-          <input type="checkbox" id="hideGreet" checked>
-          <div class="slider"></div>
-        </label>
-      </div>
-      <div class="elems__item">
-        <span class="elems-item__text" id="elemsTodo">Список дел</span>
-        <label class="switch">
-          <input type="checkbox" id="hideToDo" checked>
-          <div class="slider"></div>
-        </label>
-      </div>
-      <div class="elems__item">
-        <span class="elems-item__text" id="elemsQuote">Цитаты</span>
-        <label class="switch">
-          <input type="checkbox" id="hideQuote" checked>
-          <div class="slider"></div>
-        </label>
-      </div>
-    </div>
-    <div class="bg-src">
-      <p class="bg-src__title" id="bgSrcTitle">Источник фоновых изображений</p>
-      <div class="bg-src__inputs">
-        <input class="bg-src__radio" type="radio" name="bgSrc" id="srcGitHub" checked>
-        <label class="bg-src__label" for="srcGitHub">GitHub</label>
-        <input class="bg-src__radio" type="radio" name="bgSrc" id="srcUnsplash">
-        <label class="bg-src__label" for="srcUnsplash">Unsplash API</label>
-        <input class="bg-src__radio" type="radio" name="bgSrc" id="srcFlickr">
-        <label class="bg-src__label" for="srcFlickr">Flickr API</label>
-      </div>
-      <select class="select-tag" name="tags" id="selectTag">
-        <option value="0" disabled selected>Выберите тэг</option>
-        <option value="nature">Природа</option>
-        <option value="forest">Лес</option>
-        <option value="sea">Море</option>
-        <option value="beach">Пляж</option>
-        <option value="sky">Небо</option>
-        <option value="fields">Поля</option>
-        <option value="meadows">Луга</option>
-        <option value="flowers">Цветы</option>
-        <option value="mountains">Горы</option>
-        <option value="cars">Автомобили</option>
-        <option value="sport">Спорт</option>
-        <option value="city">Город</option>
-        <option value="food">Еда</option>
-        <option value="horses">Лошади</option>
-        <option value="dogs">Собаки</option>
-        <option value="dogs">Кошки</option>
-        <option value="birds">Птицы</option>
-      </select>
     </div>
   </div>
   <script src="scripts/settings.js"></script>
