@@ -159,8 +159,8 @@ switch (localStorage.bgSrc) {
   case 'Unsplash':
     srcUnsplash.checked = true;
     break;
-  case 'Flickr':
-    srcFlickr.checked = true;
+  case 'Pixels':
+    srcPixels.checked = true;
     break;
   default: break;
 }
@@ -178,9 +178,9 @@ srcUnsplash.addEventListener('change', _ => {
   localStorage.setItem('bgSrc', 'Unsplash');
 });
 
-srcFlickr.addEventListener('change', _ => {
+srcPixels.addEventListener('change', _ => {
   selectTag.disabled = false;
-  localStorage.setItem('bgSrc', 'Flickr');
+  localStorage.setItem('bgSrc', 'Pixels');
 });
 
 selectTag.addEventListener('change', _ => {

@@ -2,7 +2,7 @@ const getQuotesJson = lang => {
 	fetch('assets/quotes.json')
 		.then(response => response.json())
 		.then(data => {
-			const randomNum = Math.floor(Math.random() * data.quotes.length) + 1;
+			const randomNum = Math.floor(Math.random() * data.quotes.length);
 			if (lang === 'ru') {
 				quote.textContent = data.quotes[randomNum].quoteRu;
 				author.textContent = data.quotes[randomNum].authorRu;
