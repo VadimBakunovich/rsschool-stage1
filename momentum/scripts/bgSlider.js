@@ -37,7 +37,7 @@ const fetchUnsplash = tag => {
 }
 
 const fetchPixels = tag => {
-  fetch(`https://api.pexels.com/v1/search?query=landscapes+${tag}&orientation=landscape&page=1&per_page=80`, {
+  fetch(`https://api.pexels.com/v1/search?query=${tag}&orientation=landscape&page=1&per_page=80`, {
     headers: {
       Authorization: "563492ad6f91700001000001e37ddac374ed4c8fa4e0926c408de06c"
     }
