@@ -272,7 +272,8 @@ footer {
   width: 30px;
   height: 30px;
   font-size: 24px;
-  border: 1px solid #fff;
+  line-height: 24px;
+  border: 2px solid #fff;
   border-radius: 5px;
 }
 .todo-list {
