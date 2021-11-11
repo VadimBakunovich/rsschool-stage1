@@ -1,0 +1,114 @@
+html { box-sizing: border-box; }
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 360px;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  color: antiquewhite;
+  background-color: #333;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+button {
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+/*-----------------------------------------------------------Title*/
+
+.title { position: relative; }
+
+.title__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../assets/img/title.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  position: relative;
+  font-size: 8vh;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 15vh;
+}
+
+h1::before,
+h1::after {
+  position: absolute;
+  content: '';
+  width: 1.6em;
+  height: 1.6em;
+  top: -.2em;
+  left: -.35em;
+  border: 2px solid antiquewhite;
+  border-radius: 50%;
+}
+
+h1::after { left: .45em; }
+
+.title__type {
+  width: min(50vh, 90vw);
+  height: 9vh;
+  font-size: 3.5vh;
+  line-height: 9vh;
+  text-align: center;
+  font-weight: 500;
+  border: 2px solid antiquewhite;
+  border-radius: 56px;
+  margin-bottom: 4vh;
+  box-shadow: 8px 10px 12px #000;
+  transition: .3s;
+}
+
+.title__type:hover {
+  color: #FDAC53;
+  border: 2px solid #FDAC53;
+}
+
+.title__type:active {
+  transform: scale(.99);
+  box-shadow: 4px 5px 6px #000;
+}
+
+.title__settings {
+  position: absolute;
+  width: max(4vh, 32px);
+  height: max(4vh, 32px);
+  right: 3vh;
+  bottom: 3vh;
+  background-image: url(../assets/svg/settings.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: .3s;
+}
+
+.title__settings:hover { filter: invert(50%); }
+
+.title__settings:active { transform: rotate(180deg); }
