@@ -8,13 +8,43 @@
   <link rel="icon" href="assets/favicon.png">
 </head>
 <body>
-  <div class="title">
+
+  <div class="title hidden">
     <div class="title__wrapper">
-      <h1 class="title__head">art quiz</h1>
-      <button class="title__type">Викторина "Художники"</button>
-      <button class="title__type">Викторина "Картины"</button>
+      <h1>art quiz</h1>
+      <button class="text-btn">Викторина "Художники"</button>
+      <button class="text-btn">Викторина "Картины"</button>
     </div>
     <button class="title__settings"></button>
   </div>
+
+  <div class="settings">
+    <p class="settings__title">настройки</p>
+    <div class="settings__item">
+      <span class="settings-item__text">Звуки</span>
+      <label class="switch">
+        <input type="checkbox" id="toggleSounds">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="settings__progr">
+      <span class="volume"></span>
+      <input class="progress" id="volume" type="range" value="50" step="1">
+      <span class="volume vol-up"></span>
+    </div>
+    <div class="settings__item">
+      <span class="settings-item__text">Игра на время</span>
+      <label class="switch">
+        <input type="checkbox" id="toggleSounds">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="settings__progr">
+      <input class="progress time-progr" id="volume" type="range" min="5" max="30" value="20" step="5">
+      <span class="time-dig">15 сек.</span>
+    </div>
+    <button class="settings__back text-btn">назад</button>
+  </div>
+
 </body>
 </html>
