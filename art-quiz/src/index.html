@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
   <title>Art Quiz</title>
   <link rel="icon" href="assets/favicon.png">
 </head>
@@ -11,14 +11,14 @@
 
   <div class="title hidden">
     <div class="title__wrapper">
-      <h1>art quiz</h1>
+      <h1><span class="h1-begin">Art</span>Quiz</h1>
       <button class="text-btn">Викторина "Художники"</button>
       <button class="text-btn">Викторина "Картины"</button>
     </div>
     <button class="title__settings"></button>
   </div>
 
-  <div class="settings">
+  <div class="settings hidden">
     <p class="settings__title">настройки</p>
     <div class="settings__item">
       <span class="settings-item__text">Звуки</span>
@@ -46,5 +46,29 @@
     <button class="settings__back text-btn">назад</button>
   </div>
 
+  <div class="categ">
+    <div class="categ__head">
+      <p class="categ-head__text">Художники</p>
+      <button class="categ-head__home"></button>
+    </div>
+    <ul class="categ__list">
+      <li dataNum="1" dataScore="9/10" class="categ__item active">
+        <button class="categ-item__btn">Результаты</button>
+      </li>
+      <li class="categ__item">
+        <button class="categ-item__btn">Результаты</button>
+      </li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+      <li class="categ__item"></li>
+    </ul>
+  </div>
 </body>
 </html>
