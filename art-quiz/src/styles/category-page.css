@@ -1,16 +1,16 @@
 .categ {
   margin: 0 auto;
-  padding: 3vh;
-  width: min(100vw, 1260px);
+  padding: 2.5vh;
+  width: min(100vw, 1680px);
   height: 100vh;
 }
 
 .categ__head {
   position: fixed;
-  width: min(100vw, 1260px);
+  width: min(100vw, 1680px);
   padding: 3vh;
   top: 0;
-  left: max(0px, calc((100vw - 1260px) / 2));
+  left: max(0px, calc((100vw - 1680px) / 2));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,7 +39,7 @@
 .categ-btn:active { transform: scale(.95); }
 
 .categ__list {
-  padding: 14vh 0 4vh 0;
+  padding: 13vh 0 4vh 0;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -50,22 +50,26 @@
 
 .categ__item {
   position: relative;
-  width: 20vh;
-  height: 24vh;
+  width: 23%;
+  height: 23vh;
   background-image: url(../assets/img/9.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  border: 1px solid #222;
   border-top-left-radius: 3vh;
-  overflow-y: hidden;
+  box-shadow: 8px 10px 12px #000;
   filter: grayscale(100%);
   cursor: pointer;
+  overflow-y: hidden;
   transition: .3s;
 }
 
 .categ__item:hover { filter: grayscale(0); }
 
-.active { filter: grayscale(0); }
+.categ__item:active { border: 1px solid #FDAC53; }
+
+.categ__item.active { filter: grayscale(0); }
 
 .categ__item::before,
 .categ__item::after {
@@ -119,11 +123,13 @@
   background-position: center;
 }
 
-.active:hover .categ-item__btn {
-  bottom: 0;
-}
+.active:hover .categ-item__btn { bottom: 0; }
 
 @media (pointer: coarse) {
+  .categ__item {
+    position: relative;
+    width: 19vh;
+    height: 24vh;
+  }
   .active .categ-item__btn { bottom: 0; }
-  .categ__item:hover { filter: grayscale(100%); }
 }

@@ -5,3 +5,4 @@ import '../styles/settings-page.css';
 import '../styles/category-page.css';
 import '../styles/q-art-page.css';
 import '../styles/q-paint-page.css';
+import '../styles/results-page.css';
