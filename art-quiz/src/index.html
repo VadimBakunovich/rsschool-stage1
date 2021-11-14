@@ -162,7 +162,7 @@
     </ul>
   </div>
 <!--Answer popup-->
-  <div class="answ-popup">
+  <div class="answ-popup hidden">
     <div class="answ-popup__content">
       <p class="answ-popup__title">Верно!</p>
       <img class="answ-popup__img" src="./assets/img/108.webp" alt="painting">
@@ -171,8 +171,16 @@
         <p class="answ-popup__author">Сальвадор Дали</p>
         <p class="answ-popup__year">1944</p>
       </div>
-      <button class="answ-popup__next text-answ__btn">Продолжить</button>
+      <button class="popup__next text-answ__btn">Продолжить</button>
     </div>
   </div>
+<!--Lap popup-->
+<div class="lap-popup">
+  <div class="lap-popup__content">
+    <p class="lap-popup__title">Раунд завершен</p>
+    <div datares="7/10" class="medal"></div>
+    <button class="popup__next text-answ__btn">Продолжить</button>
+  </div>
+</div>
 </body>
 </html>

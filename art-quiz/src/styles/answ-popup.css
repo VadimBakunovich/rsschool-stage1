@@ -76,7 +76,7 @@
   width: min(90vw, 400px);
 }
 
-.answ-popup__next {
+.popup__next {
   padding: 1.3vh 2.5vh;
   font-size: max(2vh, 24px);
 }
@@ -86,5 +86,5 @@
   .answ-popup__author,
   .answ-popup__year { font-size: 16px; }
 
-  .answ-popup__next { font-size: 20px; }
+  .popup__next { font-size: 20px; }
 }
