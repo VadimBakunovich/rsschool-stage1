@@ -69,7 +69,7 @@
 
 .--wrong { background-color: #A2242F; }
 
-.q-art__controls {
+.q__controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
