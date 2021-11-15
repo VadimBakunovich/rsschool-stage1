@@ -1,10 +1,8 @@
 .title {
-  position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   background-image: url(../assets/img/title.webp);
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,6 +10,7 @@
 }
 
 .title__wrapper {
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,18 +68,44 @@ h1::after { left: .65em; }
   box-shadow: 4px 5px 6px #000;
 }
 
-.title__settings {
-  position: absolute;
+.footer {
+  width: 90%;
+  margin: auto auto 16px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__settings,
+.footer__link-course,
+.footer__link-github {
   width: max(4vh, 32px);
   height: max(4vh, 32px);
-  right: 4vh;
-  bottom: 4vh;
   background-image: url(../assets/svg/settings.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  transition: .3s;
 }
 
-.title__settings:hover { filter: invert(50%); }
+.footer__link-course {
+  width: max(8vh, 32px);
+  height: max(4vh, 32px);
+  background-image: url(../assets/svg/rsschool.svg);
+}
 
-.title__settings:active { transform: rotate(180deg); }
+.footer__link-github {
+  width: max(4vh, 32px);
+  height: max(5vh, 40px);
+  background-image: url(../assets/svg/github.svg);
+}
+
+.footer__link-course:hover,
+.footer__link-github:hover { filter: brightness(1.5); }
+
+.footer__link-course:active,
+.footer__link-github:active { filter: drop-shadow(.2vh .2vh .4vh #FDAC53); }
+
+.footer__settings:hover { filter: invert(50%); }
+
+.footer__settings:active { transform: rotate(180deg); }
