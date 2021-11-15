@@ -8,3 +8,4 @@ import '../styles/q-paint-page.css';
 import '../styles/results-page.css';
 import '../styles/answ-popup.css';
 import '../styles/lap-popup.css';
+import './presenter';
