@@ -3,52 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Art Quiz</title>
   <link rel="icon" href="assets/favicon.png">
 </head>
 <body>
-<!--Title page-->
-  <div class="title">
-    <div class="title__wrapper">
-      <h1><span class="h1-begin">Art</span>Quiz</h1>
-      <button class="text-btn">Викторина "Художники"</button>
-      <button class="text-btn">Викторина "Картины"</button>
-    </div>
-    <footer class="footer">
-      <a class="footer__link-course" href="https://rs.school/js/" target="_blank" title="front-end JS course"></a>
-      <a class="footer__link-github" href="https://github.com/VadimBakunovich" target="_blank" title="follow me on github"></a>
-      <button class="footer__settings"></button>
-    </footer>
-  </div>
-<!--Settings page-->
-  <div class="settings hidden">
-    <p class="settings__title">настройки</p>
-    <div class="settings__item">
-      <span class="settings-item__text">Звуки</span>
-      <label class="switch">
-        <input type="checkbox" id="toggleSounds">
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div class="settings__progr">
-      <span class="volume"></span>
-      <input class="progress" id="volume" type="range" value="50" step="1">
-      <span class="volume vol-up"></span>
-    </div>
-    <div class="settings__item">
-      <span class="settings-item__text">Игра на время</span>
-      <label class="switch">
-        <input type="checkbox" id="toggleSounds">
-        <span class="slider"></span>
-      </label>
-    </div>
-    <div class="settings__progr">
-      <input class="progress time-progr" id="time" type="range" min="5" max="30" value="20" step="5">
-      <span class="time-dig">15 сек.</span>
-    </div>
-    <button class="settings__back text-btn">назад</button>
-  </div>
+  <div class="root"></div>
 <!--Category page-->
   <div class="categ hidden">
     <div class="categ__head">

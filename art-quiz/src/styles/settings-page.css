@@ -146,5 +146,5 @@ input:checked + .slider:before {
 }
 
 .settings__back:active {
-  width: min(39.8vh, 89vw);
+  width: min(29.8vh, 89vw);
 }

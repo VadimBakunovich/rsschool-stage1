@@ -17,6 +17,7 @@
     "arrow-parens": ["error", "as-needed"],
     "semi": ["warn", "always"],
     "no-return-assign":"off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "no-param-reassign": ["error", { "props": false }]
   }
 }
