@@ -11,16 +11,25 @@ export default class Model {
   constructor(
     settings = {
       toggleSound: '',
-      volume: 0,
+      volume: 70,
       toggleTimer: '',
-      time: 0,
+      time: 20,
     },
     artQuest = [[], [], [], [], [], [], [], [], [], [], [], []],
     paintQuest = [[], [], [], [], [], [], [], [], [], [], [], []],
   ) {
-    this.settings = settings;
-    this.artQuest = artQuest;
-    this.paintQuest = paintQuest;
+    this.settings = localStorage.BVA_settings
+      ? JSON.parse(localStorage.getItem('BVA_settings'))
+      : settings;
+
+    this.artQuest = localStorage.BVA_artQuest
+      ? JSON.parse(localStorage.getItem('BVA_artQuest'))
+      : artQuest;
+
+    this.paintQuest = localStorage.BVA_paintQuest
+      ? JSON.parse(localStorage.getItem('BVA_paintQuest'))
+      : paintQuest;
+
     this.db = localStorage.BVA_db ? JSON.parse(localStorage.getItem('BVA_db')) : Model.getDb();
   }
 }

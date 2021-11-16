@@ -86,6 +86,7 @@ input:checked + .slider:before {
   background: linear-gradient(to right, #FDAC53 0%, #FDAC53 50%, #c4c4c4 50%, #c4c4c4 100%);
   border-radius: 1vh;
   cursor: pointer;
+  transition: .3s;
 }
 
 .progress::-webkit-slider-thumb {
@@ -95,14 +96,11 @@ input:checked + .slider:before {
   appearance: none;
   cursor: ew-resize;
   background: #fff;
+  transition: .3s;
 }
 
 .progress:disabled.progress::-webkit-slider-thumb {
   opacity: 0;
-}
-
-.progress:disabled {
-  background: linear-gradient(to right, #FDAC53 0%, #FDAC53 0%, #c4c4c4 0%, #c4c4c4 100%);
 }
 
 .volume {
@@ -122,7 +120,14 @@ input:checked + .slider:before {
   background: linear-gradient(to right, #FDAC53 0%, #FDAC53 60%, #c4c4c4 60%, #c4c4c4 100%);
 }
 
-.time-dig { font-size: min(3.5vh, 34px); }
+.progress:disabled {
+  background: linear-gradient(to right, #FDAC53 0%, #FDAC53 0%, #c4c4c4 0%, #c4c4c4 100%) !important;
+}
+
+.time-dig {
+  font-size: min(3.5vh, 34px);
+  transition: .3s;
+}
 
 .progress:disabled ~ .time-dig {
   opacity: 0;
