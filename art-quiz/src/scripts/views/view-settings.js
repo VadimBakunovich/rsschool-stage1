@@ -26,7 +26,7 @@ export default class ViewSettings {
           <input class="progress time-progr" type="range" min="5" max="30" value=${obj.time} step="5" disabled>
           <span class="time-dig">${obj.time} сек.</span>
         </div>
-        <button class="settings__back text-btn">назад</button>
+        <button class="settings__back text-btn" id="backBtn">назад</button>
       </div>
     `;
     this.toggleSound = obj.toggleSound;

@@ -52,22 +52,24 @@
   position: relative;
   width: 23%;
   height: 23vh;
-  background-image: url(../assets/img/9.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   border: 1px solid #222;
   border-top-left-radius: 3vh;
   box-shadow: 8px 10px 12px #000;
-  filter: grayscale(100%);
+  filter: grayscale(90%);
   cursor: pointer;
   overflow-y: hidden;
   transition: .3s;
 }
 
-.categ__item:hover { filter: grayscale(0); }
+.categ__item:hover {
+  filter: grayscale(0);
+  border: 1px solid #FDAC53;
+}
 
-.categ__item:active { border: 1px solid #FDAC53; }
+.categ__item:active { transform: translateY(.5vh); }
 
 .categ__item.active { filter: grayscale(0); }
 

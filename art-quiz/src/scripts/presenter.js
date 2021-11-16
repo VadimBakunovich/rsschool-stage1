@@ -1,6 +1,7 @@
 import Model from './model';
 import ViewTitle from './views/view-title';
 import ViewSettings from './views/view-settings';
+import ViewCategory from './views/view-category';
 
 const root = document.querySelector('.root');
 const appState = new Model();
@@ -19,16 +20,32 @@ class Sound {
   pause() { this.audio.pause(); }
 }
 
-const clickSound = new Sound('../assets/click.ogg');
+const clickSound = new Sound('../assets/sounds/click.ogg');
 
 const observer = new MutationObserver(() => {
+  const artCatPage = new ViewCategory('Художники', appState.artQuest);
+  const paintCatPage = new ViewCategory('Картины', appState.paintQuest);
   const settingsPage = new ViewSettings(appState.settings);
-  const settingsBtn = document.querySelector('.footer__settings');
   const backBtn = document.querySelector('.settings__back');
 
-  if (settingsBtn) {
-    settingsBtn.onclick = () => { settingsPage.render(root); };
-  }
+  document.addEventListener('click', e => {
+    switch (e.target.id) {
+      case 'artCatBtn':
+        artCatPage.render(root);
+        break;
+      case 'paintCatBtn':
+        paintCatPage.render(root);
+        break;
+      case 'settingsBtn':
+        settingsPage.render(root);
+        break;
+      case 'backBtn':
+      case 'homeBtn':
+        startPage.render(root);
+        break;
+      default: break;
+    }
+  });
 
   if (backBtn) {
     const soundToggler = document.querySelector('.toggle-sound');
@@ -57,8 +74,6 @@ const observer = new MutationObserver(() => {
       appState.settings.time = timeProgr.value;
       settingsPage.renderOpt(appState.settings);
     };
-
-    backBtn.onclick = () => startPage.render(root);
   }
 });
 
@@ -66,7 +81,7 @@ observer.observe(root, { childList: true });
 
 startPage.render(root);
 
-document.onclick = e => {
+document.addEventListener('click', e => {
   if (appState.settings.toggleSound) {
     switch (e.target.tagName) {
       case 'BUTTON':
@@ -77,7 +92,7 @@ document.onclick = e => {
       default: break;
     }
   }
-};
+});
 
 window.onunload = () => {
   localStorage.setItem('BVA_settings', JSON.stringify(appState.settings));
