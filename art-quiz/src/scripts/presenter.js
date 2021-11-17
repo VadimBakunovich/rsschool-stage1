@@ -6,48 +6,40 @@ import ViewCategory from './views/view-category';
 const root = document.querySelector('.root');
 const appState = new Model();
 const startPage = new ViewTitle();
+let artCatPage = {};
+let paintCatPage = {};
+let settingsPage = {};
 
-class Sound {
-  constructor(url) {
-    this.audio = new Audio(url);
+let currPage = 'titlePage';
+
+document.addEventListener('click', e => {
+  switch (e.target.id) {
+    case 'artCatBtn':
+      artCatPage = new ViewCategory('Художники', appState.artQuest);
+      artCatPage.render(root);
+      currPage = 'artCatPage';
+      break;
+    case 'paintCatBtn':
+      paintCatPage = new ViewCategory('Картины', appState.paintQuest);
+      paintCatPage.render(root);
+      currPage = 'paintCatPage';
+      break;
+    case 'settingsBtn':
+      settingsPage = new ViewSettings(appState.settings);
+      settingsPage.render(root);
+      currPage = 'settingsPage';
+      break;
+    case 'backBtn':
+    case 'homeBtn':
+      startPage.render(root);
+      break;
+    default: break;
   }
-
-  play() {
-    this.audio.volume = appState.settings.volume / 100;
-    this.audio.play();
-  }
-
-  pause() { this.audio.pause(); }
-}
-
-const clickSound = new Sound('../assets/sounds/click.ogg');
+});
 
 const observer = new MutationObserver(() => {
-  const artCatPage = new ViewCategory('Художники', appState.artQuest);
-  const paintCatPage = new ViewCategory('Картины', appState.paintQuest);
-  const settingsPage = new ViewSettings(appState.settings);
-  const backBtn = document.querySelector('.settings__back');
 
-  document.addEventListener('click', e => {
-    switch (e.target.id) {
-      case 'artCatBtn':
-        artCatPage.render(root);
-        break;
-      case 'paintCatBtn':
-        paintCatPage.render(root);
-        break;
-      case 'settingsBtn':
-        settingsPage.render(root);
-        break;
-      case 'backBtn':
-      case 'homeBtn':
-        startPage.render(root);
-        break;
-      default: break;
-    }
-  });
-
-  if (backBtn) {
+  if (currPage === 'settingsPage') {
     const soundToggler = document.querySelector('.toggle-sound');
     const volProgr = document.querySelector('.vol-progr');
     const timerToggler = document.querySelector('.toggle-timer');
@@ -80,6 +72,19 @@ const observer = new MutationObserver(() => {
 observer.observe(root, { childList: true });
 
 startPage.render(root);
+
+class Sound {
+  constructor(url) {
+    this.audio = new Audio(url);
+  }
+
+  play() {
+    this.audio.volume = appState.settings.volume / 100;
+    this.audio.play();
+  }
+}
+
+const clickSound = new Sound('../assets/sounds/click.ogg');
 
 document.addEventListener('click', e => {
   if (appState.settings.toggleSound) {
