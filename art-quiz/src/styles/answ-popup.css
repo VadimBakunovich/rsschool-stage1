@@ -46,7 +46,7 @@
   border-bottom: 1px solid #FDAC53;
 }
 
-.answ-popup__title.--wrong { color: #A2242F; }
+.answ-popup__title.wrongAnsw { color: #A2242F; }
 
 .answ-popup__wrapper {
   display: flex;

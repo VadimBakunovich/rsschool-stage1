@@ -4,29 +4,32 @@
   justify-content: space-between;
   margin: 0 auto;
   padding: 2vh 3vh 3vh 3vh;
-  width: min(100vw, 70vh);
+  width: min(100vw, 100vh);
   height: 100vh;
 }
 
 .q-art__text {
-  padding-bottom: 2.5vh;
+  padding-bottom: 2vh;
   font-size: 3.4vh;
   text-align: center;
   color: #FDAC53;
   border-bottom: 1px solid #FDAC53;
-  margin-bottom: 4vh;
+  margin-bottom: 3vh;
 }
 
 .q-art__img {
-  display: block;
   margin: 0 auto;
-  width: 95%;
-  margin-bottom: 4vh;
+  height: min(75vw, 55vh);
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 3vh;
 }
 
 .text-answ {
   margin: 0 auto;
-  width: 95%;
+  width: 75%;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;

@@ -76,7 +76,7 @@
 .categ__item::before,
 .categ__item::after {
   position: absolute;
-  content: attr(dataNum);
+  content: attr(data-cat-num);
   top: .7vh;
   left: .7vh;
   width: 3.5vh;
@@ -90,7 +90,7 @@
 }
 
 .active::after {
-  content: attr(dataScore);
+  content: attr(data-score);
   left: unset;
   right: .7vh;
   width: min(35%, 75px);

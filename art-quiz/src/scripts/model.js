@@ -15,21 +15,31 @@ export default class Model {
       toggleTimer: '',
       time: 20,
     },
-    artQuest = [[], [], [], [], [], [], [], [], [], [], [], []],
-    paintQuest = [[], [], [], [], [], [], [], [], [], [], [], []],
+    artQuizRes = [[], [], [], [], [], [], [], [], [], [], [], []],
+    paintQuizRes = [[], [], [], [], [], [], [], [], [], [], [], []],
+    quizType = '',
+    currData = {
+      questNum: 1,
+      author: '',
+      name: '',
+      year: '',
+      imgNum: 0,
+    },
   ) {
     this.settings = localStorage.BVA_settings
       ? JSON.parse(localStorage.getItem('BVA_settings'))
       : settings;
 
-    this.artQuest = localStorage.BVA_artQuest
-      ? JSON.parse(localStorage.getItem('BVA_artQuest'))
-      : artQuest;
+    this.artQuizRes = localStorage.BVA_artQuizRes
+      ? JSON.parse(localStorage.getItem('BVA_artQuizRes'))
+      : artQuizRes;
 
-    this.paintQuest = localStorage.BVA_paintQuest
-      ? JSON.parse(localStorage.getItem('BVA_paintQuest'))
-      : paintQuest;
+    this.paintQuizRes = localStorage.BVA_paintQuizRes
+      ? JSON.parse(localStorage.getItem('BVA_paintQuizRes'))
+      : paintQuizRes;
 
+    this.quizType = quizType;
+    this.currData = currData;
     this.db = localStorage.BVA_db ? JSON.parse(localStorage.getItem('BVA_db')) : Model.getDb();
   }
 }

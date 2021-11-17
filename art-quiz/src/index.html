@@ -9,36 +9,6 @@
 </head>
 <body>
   <div class="root"></div>
-<!--Q-art-page-->
-  <div class="q-art hidden">
-    <div class="q-art__wrapper">
-      <p class="q-art__text">Кто автор этой картины?</p>
-      <img class="q-art__img" src="./assets/img/33full.webp" alt="painting">
-      <div class="text-answ">
-        <button class="text-answ__btn">Владимир Боровиковский</button>
-        <button class="text-answ__btn">Константин Маковский</button>
-        <button class="text-answ__btn">Питер Брейгель</button>
-        <button class="text-answ__btn">Тициан</button>
-      </div>
-    </div>
-    <ul class="status">
-      <li class="status-item --current"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-      <li class="status-item"></li>
-    </ul>
-    <div class="q__controls">
-      <button class="home-btn"></button>
-      <input class="progress progr-timer" id="timer" type="range" min="0" max="30" value="30" step="1">
-      <button class="categ-btn"></button>
-    </div>
-  </div>
 <!--Q-paint-page-->
   <div class="q-paint hidden">
     <div class="q-paint__wrapper">
@@ -101,18 +71,7 @@
     </ul>
   </div>
 <!--Answer popup-->
-  <div class="answ-popup hidden">
-    <div class="answ-popup__content">
-      <p class="answ-popup__title">Верно!</p>
-      <img class="answ-popup__img" src="./assets/img/108.webp" alt="painting">
-      <div class="answ-popup__wrapper">
-        <p class="answ-popup__name">Сон, вызванный полётом пчелы вокруг граната, за секунду до пробуждения</p>
-        <p class="answ-popup__author">Сальвадор Дали</p>
-        <p class="answ-popup__year">1944</p>
-      </div>
-      <button class="popup__next text-answ__btn">Продолжить</button>
-    </div>
-  </div>
+  <div class="answ-popup"></div>
 <!--Lap popup-->
 <div class="lap-popup">
   <div class="lap-popup__content">
