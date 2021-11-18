@@ -57,7 +57,7 @@
   background-position: center;
   border: 1px solid #222;
   border-top-left-radius: 3vh;
-  box-shadow: 8px 10px 12px #000;
+  box-shadow: .5vh .7vh 1.2vh #000;
   filter: grayscale(90%);
   cursor: pointer;
   overflow-y: hidden;
@@ -69,7 +69,7 @@
   border: 1px solid #FDAC53;
 }
 
-.categ__item:active { transform: translateY(.5vh); }
+.categ__item:active { box-shadow: 0 0 1.5vh #FDAC53; }
 
 .categ__item.active { filter: grayscale(0); }
 

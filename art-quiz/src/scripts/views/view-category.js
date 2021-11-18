@@ -31,7 +31,7 @@ export default class ViewCategory {
           class="categ__item ${activeClass}"
           style="background-image: ${`url(../assets/img/${(shift + (idx + 1) * 10) - 1}.webp)`}"
         >
-          <button class="categ-item__btn">Результаты</button>
+          <button data-btn-num="${idx + 1}" class="categ-item__btn">Результаты</button>
         </li>
       `;
       categories.innerHTML += listItem;

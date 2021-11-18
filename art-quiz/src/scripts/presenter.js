@@ -6,6 +6,7 @@ import ViewCategory from './views/view-category';
 import ViewArtQuest from './views/view-art-quest';
 import ViewAnswPopup from './views/view-answ-popup';
 import ViewLapPopup from './views/view-lap-popup';
+import ViewResults from './views/view-results';
 
 const root = document.querySelector('.root');
 const answPopup = document.querySelector('.answ-popup');
@@ -155,11 +156,20 @@ document.addEventListener('click', e => {
 
   if (e.target.id === 'lapEndBtn') {
     lapPopup.classList.remove('open');
-    // appState.artQuizRes[appState.currData.catNum - 1] = 
     const quiz = new Quiz(appState);
     quiz.updateResults();
     artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
     artCatPage.render(root);
+  }
+  
+  if (e.target.dataset.btnNum) {
+    const lapRes = appState.artQuizRes[e.target.dataset.btnNum - 1];
+    const results = new ViewResults(lapRes);
+    results.render(root);
+  }
+
+  if (e.target.dataset.result) {
+    e.target.firstElementChild.classList.toggle('--show');
   }
 
   if (appState.settings.toggleSound) {
