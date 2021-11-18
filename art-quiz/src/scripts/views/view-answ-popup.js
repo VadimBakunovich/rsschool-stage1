@@ -9,7 +9,7 @@ export default class ViewAnswPopup {
           <p class="answ-popup__author">${data.author}</p>
           <p class="answ-popup__year">${data.year}</p>
         </div>
-        <button class="popup__next text-answ__btn">Продолжить</button>
+        <button class="popup__next text-answ__btn" id="nextBtn">Продолжить</button>
       </div>
     `;
   }

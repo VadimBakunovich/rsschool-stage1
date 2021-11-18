@@ -29,11 +29,11 @@
   align-items: center;
   background-color: #222;
   border-radius: 3vh;
-  transform: translateX(-100vh) scale(1, 0);
-  transition: transform 1s cubic-bezier(0,1.2,1,1);
+  transform: scale(0, 0);
+  transition: 2s cubic-bezier(0,1.2,1,1);
 }
 .lap-popup.open .lap-popup__content {
-  transform: translateX(0) scale(1, 1);
+  transform: scale(1, 1);
 }
 
 .lap-popup__title {

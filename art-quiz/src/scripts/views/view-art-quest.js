@@ -1,5 +1,6 @@
 export default class ViewArtQuest {
   constructor(data) {
+    this.lapRes = data.lapRes;
     this.template = `
       <div class="q-art">
         <div class="q-art__wrapper">
@@ -16,7 +17,7 @@ export default class ViewArtQuest {
           </div>
         </div>
         <ul class="status">
-          <li class="status-item --current"></li>
+          <li class="status-item"></li>
           <li class="status-item"></li>
           <li class="status-item"></li>
           <li class="status-item"></li>
@@ -38,5 +39,11 @@ export default class ViewArtQuest {
 
   render(elem) {
     elem.innerHTML = this.template;
+    this.renderStatus();
+  }
+
+  renderStatus(lapRes = this.lapRes) {
+    const statusItems = document.querySelectorAll('.status-item');
+    lapRes.map((i, idx) => statusItems[idx].className = `status-item --${i}`);
   }
 }

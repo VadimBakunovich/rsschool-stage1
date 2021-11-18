@@ -19,11 +19,13 @@ export default class Model {
     paintQuizRes = [[], [], [], [], [], [], [], [], [], [], [], []],
     quizType = '',
     currData = {
-      questNum: 1,
+      catNum: 1,
+      questNum: 0,
       author: '',
       name: '',
       year: '',
       imgNum: 0,
+      lapRes: [],
     },
   ) {
     this.settings = localStorage.BVA_settings

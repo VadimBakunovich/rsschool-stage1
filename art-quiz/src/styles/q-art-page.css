@@ -86,6 +86,8 @@
 
 .progr-timer::-webkit-slider-thumb { display: none; }
 
+.progr-timer::-moz-range-thumb { visibility: hidden; }
+
 .categ-btn {
   width: 4vh;
   height: 4vh;

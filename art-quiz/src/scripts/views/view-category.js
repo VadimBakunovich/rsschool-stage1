@@ -22,7 +22,7 @@ export default class ViewCategory {
     this.quizRes.forEach((item, idx) => {
       const activeClass = item.length ? 'active' : '';
       const rightAnswNum = item.length
-        ? item.reduce((el, acc) => (el.isRight ? acc + 1 : acc), 0)
+        ? item.reduce((acc, el) => (el.isRight ? acc + 1 : acc), 0)
         : 0;
       const listItem = `
         <li

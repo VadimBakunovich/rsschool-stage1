@@ -5,9 +5,11 @@ import ViewSettings from './views/view-settings';
 import ViewCategory from './views/view-category';
 import ViewArtQuest from './views/view-art-quest';
 import ViewAnswPopup from './views/view-answ-popup';
+import ViewLapPopup from './views/view-lap-popup';
 
 const root = document.querySelector('.root');
 const answPopup = document.querySelector('.answ-popup');
+const lapPopup = document.querySelector('.lap-popup');
 const appState = new Model();
 const startPage = new ViewTitle();
 let artCatPage = {};
@@ -29,22 +31,23 @@ class Quiz {
   }
 
   constructor(state) {
-    this.db = state.db;
-    this.artQuizRes = state.artQuizRes;
-    this.paintQuizRes = state.paintQuizRes;
+    this.db = [...JSON.parse(localStorage.getItem('BVA_db'))];
     this.type = state.quizType;
     this.currData = state.currData;
+    this.questData = {}; // объект данных для ViewArtQuest
   }
 
-  startQuiz(catNum) {
-    const rigthAnswIdx = (catNum - 1) * 10; // индекс правильного ответа
-    const questData = {}; // объект данных для ViewArtQuest
+  createQuest() {
+    const { catNum, questNum, lapRes } = this.currData;
+    const rigthAnswIdx = (catNum - 1) * 10 + questNum; // индекс правильного ответа
     const {
       author, name, year, imageNum, 
     } = this.db[rigthAnswIdx];
     const answers = []; // массив вариантов ответов
-    questData.imgNum = rigthAnswIdx;
-    
+    this.questData.imgNum = rigthAnswIdx; 
+    this.questData.lapRes = [...lapRes];
+    this.questData.lapRes.push('current'); // добавляем в массив результатов текущее состояние
+
     let acceptOpt = this.db.map(i => i.author); // массив авторов картин
     acceptOpt = acceptOpt.filter(i => i !== author); // массив допустимых ответов
     acceptOpt = Array.from(new Set(acceptOpt)); // убираем повторения авторов
@@ -54,34 +57,46 @@ class Quiz {
       answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // ультра
       answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // рандомный
       answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // вариант
-      Quiz.shuffle(answers).map((i, idx) => questData[`answer${idx}`] = i);
-      const artQuest = new ViewArtQuest(questData);
+      Quiz.shuffle(answers).map((i, idx) => this.questData[`answer${idx}`] = i);
+      const artQuest = new ViewArtQuest(this.questData);
       artQuest.render(root);
     }
     appState.currData.author = author;
     appState.currData.name = name;
     appState.currData.year = year;
     appState.currData.imgNum = imageNum;
+    answPopup.classList.remove('open');
   }
 
-  checkQuest(author) {
+  checkQuest(author) { // проверяем ответ на вопрос и отображаем результат ответа
     const data = this.currData;
     if (author === data.author) {
       data.classWrong = '';
       data.result = 'Верно';
+      appState.currData.lapRes.push('right');
       const rightAnswPopup = new ViewAnswPopup(data);
       rightAnswPopup.render(answPopup);
     } else {
       data.classWrong = 'wrongAnsw';
       data.result = 'Не верно';
+      appState.currData.lapRes.push('wrong');
       const rightAnswPopup = new ViewAnswPopup(data);
       rightAnswPopup.render(answPopup);
     }
+    const artQuest = new ViewArtQuest(this.questData);
+    if (appState.currData.lapRes.length === 10) artQuest.renderStatus(appState.currData.lapRes);
     answPopup.classList.add('open');
+  }
+
+  updateResults() { // сохраняем результаты раунда в appState
+    const { catNum, lapRes } = this.currData;
+    const lapRightAnsw = this.db.filter((i, idx) => idx >= (catNum - 1) * 10 && idx / catNum < 10);
+    lapRes.forEach((i, idx) => lapRightAnsw[idx].isRight = i !== 'wrong');
+    appState.artQuizRes[catNum - 1] = lapRightAnsw;
   }
 }
 
-root.addEventListener('click', e => {
+document.addEventListener('click', e => {
   switch (e.target.id) {
     case 'artCatBtn':
       appState.quizType = 'Художники';
@@ -113,13 +128,38 @@ root.addEventListener('click', e => {
   }
 
   if (e.target.dataset.catNum) {
+    appState.currData.catNum = e.target.dataset.catNum;
+    appState.currData.questNum = 0;
+    appState.currData.lapRes = [];
     const quiz = new Quiz(appState);
-    quiz.startQuiz(e.target.dataset.catNum);
+    quiz.createQuest();
   }
 
   if (e.target.dataset.answNum) {
     const quiz = new Quiz(appState);
     quiz.checkQuest(e.target.textContent);
+  }
+
+  if (e.target.id === 'nextBtn') {
+    appState.currData.questNum++;
+    const quiz = new Quiz(appState);
+    if (appState.currData.questNum < 10) quiz.createQuest();
+    else {
+      const rightAnsw = appState.currData.lapRes.filter(i => i !== 'wrong');
+      const lapEnd = new ViewLapPopup(rightAnsw.length);
+      answPopup.classList.remove('open');
+      lapEnd.render(lapPopup);
+      lapPopup.classList.add('open');
+    }
+  }
+
+  if (e.target.id === 'lapEndBtn') {
+    lapPopup.classList.remove('open');
+    // appState.artQuizRes[appState.currData.catNum - 1] = 
+    const quiz = new Quiz(appState);
+    quiz.updateResults();
+    artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
+    artCatPage.render(root);
   }
 
   if (appState.settings.toggleSound) {
@@ -161,6 +201,6 @@ root.addEventListener('change', e => {
 
 window.onunload = () => {
   localStorage.setItem('BVA_settings', JSON.stringify(appState.settings));
-  localStorage.setItem('BVA_artQuest', JSON.stringify(appState.artQuest));
-  localStorage.setItem('BVA_paintQuest', JSON.stringify(appState.paintQuest));
+  localStorage.setItem('BVA_artQuizRes', JSON.stringify(appState.artQuizRes));
+  localStorage.setItem('BVA_paintQuizRes', JSON.stringify(appState.paintQuizRes));
 };
