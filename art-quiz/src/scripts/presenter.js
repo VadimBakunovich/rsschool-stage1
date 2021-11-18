@@ -4,6 +4,7 @@ import ViewTitle from './views/view-title';
 import ViewSettings from './views/view-settings';
 import ViewCategory from './views/view-category';
 import ViewArtQuest from './views/view-art-quest';
+import ViewPaintQuest from './views/view-paint-quest';
 import ViewAnswPopup from './views/view-answ-popup';
 import ViewLapPopup from './views/view-lap-popup';
 import ViewResults from './views/view-results';
@@ -31,6 +32,16 @@ class Quiz {
     return Math.floor(Math.random() * arrLength);
   }
 
+  static showCategories() {
+    if (appState.quizType === 'Художники') {
+      artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
+      artCatPage.render(root);
+    } else {
+      paintCatPage = new ViewCategory(appState.quizType, appState.paintQuizRes);
+      paintCatPage.render(root);
+    }
+  }
+
   constructor(state) {
     this.db = [...JSON.parse(localStorage.getItem('BVA_db'))];
     this.type = state.quizType;
@@ -40,20 +51,21 @@ class Quiz {
 
   createQuest() {
     const { catNum, questNum, lapRes } = this.currData;
-    const rigthAnswIdx = (catNum - 1) * 10 + questNum; // индекс правильного ответа
+    const rigthAnswIdx = this.type === 'Художники'
+      ? (catNum - 1) * 10 + questNum
+      : 120 + (catNum - 1) * 10 + questNum; // индекс правильного ответа
     const {
       author, name, year, imageNum, 
     } = this.db[rigthAnswIdx];
     const answers = []; // массив вариантов ответов
-    this.questData.imgNum = rigthAnswIdx; 
     this.questData.lapRes = [...lapRes];
     this.questData.lapRes.push('current'); // добавляем в массив результатов текущее состояние
 
-    let acceptOpt = this.db.map(i => i.author); // массив авторов картин
-    acceptOpt = acceptOpt.filter(i => i !== author); // массив допустимых ответов
-    acceptOpt = Array.from(new Set(acceptOpt)); // убираем повторения авторов
-
     if (this.type === 'Художники') {
+      this.questData.imgNum = rigthAnswIdx;
+      let acceptOpt = this.db.map(i => i.author); // массив авторов картин
+      acceptOpt = acceptOpt.filter(i => i !== author); // массив допустимых ответов
+      acceptOpt = Array.from(new Set(acceptOpt)); // убираем повторения авторов
       answers.push(author);
       answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // ультра
       answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // рандомный
@@ -61,6 +73,17 @@ class Quiz {
       Quiz.shuffle(answers).map((i, idx) => this.questData[`answer${idx}`] = i);
       const artQuest = new ViewArtQuest(this.questData);
       artQuest.render(root);
+    }
+    if (this.type === 'Картины') {
+      this.questData.author = author;
+      const acceptOpt = this.db.filter(i => i.author !== author);
+      answers.push(this.db[rigthAnswIdx]);
+      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // ультра
+      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // рандомный
+      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // вариант
+      Quiz.shuffle(answers).map((i, idx) => this.questData[`answer${idx}`] = i);
+      const paintQuest = new ViewPaintQuest(this.questData);
+      paintQuest.render(root);
     }
     appState.currData.author = author;
     appState.currData.name = name;
@@ -91,9 +114,13 @@ class Quiz {
 
   updateResults() { // сохраняем результаты раунда в appState
     const { catNum, lapRes } = this.currData;
-    const lapRightAnsw = this.db.filter((i, idx) => idx >= (catNum - 1) * 10 && idx / catNum < 10);
+    const n = +catNum;
+    const lapRightAnsw = this.type === 'Художники'
+      ? this.db.filter((i, idx) => idx >= (n - 1) * 10 && idx / n < 10)
+      : this.db.filter((i, idx) => idx >= 120 + (n - 1) * 10 && idx / (12 + n) < 10);
     lapRes.forEach((i, idx) => lapRightAnsw[idx].isRight = i !== 'wrong');
-    appState.artQuizRes[catNum - 1] = lapRightAnsw;
+    if (this.type === 'Художники') appState.artQuizRes[catNum - 1] = lapRightAnsw;
+    else appState.paintQuizRes[catNum - 1] = lapRightAnsw;
   }
 }
 
@@ -118,13 +145,8 @@ document.addEventListener('click', e => {
       startPage.render(root);
       break;
     case 'categBtn':
-      if (appState.quizType === 'Художники') {
-        artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
-        artCatPage.render(root);
-      } else {
-        paintCatPage = new ViewCategory(appState.quizType, appState.paintQuizRes);
-        paintCatPage.render(root);
-      } break;
+      Quiz.showCategories();
+      break;
     default: break;
   }
 
@@ -136,9 +158,10 @@ document.addEventListener('click', e => {
     quiz.createQuest();
   }
 
-  if (e.target.dataset.answNum) {
+  if (e.target.classList.contains('answ-btn')) {
     const quiz = new Quiz(appState);
-    quiz.checkQuest(e.target.textContent);
+    if (appState.quizType === 'Художники') quiz.checkQuest(e.target.textContent);
+    else quiz.checkQuest(e.target.dataset.author);
   }
 
   if (e.target.id === 'nextBtn') {
@@ -158,17 +181,18 @@ document.addEventListener('click', e => {
     lapPopup.classList.remove('open');
     const quiz = new Quiz(appState);
     quiz.updateResults();
-    artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
-    artCatPage.render(root);
+    Quiz.showCategories();
   }
   
   if (e.target.dataset.btnNum) {
-    const lapRes = appState.artQuizRes[e.target.dataset.btnNum - 1];
+    const lapRes = appState.quizType === 'Художники'
+      ? appState.artQuizRes[e.target.dataset.btnNum - 1]
+      : appState.paintQuizRes[e.target.dataset.btnNum - 1];
     const results = new ViewResults(lapRes);
     results.render(root);
   }
 
-  if (e.target.dataset.result) {
+  if (e.target.classList.contains('results__item')) {
     e.target.firstElementChild.classList.toggle('--show');
   }
 

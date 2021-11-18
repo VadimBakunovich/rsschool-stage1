@@ -15,10 +15,9 @@ export default class ViewCategory {
 
   render(elem) {
     elem.innerHTML = this.template;
-    
+
     const categories = document.querySelector('.categ__list');
     const shift = this.quizType === 'Художники' ? 0 : 120;
-
     this.quizRes.forEach((item, idx) => {
       const activeClass = item.length ? 'active' : '';
       const rightAnswNum = item.length

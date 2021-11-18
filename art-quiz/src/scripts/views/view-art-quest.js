@@ -10,10 +10,10 @@ export default class ViewArtQuest {
             style="background-image: ${`url(../assets/img/${data.imgNum}full.webp)`}"
           ></div>
           <div class="text-answ">
-            <button data-answ-num="1" class="text-answ__btn">${data.answer0}</button>
-            <button data-answ-num="2" class="text-answ__btn">${data.answer1}</button>
-            <button data-answ-num="3" class="text-answ__btn">${data.answer2}</button>
-            <button data-answ-num="4" class="text-answ__btn">${data.answer3}</button>
+            <button data-answ-num="1" class="text-answ__btn answ-btn">${data.answer0}</button>
+            <button data-answ-num="2" class="text-answ__btn answ-btn">${data.answer1}</button>
+            <button data-answ-num="3" class="text-answ__btn answ-btn">${data.answer2}</button>
+            <button data-answ-num="4" class="text-answ__btn answ-btn">${data.answer3}</button>
           </div>
         </div>
         <ul class="status">

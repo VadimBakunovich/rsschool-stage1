@@ -15,14 +15,13 @@ export default class ViewResults {
 
   render(elem) {
     elem.innerHTML = this.template;
-    
+
     const resList = document.querySelector('.results__list');
     
     this.lapRes.forEach(i => {
       const classActive = i.isRight ? 'active' : '';
       const listItem = `
         <li
-          data-result="result"
           class="results__item ${classActive}"
           style="background-image: ${`url(../assets/img/${i.imageNum}.webp)`}"
         >
@@ -35,6 +34,5 @@ export default class ViewResults {
       `;
       resList.innerHTML += listItem;
     });
-    
   }
 }

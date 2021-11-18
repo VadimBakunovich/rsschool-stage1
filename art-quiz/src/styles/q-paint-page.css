@@ -28,9 +28,8 @@
 
 .paint-answ__btn {
   height: 35vh;
-  background-image: url(../assets/img/14full.webp);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   border-radius: 1vh;
   box-shadow: 8px 10px 12px #000;
