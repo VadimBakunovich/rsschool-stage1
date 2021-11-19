@@ -14,9 +14,8 @@ const answPopup = document.querySelector('.answ-popup');
 const lapPopup = document.querySelector('.lap-popup');
 const appState = new Model();
 const startPage = new ViewTitle();
-let artCatPage = {};
-let paintCatPage = {};
 let settingsPage = {};
+const tickSounds = new Sounds('../assets/sounds/tick-tick.mp3');
 
 startPage.render(root);
 
@@ -34,19 +33,30 @@ class Quiz {
 
   static showCategories() {
     if (appState.quizType === 'Художники') {
-      artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
+      const artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
       artCatPage.render(root);
     } else {
-      paintCatPage = new ViewCategory(appState.quizType, appState.paintQuizRes);
+      const paintCatPage = new ViewCategory(appState.quizType, appState.paintQuizRes);
       paintCatPage.render(root);
     }
   }
 
   constructor(state) {
-    this.db = [...JSON.parse(localStorage.getItem('BVA_db'))];
+    this.db = JSON.parse(localStorage.getItem('BVA_db'));
     this.type = state.quizType;
     this.currData = state.currData;
-    this.questData = {}; // объект данных для ViewArtQuest
+    this.timerState = state.settings.toggleTimer;
+    this.time = state.settings.time;
+    this.questData = {}; // объект данных для ArtQuest и PaintQuest Views
+  }
+
+  fillAnswObj(arr, rightAnsw) {
+    const answers = [];
+    answers.push(rightAnsw);
+    answers.push(Quiz.shuffle(arr)[Quiz.getRndIdx(arr.length)]); // ультра
+    answers.push(Quiz.shuffle(arr)[Quiz.getRndIdx(arr.length)]); // рандомный
+    answers.push(Quiz.shuffle(arr)[Quiz.getRndIdx(arr.length)]); // вариант ответа
+    Quiz.shuffle(answers).map((i, idx) => this.questData[`answer${idx}`] = i);
   }
 
   createQuest() {
@@ -57,7 +67,6 @@ class Quiz {
     const {
       author, name, year, imageNum, 
     } = this.db[rigthAnswIdx];
-    const answers = []; // массив вариантов ответов
     this.questData.lapRes = [...lapRes];
     this.questData.lapRes.push('current'); // добавляем в массив результатов текущее состояние
 
@@ -66,24 +75,26 @@ class Quiz {
       let acceptOpt = this.db.map(i => i.author); // массив авторов картин
       acceptOpt = acceptOpt.filter(i => i !== author); // массив допустимых ответов
       acceptOpt = Array.from(new Set(acceptOpt)); // убираем повторения авторов
-      answers.push(author);
-      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // ультра
-      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // рандомный
-      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // вариант
-      Quiz.shuffle(answers).map((i, idx) => this.questData[`answer${idx}`] = i);
+      this.fillAnswObj(acceptOpt, author);
       const artQuest = new ViewArtQuest(this.questData);
       artQuest.render(root);
+      appState.currData.isPlaying = true;
+      if (this.timerState === 'checked') {
+        this.runTimer();
+        tickSounds.play(appState.settings.volume);
+      }
     }
     if (this.type === 'Картины') {
       this.questData.author = author;
       const acceptOpt = this.db.filter(i => i.author !== author);
-      answers.push(this.db[rigthAnswIdx]);
-      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // ультра
-      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // рандомный
-      answers.push(Quiz.shuffle(acceptOpt)[Quiz.getRndIdx(acceptOpt.length)]); // вариант
-      Quiz.shuffle(answers).map((i, idx) => this.questData[`answer${idx}`] = i);
+      this.fillAnswObj(acceptOpt, this.db[rigthAnswIdx]);
       const paintQuest = new ViewPaintQuest(this.questData);
       paintQuest.render(root);
+      appState.currData.isPlaying = true;
+      if (this.timerState === 'checked') {
+        this.runTimer();
+        tickSounds.play(appState.settings.volume);
+      }
     }
     appState.currData.author = author;
     appState.currData.name = name;
@@ -92,7 +103,8 @@ class Quiz {
     answPopup.classList.remove('open');
   }
 
-  checkQuest(author) { // проверяем ответ на вопрос и отображаем результат ответа
+  checkAnswer(author) { // проверяем ответ на вопрос и отображаем результат ответа
+    tickSounds.stop();
     const data = this.currData;
     if (author === data.author) {
       data.classWrong = '';
@@ -102,73 +114,98 @@ class Quiz {
       rightAnswPopup.render(answPopup);
     } else {
       data.classWrong = 'wrongAnsw';
-      data.result = 'Не верно';
+      if (!appState.currData.timeLeft && this.timerState === 'checked') {
+        data.result = 'Время истекло';
+      } else data.result = 'Не верно';
       appState.currData.lapRes.push('wrong');
       const rightAnswPopup = new ViewAnswPopup(data);
       rightAnswPopup.render(answPopup);
     }
-    const artQuest = new ViewArtQuest(this.questData);
-    if (appState.currData.lapRes.length === 10) artQuest.renderStatus(appState.currData.lapRes);
+    if (appState.currData.lapRes.length === 10) {
+      const artQuest = new ViewArtQuest(this.currData);
+      artQuest.renderStatus(appState.currData.lapRes);
+    }
     answPopup.classList.add('open');
   }
 
   updateResults() { // сохраняем результаты раунда в appState
     const { catNum, lapRes } = this.currData;
-    const n = +catNum;
     const lapRightAnsw = this.type === 'Художники'
-      ? this.db.filter((i, idx) => idx >= (n - 1) * 10 && idx / n < 10)
-      : this.db.filter((i, idx) => idx >= 120 + (n - 1) * 10 && idx / (12 + n) < 10);
+      ? this.db.filter((i, idx) => idx >= (catNum - 1) * 10 && idx / catNum < 10)
+      : this.db.filter((i, idx) => idx >= 120 + (catNum - 1) * 10 && idx / (catNum + 12) < 10);
     lapRes.forEach((i, idx) => lapRightAnsw[idx].isRight = i !== 'wrong');
     if (this.type === 'Художники') appState.artQuizRes[catNum - 1] = lapRightAnsw;
     else appState.paintQuizRes[catNum - 1] = lapRightAnsw;
+  }
+
+  runTimer() {
+    if (appState.currData.timeLeft && appState.currData.isPlaying) {
+      appState.currData.timeLeft--;
+      const { timeLeft } = appState.currData;
+      ViewArtQuest.renderTimer(timeLeft, this.time);
+      window.quizTimer = setTimeout(this.runTimer.bind(this), 1000);
+    } else if (!appState.currData.timeLeft && appState.currData.isPlaying) {
+      appState.currData.isPlaying = false;
+      const quiz = new Quiz(appState);
+      quiz.checkAnswer('любой текст');
+    }
   }
 }
 
 document.addEventListener('click', e => {
   switch (e.target.id) {
-    case 'artCatBtn':
+    case 'artCatBtn': // переход к типу викторины 'Художники'
       appState.quizType = 'Художники';
-      artCatPage = new ViewCategory(appState.quizType, appState.artQuizRes);
-      artCatPage.render(root);
+      Quiz.showCategories();
       break;
-    case 'paintCatBtn':
+    case 'paintCatBtn': // переход к типу викторины 'Картины'
       appState.quizType = 'Картины';
-      paintCatPage = new ViewCategory(appState.quizType, appState.paintQuizRes);
-      paintCatPage.render(root);
+      Quiz.showCategories();
       break;
-    case 'settingsBtn':
+    case 'settingsBtn': // переход к настройкам
       settingsPage = new ViewSettings(appState.settings);
       settingsPage.render(root);
       break;
-    case 'backBtn':
+    case 'backBtn': // переход к титульной странице
     case 'homeBtn':
+      clearTimeout(window.quizTimer);
+      appState.currData.isPlaying = false;
+      tickSounds.stop();
       startPage.render(root);
       break;
     case 'categBtn':
+      clearTimeout(window.quizTimer);
+      appState.currData.isPlaying = false;
+      tickSounds.stop();
       Quiz.showCategories();
       break;
     default: break;
   }
 
-  if (e.target.dataset.catNum) {
-    appState.currData.catNum = e.target.dataset.catNum;
+  if (e.target.dataset.catNum) { // переход к первому вопросу категории
+    appState.currData.catNum = +e.target.dataset.catNum;
     appState.currData.questNum = 0;
     appState.currData.lapRes = [];
+    appState.currData.timeLeft = appState.settings.time;
     const quiz = new Quiz(appState);
     quiz.createQuest();
   }
 
-  if (e.target.classList.contains('answ-btn')) {
+  if (e.target.classList.contains('answ-btn') && appState.currData.isPlaying) { // проверка ответ на вопрос
+    clearTimeout(window.quizTimer);
+    appState.currData.isPlaying = false;
     const quiz = new Quiz(appState);
-    if (appState.quizType === 'Художники') quiz.checkQuest(e.target.textContent);
-    else quiz.checkQuest(e.target.dataset.author);
+    if (appState.quizType === 'Художники') quiz.checkAnswer(e.target.textContent);
+    else quiz.checkAnswer(e.target.dataset.author);
   }
 
-  if (e.target.id === 'nextBtn') {
+  if (e.target.id === 'nextBtn') { // переход к следующему вопросу или к итогу раунда
     appState.currData.questNum++;
-    const quiz = new Quiz(appState);
-    if (appState.currData.questNum < 10) quiz.createQuest();
-    else {
+    if (appState.currData.questNum < 10) {
+      appState.currData.timeLeft = appState.settings.time;
+      const quiz = new Quiz(appState);
+      quiz.createQuest();
+    } else {
       const rightAnsw = appState.currData.lapRes.filter(i => i !== 'wrong');
       const lapEnd = new ViewLapPopup(rightAnsw.length);
       answPopup.classList.remove('open');
@@ -177,14 +214,14 @@ document.addEventListener('click', e => {
     }
   }
 
-  if (e.target.id === 'lapEndBtn') {
+  if (e.target.id === 'lapEndBtn') { // переход на страницу категорий после окончания раунда
     lapPopup.classList.remove('open');
     const quiz = new Quiz(appState);
     quiz.updateResults();
     Quiz.showCategories();
   }
   
-  if (e.target.dataset.btnNum) {
+  if (e.target.dataset.btnNum) { // переход на страницу результатов категории
     const lapRes = appState.quizType === 'Художники'
       ? appState.artQuizRes[e.target.dataset.btnNum - 1]
       : appState.paintQuizRes[e.target.dataset.btnNum - 1];
@@ -192,18 +229,18 @@ document.addEventListener('click', e => {
     results.render(root);
   }
 
-  if (e.target.classList.contains('results__item')) {
+  if (e.target.classList.contains('results__item')) { // отображение(скрытие) информации о картине
     e.target.firstElementChild.classList.toggle('--show');
   }
 
   if (appState.settings.toggleSound) {
-    const clickSound = new Sounds('../assets/sounds/click.ogg', appState.settings.volume);
+    const clickSound = new Sounds('../assets/sounds/click.ogg');
     switch (e.target.tagName) {
       case 'BUTTON':
       case 'A':
       case 'INPUT': 
       case 'LI':
-        clickSound.play();
+        clickSound.play(appState.settings.volume);
         break;
       default: break;
     }

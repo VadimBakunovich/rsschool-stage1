@@ -1,11 +1,15 @@
 export default class Sound {
-  constructor(url, volume) {
+  constructor(url) {
     this.audio = new Audio(url);
-    this.volume = volume;
   }
 
-  play() {
-    this.audio.volume = this.volume / 100;
+  play(volume) {
+    this.audio.volume = volume / 100;
     this.audio.play();
+  }
+
+  stop() {
+    this.audio.pause();
+    this.audio.currentTime = 0;
   }
 }

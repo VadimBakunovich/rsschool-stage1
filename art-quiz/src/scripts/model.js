@@ -20,12 +20,14 @@ export default class Model {
     quizType = '',
     currData = {
       catNum: 1,
+      isPlaying: false,
       questNum: 0,
       author: '',
       name: '',
       year: '',
       imgNum: 0,
       lapRes: [],
+      timeLeft: 0,
     },
   ) {
     this.settings = localStorage.BVA_settings

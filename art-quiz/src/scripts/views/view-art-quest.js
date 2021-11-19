@@ -1,4 +1,20 @@
 export default class ViewArtQuest {
+  static renderTimer(timeLeft, time) {
+    const timerProgress = document.querySelector('.progr-timer');
+    timerProgress.max = time;
+    timerProgress.value = timeLeft;
+    const coeff = (100 * timeLeft) / time;
+    if (timeLeft > 5) {
+      timerProgress.style.background = `
+        linear-gradient(to right, #006B54 0%, #006B54 ${coeff}%, #c4c4c4 ${coeff}%, #c4c4c4 100%)
+      `;
+    } else {
+      timerProgress.style.background = `
+        linear-gradient(to right, #A2242F 0%, #A2242F ${coeff}%, #c4c4c4 ${coeff}%, #c4c4c4 100%)
+      `;
+    }
+  }
+
   constructor(data) {
     this.lapRes = data.lapRes;
     this.template = `
