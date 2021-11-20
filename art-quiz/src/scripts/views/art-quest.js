@@ -16,7 +16,7 @@ export default class ViewArtQuest {
   }
 
   constructor(data) {
-    this.lapRes = data.lapRes;
+    this.lapStatus = data.lapStatus;
     this.template = `
       <div class="q-art">
         <div class="q-art__wrapper">
@@ -26,10 +26,22 @@ export default class ViewArtQuest {
             style="background-image: ${`url(../assets/img/${data.imgNum}full.webp)`}"
           ></div>
           <div class="text-answ">
-            <button data-answ-num="1" class="text-answ__btn answ-btn">${data.answer0}</button>
-            <button data-answ-num="2" class="text-answ__btn answ-btn">${data.answer1}</button>
-            <button data-answ-num="3" class="text-answ__btn answ-btn">${data.answer2}</button>
-            <button data-answ-num="4" class="text-answ__btn answ-btn">${data.answer3}</button>
+            <button
+              data-author="${data.answer0}"
+              class="text-answ__btn answ-btn"
+            >${data.answer0}</button>
+            <button
+              data-author="${data.answer1}"
+              class="text-answ__btn answ-btn"
+            >${data.answer1}</button>
+            <button
+              data-author="${data.answer2}"
+              class="text-answ__btn answ-btn"
+            >${data.answer2}</button>
+            <button
+              data-author="${data.answer3}"
+              class="text-answ__btn answ-btn"
+            >${data.answer3}</button>
           </div>
         </div>
         <ul class="status">
@@ -46,7 +58,7 @@ export default class ViewArtQuest {
         </ul>
         <div class="q__controls">
           <button class="home-btn" id="homeBtn"></button>
-          <input class="progress progr-timer" id="timer" type="range" min="0" max="30" value="30" step="1">
+          <input class="progress progr-timer" type="range" value="30">
           <button class="categ-btn" id="categBtn"></button>
         </div>
       </div>
@@ -58,8 +70,8 @@ export default class ViewArtQuest {
     this.renderStatus();
   }
 
-  renderStatus(lapRes = this.lapRes) {
+  renderStatus(lapStatus = this.lapStatus) {
     const statusItems = document.querySelectorAll('.status-item');
-    lapRes.map((i, idx) => statusItems[idx].className = `status-item --${i}`);
+    lapStatus.map((i, idx) => statusItems[idx].className = `status-item --${i}`);
   }
 }

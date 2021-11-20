@@ -16,7 +16,7 @@ export default class ViewPaintQuest {
   }
   
   constructor(data) {
-    this.lapRes = data.lapRes;
+    this.lapStatus = data.lapStatus;
     this.template = `
       <div class="q-paint">
         <div class="q-paint__wrapper">
@@ -58,7 +58,7 @@ export default class ViewPaintQuest {
         </ul>
         <div class="q__controls">
           <button class="home-btn" id="homeBtn"></button>
-          <input class="progress progr-timer" id="timer" type="range" min="0" max="30" value="30" step="1">
+          <input class="progress progr-timer" type="range" value="30">
           <button class="categ-btn" id="categBtn"></button>
         </div>
       </div>
@@ -70,8 +70,8 @@ export default class ViewPaintQuest {
     this.renderStatus();
   }
 
-  renderStatus(lapRes = this.lapRes) {
+  renderStatus(lapStatus = this.lapStatus) {
     const statusItems = document.querySelectorAll('.status-item');
-    lapRes.map((i, idx) => statusItems[idx].className = `status-item --${i}`);
+    lapStatus.map((i, idx) => statusItems[idx].className = `status-item --${i}`);
   }
 }

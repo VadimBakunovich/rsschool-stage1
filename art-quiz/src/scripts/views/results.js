@@ -19,17 +19,21 @@ export default class ViewResults {
     const resList = document.querySelector('.results__list');
     
     this.lapRes.forEach(i => {
-      const classActive = i.isRight ? 'active' : '';
+      const classActive = i.classWrong ? '' : 'active';
       const listItem = `
         <li
           class="results__item ${classActive}"
           style="background-image: ${`url(../assets/img/${i.imageNum}.webp)`}"
         >
-          <div class="res-item__wrapper">
+          <a
+            class="res-item__wrapper"
+            href="/assets/img/${i.imageNum}full.webp"
+            download
+          >
             <p class="res-item__name">${i.name}</p>
             <p class="res-item__author">${i.author}</p>
             <p class="res-item__year">${i.year}</p>
-          </div>
+          </a>
         </li>
       `;
       resList.innerHTML += listItem;

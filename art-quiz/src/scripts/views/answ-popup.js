@@ -3,7 +3,7 @@ export default class ViewAnswPopup {
     this.template = `
       <div class="answ-popup__content">
         <p class="answ-popup__title ${data.classWrong}">${data.result}!</p>
-        <img class="answ-popup__img" src="./assets/img/${data.imgNum}.webp" alt="painting">
+        <img class="answ-popup__img" src="./assets/img/${data.imageNum}.webp" alt="painting">
         <div class="answ-popup__wrapper">
           <p class="answ-popup__name">${data.name}</p>
           <p class="answ-popup__author">${data.author}</p>

@@ -1,4 +1,4 @@
-export default class ViewCategory {
+export default class ViewCategories {
   constructor(quizType, quizRes) {
     this.template = `
       <div class="categ">
@@ -15,13 +15,12 @@ export default class ViewCategory {
 
   render(elem) {
     elem.innerHTML = this.template;
-
     const categories = document.querySelector('.categ__list');
     const shift = this.quizType === 'Художники' ? 0 : 120;
     this.quizRes.forEach((item, idx) => {
       const activeClass = item.length ? 'active' : '';
       const rightAnswNum = item.length
-        ? item.reduce((acc, el) => (el.isRight ? acc + 1 : acc), 0)
+        ? item.reduce((acc, el) => (el.classWrong ? acc : acc + 1), 0)
         : 0;
       const listItem = `
         <li
