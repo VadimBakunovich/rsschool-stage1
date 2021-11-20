@@ -1,10 +1,11 @@
 export default class Sound {
-  constructor(url) {
+  constructor(state, url) {
     this.audio = new Audio(url);
+    this.volume = state.settings.toggleSound ? state.settings.volume : 0;
   }
 
-  play(volume) {
-    this.audio.volume = volume / 100;
+  play() {
+    this.audio.volume = this.volume / 100;
     this.audio.play();
   }
 

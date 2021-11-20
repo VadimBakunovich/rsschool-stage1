@@ -18,6 +18,8 @@ export default class Model {
       timeLeft: 0,
     },
     paintData = {},
+    tickSound = {},
+    timer = {},
   ) {
     this.settings = localStorage.BVA_settings
       ? JSON.parse(localStorage.getItem('BVA_settings'))
@@ -34,6 +36,8 @@ export default class Model {
     this.currData = currData;
     this.currData.timeLeft = this.settings.time;
     this.paintData = paintData;
+    this.tickSound = tickSound;
+    this.timer = timer;
     this.db = localStorage.BVA_db ? JSON.parse(localStorage.getItem('BVA_db')) : [];
   }
 

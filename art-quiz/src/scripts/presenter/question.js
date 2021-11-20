@@ -59,17 +59,16 @@ export default class Question {
       const paintQuest = new ViewPaintQuest(this.questData);
       paintQuest.render(elem);
     }
-    if (this.timerState === 'checked') {
-      this.runTimer();
-    }
+    if (this.timerState === 'checked') this.runTimer();
   }
 
   runTimer() {
     if (this.timeLeft) {
-      this.timeLeft--;
       ViewArtQuest.renderTimer(this.timeLeft, this.time);
+      this.timeLeft--;
       window.quizTimer = setTimeout(this.runTimer.bind(this), 1000);
     } else {
+      ViewArtQuest.renderTimer(this.timeLeft, this.time);
       const answPopup = document.querySelector('.answ-popup');
       const answer = new Answer(this.state);
       answer.checkAnswer('Время истекло', answPopup);

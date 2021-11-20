@@ -11,7 +11,7 @@ import ViewLapPopup from '../views/lap-popup';
 const state = new Model();
 state.getDb();
 const titlePage = new ViewTitle();
-const tickSounds = new Sounds('../assets/sounds/tick-tick.mp3');
+state.tickSound = new Sounds(state, '../assets/sounds/tick-tick.mp3');
 
 const root = document.querySelector('.root');
 const answPopup = document.querySelector('.answ-popup');
@@ -23,7 +23,7 @@ document.addEventListener('click', e => {
 
   if (e.target.id === 'backBtn' || e.target.id === 'homeBtn') {
     clearTimeout(window.quizTimer);
-    tickSounds.stop();
+    state.tickSound.stop();
     titlePage.render(root); // переход к титульной странице
   }
 
@@ -40,14 +40,14 @@ document.addEventListener('click', e => {
 
   if (e.target.id === 'categBtn') {
     clearTimeout(window.quizTimer);
-    tickSounds.stop();
+    state.tickSound.stop();
     const quiz = new Quiz(state);
     quiz.showCategories(root);
   } // возврат к категориям
 
   // переход к вопросу категории или к итогу раунда
   if (e.target.dataset.catNum || e.target.id === 'nextBtn') {
-    if (state.settings.toggleTimer) tickSounds.play(state.settings.volume);
+    if (state.settings.toggleTimer) state.tickSound.play();
     if (e.target.dataset.catNum) {
       state.currData.questNum = 0; // обнуляем текущее состояние перед началом новой игры
       state.currData.lapStatus = [];
@@ -65,7 +65,9 @@ document.addEventListener('click', e => {
       question.createQuest(root);
       answPopup.classList.remove('open');
     } else {
-      tickSounds.stop();
+      state.tickSound.stop();
+      const lapEndSound = new Sounds(state, '../assets/sounds/lap-end.mp3');
+      lapEndSound.play();
       answPopup.classList.remove('open');
       const rightAnsw = state.currData.lapStatus.filter(i => i !== 'wrong');
       const lapEnd = new ViewLapPopup(rightAnsw.length);
@@ -76,7 +78,7 @@ document.addEventListener('click', e => {
 
   if (e.target.classList.contains('answ-btn')) { // проверка ответа на вопрос
     clearTimeout(window.quizTimer);
-    tickSounds.stop();
+    state.tickSound.stop();
     const answer = new Answer(state);
     answer.checkAnswer(e.target.dataset.author, answPopup);
     state.currData.lapRes.push(answer.data);
@@ -106,17 +108,15 @@ document.addEventListener('click', e => {
     e.target.firstElementChild.classList.toggle('--show');
   }
 
-  if (state.settings.toggleSound) {
-    const clickSound = new Sounds('../assets/sounds/click.ogg');
-    switch (e.target.tagName) {
-      case 'BUTTON':
-      case 'A':
-      case 'INPUT': 
-      case 'LI':
-        clickSound.play(state.settings.volume);
-        break;
-      default: break;
-    }
+  const clickSound = new Sounds(state, '../assets/sounds/click.ogg');
+  switch (e.target.tagName) {
+    case 'BUTTON':
+    case 'A':
+    case 'INPUT': 
+    case 'LI':
+      clickSound.play();
+      break;
+    default: break;
   }
 });
 
