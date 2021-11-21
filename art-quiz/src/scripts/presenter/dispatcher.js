@@ -10,44 +10,46 @@ import ViewLapPopup from '../views/lap-popup';
 
 const state = new Model();
 state.getDb();
-const titlePage = new ViewTitle();
+const startPage = new ViewTitle(true);
 state.tickSound = new Sounds(state, '../assets/sounds/tick-tick.mp3');
 
-const root = document.querySelector('.root');
+const layer1 = document.querySelector('.layer1');
+const layer2 = document.querySelector('.layer2');
 const answPopup = document.querySelector('.answ-popup');
 const lapPopup = document.querySelector('.lap-popup');
 
-titlePage.render(root);
+startPage.render(layer1, layer2);
 
 document.addEventListener('click', e => {
 
   if (e.target.id === 'backBtn' || e.target.id === 'homeBtn') {
     clearTimeout(window.quizTimer);
     state.tickSound.stop();
-    titlePage.render(root); // переход к титульной странице
-  }
+    const titlePage = new ViewTitle();
+    titlePage.render(layer1, layer2);
+  } // переход к титульной странице
 
   if (e.target.id === 'settingsBtn') {
     const settings = new ViewSettings(state.settings);
-    settings.render(root); // переход к настройкам
-  }
+    settings.render(layer1, layer2);
+  } // переход к настройкам
 
   if (e.target.id === 'artCatBtn' || e.target.id === 'paintCatBtn') {
     state.currData.quizType = e.target.dataset.catType;
     const quiz = new Quiz(state);
-    quiz.showCategories(root);
+    quiz.showCategories(layer1, layer2);
   } // выбор типа викторины и переход к категориям
 
   if (e.target.id === 'categBtn') {
     clearTimeout(window.quizTimer);
     state.tickSound.stop();
     const quiz = new Quiz(state);
-    quiz.showCategories(root);
+    quiz.showCategories(layer1, layer2);
   } // возврат к категориям
 
   // переход к вопросу категории или к итогу раунда
   if (e.target.dataset.catNum || e.target.id === 'nextBtn') {
-    if (state.settings.toggleTimer) state.tickSound.play();
+    if (state.settings.toggleTimer) state.tickSound.play(state);
     if (e.target.dataset.catNum) {
       state.currData.questNum = 0; // обнуляем текущее состояние перед началом новой игры
       state.currData.lapStatus = [];
@@ -62,7 +64,7 @@ document.addEventListener('click', e => {
         : 120 + (state.currData.catNum - 1) * 10 + state.currData.questNum;
       state.paintData = state.db[rigthAnswIdx];
       const question = new Question(state);
-      question.createQuest(root);
+      question.createQuest(layer1, layer2);
       answPopup.classList.remove('open');
     } else {
       state.tickSound.stop();
@@ -92,7 +94,7 @@ document.addEventListener('click', e => {
       state.paintQuizRes[state.currData.catNum - 1] = state.currData.lapRes;
     }
     const quiz = new Quiz(state);
-    quiz.showCategories(root);
+    quiz.showCategories(layer1, layer2);
     lapPopup.classList.remove('open');
   }
 
@@ -101,11 +103,11 @@ document.addEventListener('click', e => {
       ? state.artQuizRes[e.target.dataset.btnNum - 1]
       : state.paintQuizRes[e.target.dataset.btnNum - 1];
     const results = new ViewResults(lapRes);
-    results.render(root);
+    results.render(layer1, layer2);
   }
 
-  if (e.target.classList.contains('results__item')) { // отображение(сокрытие) информации о картине
-    e.target.firstElementChild.classList.toggle('--show');
+  if (e.target.classList.contains('results__item')) { // отображение(сокрытие)
+    e.target.firstElementChild.classList.toggle('--show'); // информации о картине
   }
 
   const clickSound = new Sounds(state, '../assets/sounds/click.ogg');
@@ -120,7 +122,21 @@ document.addEventListener('click', e => {
   }
 });
 
-root.addEventListener('change', e => {
+document.addEventListener('animationend', e => {
+  if (e.target.classList.contains('front')) {
+    if (e.target.classList.contains('layer1')) {
+      layer2.innerHTML = '';
+      layer2.className = 'layer2';
+      layer1.classList.remove('noClick');
+    } else {
+      layer1.innerHTML = '';
+      layer1.className = 'layer1';
+      layer2.classList.remove('noClick');
+    }
+  }
+});
+
+document.addEventListener('change', e => {
   const settings = new ViewSettings(state.settings);
   const { target } = e;
   switch (target.id) {

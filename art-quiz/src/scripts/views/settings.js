@@ -32,8 +32,16 @@ export default class ViewSettings {
     `;
   }
 
-  render(elem) {
-    elem.innerHTML = this.template;
+  render(layer1, layer2) {
+    if (layer1.innerHTML) {
+      layer2.innerHTML = this.template;
+      layer1.className = 'layer1 back noClick';
+      layer2.className = 'layer2 front noClick';
+    } else {
+      layer1.innerHTML = this.template;
+      layer2.className = 'layer2 back noClick';
+      layer1.className = 'layer1 front noClick';
+    }
     this.renderOpt();
   }
 

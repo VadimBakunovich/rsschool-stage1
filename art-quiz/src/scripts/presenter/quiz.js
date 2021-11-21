@@ -7,11 +7,11 @@ export default class Quiz {
     this.paintQuizRes = state.paintQuizRes;
   }
 
-  showCategories(elem) {
+  showCategories(layer1, layer2) {
     const quizRes = this.quizType === 'Художники'
       ? this.artQuizRes
       : this.paintQuizRes;
     const categories = new ViewCategories(this.quizType, quizRes);
-    categories.render(elem);
+    categories.render(layer1, layer2);
   }
 }

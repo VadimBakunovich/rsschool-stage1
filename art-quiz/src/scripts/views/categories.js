@@ -1,5 +1,7 @@
 export default class ViewCategories {
   constructor(quizType, quizRes) {
+    this.quizType = quizType;
+    this.quizRes = quizRes;
     this.template = `
       <div class="categ">
         <div class="categ__head">
@@ -9,14 +11,20 @@ export default class ViewCategories {
         <ul class="categ__list"></ul>
       </div>
     `;
-    this.quizType = quizType;
-    this.quizRes = quizRes;
   }
 
-  render(elem) {
-    elem.innerHTML = this.template;
+  render(layer1, layer2) {
+    if (layer1.innerHTML) {
+      layer2.innerHTML = this.template;
+      layer1.className = 'layer1 back noClick';
+      layer2.className = 'layer2 front noClick';
+    } else {
+      layer1.innerHTML = this.template;
+      layer2.className = 'layer2 back noClick';
+      layer1.className = 'layer1 front noClick';
+    }
     const categories = document.querySelector('.categ__list');
-    const shift = this.quizType === 'Художники' ? 0 : 120;
+    const shift = this.quizType === 'Художники' ? 54 : 0;
     this.quizRes.forEach((item, idx) => {
       const activeClass = item.length ? 'active' : '';
       const rightAnswNum = item.length

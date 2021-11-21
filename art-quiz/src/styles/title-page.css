@@ -20,6 +20,7 @@ h1 {
   position: relative;
   font-size: 8vh;
   font-weight: 700;
+  color: #698d9c;
   margin-bottom: 15vh;
 }
 
@@ -40,7 +41,7 @@ h1::after {
   border-radius: 50%;
 }
 
-h1::after { left: .65em; }
+h1::after { left: .7em; }
 
 .text-btn {
   width: min(50vh, 90vw);
@@ -54,7 +55,6 @@ h1::after { left: .65em; }
   margin-bottom: 4vh;
   box-shadow: 8px 10px 12px #000;
   backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .text-btn:hover {
@@ -89,9 +89,14 @@ h1::after { left: .65em; }
 }
 
 .footer__link-course {
+  position: relative;
   width: max(8vh, 32px);
   height: max(4vh, 32px);
   background-image: url(../assets/svg/rsschool.svg);
+}
+
+.footer-year {
+  font-size: max(14px, 1.5vh);
 }
 
 .footer__link-github {

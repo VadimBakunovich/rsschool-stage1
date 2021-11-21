@@ -11,15 +11,13 @@ export default class Model {
     currData = {
       quizType: '',
       catNum: 1,
-      isPlaying: false,
       questNum: 0,
-      lapStatus: [],
-      lapRes: [],
+      lapStatus: [], // массив для отображения статусных индикаторов
+      lapRes: [], // массив результатов раунда
       timeLeft: 0,
     },
     paintData = {},
     tickSound = {},
-    timer = {},
   ) {
     this.settings = localStorage.BVA_settings
       ? JSON.parse(localStorage.getItem('BVA_settings'))
@@ -37,7 +35,6 @@ export default class Model {
     this.currData.timeLeft = this.settings.time;
     this.paintData = paintData;
     this.tickSound = tickSound;
-    this.timer = timer;
     this.db = localStorage.BVA_db ? JSON.parse(localStorage.getItem('BVA_db')) : [];
   }
 
@@ -45,8 +42,10 @@ export default class Model {
     fetch('assets/db.json')
       .then(response => response.json())
       .then(data => {
-        this.db = data;
-        localStorage.setItem('BVA_db', JSON.stringify(data));
+        if (!this.db.length) {
+          this.db = data;
+          localStorage.setItem('BVA_db', JSON.stringify(data));
+        }
       });
   }
 }

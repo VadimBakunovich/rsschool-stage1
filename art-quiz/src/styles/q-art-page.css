@@ -53,15 +53,15 @@
 
 .status {
   margin: 0 auto;
-  width: 60%;
+  width: min(60%, 60vh);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .status-item {
-  width: 1vh;
-  height: 1vh;
+  width: max(1vh, .6vw);
+  height: max(1vh, .6vw);
   border-radius: 50%;
   background-color: antiquewhite;
 }

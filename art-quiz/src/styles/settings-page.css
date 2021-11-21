@@ -1,6 +1,6 @@
 .settings {
   margin: 0 auto;
-  width: min(100vw, 700px);
+  width: min(100vw, 60vh);
   height: 100vh;
   padding: 4vh;
 }
@@ -125,7 +125,7 @@ input:checked + .slider:before {
 }
 
 .time-dig {
-  font-size: min(3.5vh, 34px);
+  font-size: max(3vh, 24px);
   transition: .3s;
 }
 

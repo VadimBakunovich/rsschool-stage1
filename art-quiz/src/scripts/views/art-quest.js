@@ -63,15 +63,27 @@ export default class ViewArtQuest {
         </div>
       </div>
     `;
+    this.layer = null;
   }
 
-  render(elem) {
-    elem.innerHTML = this.template;
+  render(layer1, layer2) {
+    if (layer1.innerHTML) {
+      layer2.innerHTML = this.template;
+      layer1.className = 'layer1 back noClick';
+      layer2.className = 'layer2 front noClick';
+    } else {
+      layer1.innerHTML = this.template;
+      layer2.className = 'layer2 back noClick';
+      layer1.className = 'layer1 front noClick';
+    }
+    if (layer1.classList.contains('front')) this.layer = layer1;
+    else this.layer = layer2;
     this.renderStatus();
   }
 
   renderStatus(lapStatus = this.lapStatus) {
-    const statusItems = document.querySelectorAll('.status-item');
+    const statusEl = this.layer ? this.layer : document;
+    const statusItems = statusEl.querySelectorAll('.status-item');
     lapStatus.map((i, idx) => statusItems[idx].className = `status-item --${i}`);
   }
 }

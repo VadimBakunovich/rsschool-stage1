@@ -38,7 +38,7 @@ export default class Question {
     Question.shuffle(answers).map((i, idx) => this.questData[`answer${idx}`] = i);
   }
 
-  createQuest(elem) {
+  createQuest(layer1, layer2) {
     this.questData.lapStatus = [...this.lapStatus];
     this.questData.lapStatus.push('current'); // добавляем в массив текущее состояние
     
@@ -49,7 +49,7 @@ export default class Question {
       acceptOpt = Array.from(new Set(acceptOpt)); // убираем повторения авторов
       this.fillAnswObj(acceptOpt, this.author);
       const artQuest = new ViewArtQuest(this.questData);
-      artQuest.render(elem);
+      artQuest.render(layer1, layer2);
     }
 
     if (this.quizType === 'Картины') {
@@ -57,7 +57,7 @@ export default class Question {
       const acceptOpt = this.db.filter(i => i.author !== this.author);
       this.fillAnswObj(acceptOpt, this.rightAnsw);
       const paintQuest = new ViewPaintQuest(this.questData);
-      paintQuest.render(elem);
+      paintQuest.render(layer1, layer2);
     }
     if (this.timerState === 'checked') this.runTimer();
   }

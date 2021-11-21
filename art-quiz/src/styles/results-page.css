@@ -64,9 +64,7 @@
   bottom: -100%;
   padding: .5vh 1vh;
   font-size: max(1.3vh, 14px);
-  color: inherit;
   text-align: center;
-  text-decoration: none;
   background-color: #333;
   border-top-left-radius: 1.8vh;
   border-top-right-radius: 1.8vh;

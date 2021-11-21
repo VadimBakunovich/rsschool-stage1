@@ -1,5 +1,6 @@
 export default class ViewTitle {
-  constructor() {
+  constructor(isFirstLoad = false) {
+    this.isFirstLoad = isFirstLoad;
     this.template = `
       <div class="title">
         <div class="title__wrapper">
@@ -27,6 +28,7 @@ export default class ViewTitle {
             title="front-end JS course"
             rel="noopener noreferrer"
           ></a>
+          <p class="footer-year">© 2021</p>
           <a
             class="footer__link-github"
             href="https://github.com/VadimBakunovich"
@@ -34,13 +36,23 @@ export default class ViewTitle {
             title="follow me on github"
             rel="noopener noreferrer"
           ></a>
-          <button class="footer__settings" id="settingsBtn"></button>
+          <button class="footer__settings" id="settingsBtn" title="settings"></button>
         </footer>
       </div>
     `;
   }
 
-  render(elem) {
-    elem.innerHTML = this.template;
+  render(layer1, layer2) {
+    if (this.isFirstLoad) {
+      layer2.innerHTML = this.template;
+    } else if (layer1.innerHTML && !this.isFirstLoad) {
+      layer2.innerHTML = this.template;
+      layer1.className = 'layer1 back noClick';
+      layer2.className = 'layer2 front noClick';
+    } else {
+      layer1.innerHTML = this.template;
+      layer2.className = 'layer2 back noClick';
+      layer1.className = 'layer1 front noClick';
+    }
   }
 }
