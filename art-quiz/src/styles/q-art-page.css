@@ -80,13 +80,15 @@
 
 .timer-wrapper {
   display: none;
-  width: min(76vh, 46vw);
+  width: min(76vh, 70vw);
+  padding: 0 min(4vh, 8vw);
   justify-content: space-between;
   align-items: center;
 }
 
 .progr-timer {
-  width: min(70vh, 40vw);
+  flex-grow: 1;
+  margin-right: min(3vh, 6vw);
   background: linear-gradient(to right, #006B54 0%, #006B54 100%, #c4c4c4 100%, #c4c4c4 100%);
   cursor: unset;
   transition: .3s;
