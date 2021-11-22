@@ -69,9 +69,10 @@
   transition: .3s;
 }
 
-.res-item__download:hover { transform: scale(1.1); }
+.res-item__download:hover { transform: translateY(.4vh); }
 
-.res-item__download:active { transform: scale(1); }
+.res-item__download:active {
+  transform: translateY(.4vh) scale(.95); }
 
 .res-item__wrapper {
   position: absolute;

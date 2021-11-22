@@ -41,7 +41,8 @@ export default class Question {
   createQuest(layer1, layer2) {
     this.questData.lapStatus = [...this.lapStatus];
     this.questData.lapStatus.push('current'); // добавляем в массив текущее состояние
-    
+    this.questData.timerState = this.timerState;
+    this.questData.timeLeft = this.timeLeft;
     if (this.quizType === 'Художники') {
       this.questData.imgNum = this.imageNum;
       let acceptOpt = this.db.map(i => i.author); // массив авторов картин

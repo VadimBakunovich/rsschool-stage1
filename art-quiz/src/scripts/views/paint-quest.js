@@ -1,6 +1,8 @@
 export default class ViewPaintQuest {
   constructor(data) {
     this.lapStatus = data.lapStatus;
+    this.timerState = data.timerState;
+    this.timeLeft = data.timeLeft > 9 ? `0:${data.timeLeft}` : `0:0${data.timeLeft}`;
     this.template = `
       <div class="q-paint">
         <div class="q-paint__wrapper">
@@ -46,7 +48,10 @@ export default class ViewPaintQuest {
         </ul>
         <div class="q__controls">
           <button class="home-btn" id="homeBtn"></button>
-          <input class="progress progr-timer" type="range" value="30">
+          <div class="timer-wrapper">
+            <input class="progress progr-timer" type="range" value="30">
+            <span class="time-left">${this.timeLeft}</span>
+          </div>
           <button class="categ-btn" id="categBtn"></button>
         </div>
       </div>
@@ -67,6 +72,8 @@ export default class ViewPaintQuest {
     if (layer1.classList.contains('front')) this.layer = layer1;
     else this.layer = layer2;
     this.renderStatus();
+    const timerWrp = this.layer.querySelector('.timer-wrapper');
+    if (this.timerState) timerWrp.style.display = 'flex';
   }
 
   renderStatus(lapStatus = this.lapStatus) {

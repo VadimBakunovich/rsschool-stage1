@@ -1,6 +1,8 @@
 export default class ViewArtQuest {
   static renderTimer(timeLeft, time) {
     const timerProgress = document.querySelector('.progr-timer');
+    const timeLeftCount = document.querySelector('.time-left');
+    timeLeftCount.textContent = timeLeft > 9 ? `0:${timeLeft}` : `0:0${timeLeft}`;
     timerProgress.max = time;
     timerProgress.value = timeLeft;
     const coeff = (100 * timeLeft) / time;
@@ -17,6 +19,8 @@ export default class ViewArtQuest {
 
   constructor(data) {
     this.lapStatus = data.lapStatus;
+    this.timerState = data.timerState;
+    this.timeLeft = data.timeLeft > 9 ? `0:${data.timeLeft}` : `0:0${data.timeLeft}`;
     this.template = `
       <div class="q-art">
         <div class="q-art__wrapper">
@@ -58,7 +62,10 @@ export default class ViewArtQuest {
         </ul>
         <div class="q__controls">
           <button class="home-btn" id="homeBtn"></button>
-          <input class="progress progr-timer" type="range" value="30">
+          <div class="timer-wrapper">
+            <input class="progress progr-timer" type="range" value="30">
+            <span class="time-left">${this.timeLeft}</span>
+          </div>
           <button class="categ-btn" id="categBtn"></button>
         </div>
       </div>
@@ -79,6 +86,8 @@ export default class ViewArtQuest {
     if (layer1.classList.contains('front')) this.layer = layer1;
     else this.layer = layer2;
     this.renderStatus();
+    const timerWrp = this.layer.querySelector('.timer-wrapper');
+    if (this.timerState) timerWrp.style.display = 'flex';
   }
 
   renderStatus(lapStatus = this.lapStatus) {
