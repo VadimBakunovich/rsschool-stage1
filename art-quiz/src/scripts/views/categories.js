@@ -35,7 +35,7 @@ export default class ViewCategories {
           data-cat-num="${idx + 1}"
           data-score="${rightAnswNum}/10"
           class="categ__item ${activeClass}"
-          style="background-image: ${`url(../assets/img/${(shift + (idx + 1) * 10) - 1}.webp)`}"
+          style="background-image: ${`url(assets/img/${(shift + (idx + 1) * 10) - 1}.webp)`}"
         >
           <button data-btn-num="${idx + 1}" class="categ-item__btn">Результаты</button>
         </li>

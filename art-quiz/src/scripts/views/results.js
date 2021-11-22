@@ -30,11 +30,11 @@ export default class ViewResults {
       const listItem = `
         <li
           class="results__item ${classActive}"
-          style="background-image: ${`url(../assets/img/${i.imageNum}.webp)`}"
+          style="background-image: ${`url(assets/img/${i.imageNum}.webp)`}"
         >
           <a
             class="res-item__download"
-            href="/assets/img/${i.imageNum}full.webp"
+            href="./assets/img/${i.imageNum}full.webp"
             download
             title="download image"
           ></a>

@@ -27,7 +27,7 @@ export default class ViewArtQuest {
           <p class="q-art__text">Кто автор этой картины?</p>
           <div
             class="q-art__img"
-            style="background-image: ${`url(../assets/img/${data.imgNum}full.webp)`}"
+            style="background-image: ${`url(assets/img/${data.imgNum}full.webp)`}"
           ></div>
           <div class="text-answ">
             <button

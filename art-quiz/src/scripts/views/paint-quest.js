@@ -11,25 +11,25 @@ export default class ViewPaintQuest {
             <img
               data-author="${data.answer0.author}"
               class="paint-answ__btn answ-btn"
-              src="/assets/img/${data.answer0.imageNum}.webp"
+              src="./assets/img/${data.answer0.imageNum}.webp"
               alt="painting"
             >
             <img
               data-author="${data.answer1.author}"
               class="paint-answ__btn answ-btn"
-              src="/assets/img/${data.answer1.imageNum}.webp"
+              src="./assets/img/${data.answer1.imageNum}.webp"
               alt="painting"
             >
             <img
               data-author="${data.answer2.author}"
               class="paint-answ__btn answ-btn"
-              src="/assets/img/${data.answer2.imageNum}.webp"
+              src="./assets/img/${data.answer2.imageNum}.webp"
               alt="painting"
             >
             <img
               data-author="${data.answer3.author}"
               class="paint-answ__btn answ-btn"
-              src="/assets/img/${data.answer3.imageNum}.webp"
+              src="./assets/img/${data.answer3.imageNum}.webp"
               alt="painting"
             >
           </div>
