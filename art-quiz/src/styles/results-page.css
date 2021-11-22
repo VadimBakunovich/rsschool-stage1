@@ -54,6 +54,25 @@
 
 .results__item.active { filter: grayscale(0); }
 
+.res-item__download {
+  position: absolute;
+  content: '';
+  top: min(1vh, 1vw);
+  right: min(1vh, 1vw);
+  width: min(3vh, 6vw);
+  height: min(3vh, 6vw);
+  background-image: url(../assets/svg/floppy.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: drop-shadow(.2vh .3vh .5vh #000);
+  transition: .3s;
+}
+
+.res-item__download:hover { transform: scale(1.1); }
+
+.res-item__download:active { transform: scale(1); }
+
 .res-item__wrapper {
   position: absolute;
   width: 100%;
@@ -69,7 +88,6 @@
   border-top-left-radius: 1.8vh;
   border-top-right-radius: 1.8vh;
   transition: .3s;
-  
 }
 
 .res-item__author {

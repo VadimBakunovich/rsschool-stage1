@@ -33,14 +33,16 @@ export default class ViewResults {
           style="background-image: ${`url(../assets/img/${i.imageNum}.webp)`}"
         >
           <a
-            class="res-item__wrapper"
+            class="res-item__download"
             href="/assets/img/${i.imageNum}full.webp"
             download
-          >
+            title="download image"
+          ></a>
+          <div class="res-item__wrapper">
             <p class="res-item__name">${i.name}</p>
             <p class="res-item__author">${i.author}</p>
             <p class="res-item__year">${i.year}</p>
-          </a>
+          </div>
         </li>
       `;
       resList.innerHTML += listItem;

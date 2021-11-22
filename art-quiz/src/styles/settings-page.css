@@ -2,11 +2,11 @@
   margin: 0 auto;
   width: min(100vw, 60vh);
   height: 100vh;
-  padding: 4vh;
+  padding: 4vh min(4vh, 5vw);
 }
 
 .settings__title {
-  font-size: 4vh;
+  font-size: min(4vh, 10vw);
   letter-spacing: .1vh;
   text-align: center;
   color: #FDAC53;
@@ -24,7 +24,7 @@
 }
 
 .settings-item__text {
-  font-size: min(3.8vh, 40px);
+  font-size: min(3.8vh, 7vw);
   transition: .3s;
 }
 
@@ -80,7 +80,7 @@ input:checked + .slider:before {
 }
 
 .progress {
-  height: 1vh;
+  height: min(1vh, 1.5vw);
   appearance: none;
   width: 70%;
   background: linear-gradient(to right, #FDAC53 0%, #FDAC53 50%, #c4c4c4 50%, #c4c4c4 100%);
@@ -90,8 +90,8 @@ input:checked + .slider:before {
 }
 
 .progress::-webkit-slider-thumb {
-  width: 2vh;
-  height: 2vh;
+  width: min(2vh, 3vw);
+  height: min(2vh, 3vw);
   border-radius: 50%;
   appearance: none;
   cursor: ew-resize;
@@ -105,8 +105,8 @@ input:checked + .slider:before {
 
 .volume {
   display: block;
-  width: 4vh;
-  height: 4vh;
+  width: min(4vh, 8vw);
+  height: min(4vh, 8vw);
   background-image: url(../assets/svg/muted.svg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -125,7 +125,7 @@ input:checked + .slider:before {
 }
 
 .time-dig {
-  font-size: max(3vh, 24px);
+  font-size: min(3.5vh, 6vw);
   transition: .3s;
 }
 
@@ -135,7 +135,7 @@ input:checked + .slider:before {
 
 .settings__back {
   margin: 0 auto;
-  width: max(30vh, 40%);
+  width: min(30vh, 60vw);
   color: #333;
   font-weight: 700;
   line-height: normal;

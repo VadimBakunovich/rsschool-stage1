@@ -18,14 +18,14 @@
 
 h1 {
   position: relative;
-  font-size: 8vh;
+  font-size: min(8vh, 20vw);
   font-weight: 700;
   color: #698d9c;
   margin-bottom: 15vh;
 }
 
 .h1-begin {
-  margin-right: 9px;
+  margin-right: .1em;
   color: chocolate;
 }
 
@@ -44,10 +44,10 @@ h1::after {
 h1::after { left: .7em; }
 
 .text-btn {
-  width: min(50vh, 90vw);
-  height: 9vh;
-  font-size: 3.5vh;
-  line-height: 9vh;
+  width: min(50vh, 85vw);
+  height: min(9vh, 15vw);
+  font-size: min(3.5vh, 6vw);
+  line-height: min(9vh, 15vw);
   text-align: center;
   font-weight: 500;
   border: 2px solid antiquewhite;

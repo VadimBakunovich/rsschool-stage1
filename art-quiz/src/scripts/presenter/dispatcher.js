@@ -108,7 +108,7 @@ document.addEventListener('click', e => {
   }
 
   if (e.target.classList.contains('results__item')) { // отображение(сокрытие)
-    e.target.firstElementChild.classList.toggle('--show'); // информации о картине
+    e.target.lastElementChild.classList.toggle('--show'); // информации о картине
   }
 
   const clickSound = new Sounds(state, '../assets/sounds/click.ogg');
