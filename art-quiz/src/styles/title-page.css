@@ -95,9 +95,7 @@ h1::after { left: .7em; }
   background-image: url(../assets/svg/rsschool.svg);
 }
 
-.footer-year {
-  font-size: max(14px, 1.5vh);
-}
+.footer-year { font-size: max(14px, 1.5vh); }
 
 .footer__link-github {
   width: max(4vh, 32px);

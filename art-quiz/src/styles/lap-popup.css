@@ -10,13 +10,23 @@
   background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
   visibility: hidden;
-  transition: opacity .5s;
+  transition: .4s;
   z-index: 100;
 }
 
 .lap-popup.open {
   opacity: 1;
   visibility: visible;
+}
+
+@keyframes fromUp {
+  from { transform: translateY(-100vh); }
+  to { transform: translateY(0); }
+}
+
+@keyframes goUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); }
 }
 
 .lap-popup__content {
@@ -29,11 +39,10 @@
   align-items: center;
   background-color: #222;
   border-radius: 3vh;
-  transform: scale(0, 0);
-  transition: 2s cubic-bezier(0,1.2,1,1);
+  animation: goUp .7s cubic-bezier(.3,1,.4,1);
 }
 .lap-popup.open .lap-popup__content {
-  transform: scale(1, 1);
+  animation: fromUp .7s cubic-bezier(.3,1,.4,1);
 }
 
 .lap-popup__title {

@@ -21,6 +21,7 @@ const lapPopup = document.querySelector('.lap-popup');
 startPage.render(layer1, layer2);
 
 document.addEventListener('click', e => {
+  if (window.scrollY) window.scroll(0, 0); // bugfix для анимации при скролле
 
   if (e.target.id === 'backBtn' || e.target.id === 'homeBtn') {
     clearTimeout(window.quizTimer);
@@ -82,7 +83,7 @@ document.addEventListener('click', e => {
     clearTimeout(window.quizTimer);
     state.tickSound.stop();
     const answer = new Answer(state);
-    answer.checkAnswer(e.target.dataset.author, answPopup);
+    answer.checkAnswer(e.target.dataset.author, answPopup, e.target);
     state.currData.lapRes.push(answer.data);
     answPopup.classList.add('open');
   }
@@ -116,6 +117,7 @@ document.addEventListener('click', e => {
     case 'A':
     case 'INPUT': 
     case 'LI':
+    case 'IMG':
       clickSound.play();
       break;
     default: break;

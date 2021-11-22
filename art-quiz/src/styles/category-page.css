@@ -129,7 +129,6 @@
 
 @media (pointer: coarse) {
   .categ__item {
-    position: relative;
     width: 19vh;
     height: 24vh;
   }

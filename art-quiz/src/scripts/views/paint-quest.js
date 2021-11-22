@@ -51,7 +51,7 @@ export default class ViewPaintQuest {
         </div>
       </div>
     `;
-    this.layer = {};
+    this.layer = null;
   }
 
   render(layer1, layer2) {
@@ -70,7 +70,8 @@ export default class ViewPaintQuest {
   }
 
   renderStatus(lapStatus = this.lapStatus) {
-    const statusItems = this.layer.querySelectorAll('.status-item');
+    const statusEl = this.layer ? this.layer : document;
+    const statusItems = statusEl.querySelectorAll('.status-item');
     lapStatus.map((i, idx) => statusItems[idx].className = `status-item --${i}`);
   }
 }
