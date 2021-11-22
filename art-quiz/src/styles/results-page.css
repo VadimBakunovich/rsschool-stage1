@@ -1,16 +1,16 @@
 .results {
   margin: 0 auto;
   padding: 2.5vh;
-  width: min(100vw, 1680px);
+  width: 100vw;
   height: 100vh;
 }
 
 .results__head {
   position: fixed;
-  width: min(100vw, 1680px);
+  width: 95%;
   padding: 3vh;
   top: 0;
-  left: max(0px, calc((100vw - 1680px) / 2));
+  left: max(0px, calc((100vw - 95%) / 2));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,15 +27,15 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 3vh;
+  gap: min(3vh, 5vw);
   justify-content: center;
   align-items: center;
 }
 
 .results__item {
   position: relative;
-  width: 18%;
-  height: 33vh;
+  width: min(32vh, 20vw);
+  height: min(32vh, 20vw);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

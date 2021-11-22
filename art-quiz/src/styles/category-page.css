@@ -1,16 +1,16 @@
 .categ {
   margin: 0 auto;
   padding: 2.5vh;
-  width: min(100vw, 1680px);
+  width: min(100vw, 1620px);
   height: 100vh;
 }
 
 .categ__head {
   position: fixed;
-  width: min(100vw, 1680px);
+  width: min(100vw, 1620px);
   padding: 3vh;
   top: 0;
-  left: max(0px, calc((100vw - 1680px) / 2));
+  left: max(0px, calc((100vw - 1620px) / 2));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,15 +43,15 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 3vh;
+  gap: min(2.5vh, 5vw);
   justify-content: center;
   align-items: center;
 }
 
 .categ__item {
   position: relative;
-  width: 23%;
-  height: 23vh;
+  width: min(25vh, 20vw);
+  height: min(25vh, 20vw);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

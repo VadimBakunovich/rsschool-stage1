@@ -111,7 +111,7 @@ document.addEventListener('click', e => {
     e.target.lastElementChild.classList.toggle('--show'); // информации о картине
   }
 
-  const clickSound = new Sounds(state, '../assets/sounds/click.ogg');
+  const clickSound = new Sounds(state, '../assets/sounds/click.mp3');
   switch (e.target.tagName) {
     case 'BUTTON':
     case 'A':
@@ -135,6 +135,14 @@ document.addEventListener('animationend', e => {
       layer1.className = 'layer1';
       layer2.classList.remove('noClick');
     }
+  }
+});
+
+document.addEventListener('keyup', e => {
+  const fullScreenEl = document.querySelector('body');
+  if (e.code === 'KeyF') {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else fullScreenEl.requestFullscreen();
   }
 });
 

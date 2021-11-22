@@ -11,7 +11,7 @@ export default class ViewSettings {
             <span class="slider"></span>
           </label>
         </div>
-        <div class="settings__progr">
+        <div class="settings__progr --mb">
           <span class="volume"></span>
           <input class="progress vol-progr" id="volProgr" type="range" value="${data.volume}">
           <span class="volume vol-up"></span>
@@ -27,6 +27,7 @@ export default class ViewSettings {
           <input class="progress time-progr" id="timeProgr" type="range" min="5" max="30" value="${data.time}" step="5" disabled>
           <span class="time-dig">${data.time} сек.</span>
         </div>
+        <p class="setting__fullscreen">Полноэкранный режим вкл(выкл): клавиша "F"</p>
         <button class="settings__back text-btn" id="backBtn">назад</button>
       </div>
     `;
