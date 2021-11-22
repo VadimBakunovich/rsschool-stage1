@@ -9,9 +9,9 @@ export default class Answer {
     this.currData = state.currData;
     this.data = state.paintData;
     this.tickSound = state.tickSound;
-    this.rightAnswSound = new Sounds(state, '../assets/sounds/right.mp3');
-    this.wrongAnswSound = new Sounds(state, '../assets/sounds/wrong.mp3');
-    this.timeOverSound = new Sounds(state, '../assets/sounds/time-over.mp3');
+    this.rightAnswSound = new Sounds(state, 'assets/sounds/right.mp3');
+    this.wrongAnswSound = new Sounds(state, 'assets/sounds/wrong.mp3');
+    this.timeOverSound = new Sounds(state, 'assets/sounds/time-over.mp3');
   }
 
   checkAnswer(author, elem, target) { // проверяем ответ на вопрос и отображаем результат

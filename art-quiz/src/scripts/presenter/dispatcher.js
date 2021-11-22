@@ -11,7 +11,7 @@ import ViewLapPopup from '../views/lap-popup';
 const state = new Model();
 state.getDb();
 const startPage = new ViewTitle(true);
-state.tickSound = new Sounds(state, '../assets/sounds/tick-tick.mp3');
+state.tickSound = new Sounds(state, 'assets/sounds/tick-tick.mp3');
 
 const layer1 = document.querySelector('.layer1');
 const layer2 = document.querySelector('.layer2');
@@ -69,7 +69,7 @@ document.addEventListener('click', e => {
       answPopup.classList.remove('open');
     } else {
       state.tickSound.stop();
-      const lapEndSound = new Sounds(state, '../assets/sounds/lap-end.mp3');
+      const lapEndSound = new Sounds(state, 'assets/sounds/lap-end.mp3');
       lapEndSound.play();
       answPopup.classList.remove('open');
       const rightAnsw = state.currData.lapStatus.filter(i => i !== 'wrong');
@@ -111,7 +111,7 @@ document.addEventListener('click', e => {
     e.target.lastElementChild.classList.toggle('--show'); // информации о картине
   }
 
-  const clickSound = new Sounds(state, '../assets/sounds/click.mp3');
+  const clickSound = new Sounds(state, 'assets/sounds/click.mp3');
   switch (e.target.tagName) {
     case 'BUTTON':
     case 'A':
