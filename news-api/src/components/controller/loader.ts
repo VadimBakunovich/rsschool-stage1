@@ -1,8 +1,8 @@
 import { IOptions, IData, Callback } from '../app/types';
 
 class Loader {
-  baseLink: string
-  options: IOptions
+  private baseLink: string;
+  private options: IOptions;
 
   constructor(baseLink: string, options: IOptions) {
     this.baseLink = baseLink;
