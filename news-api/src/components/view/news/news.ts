@@ -1,38 +1,41 @@
+import { IObj } from '../../app/types';
 import './news.css';
 
 class News {
-    draw(data) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+  draw(data: IObj[]) {
+    const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
-        const fragment = document.createDocumentFragment();
-        const newsItemTemp = document.querySelector('#newsItemTemp');
+    const fragment = document.createDocumentFragment();
+    const newsItemTemp: HTMLTemplateElement = document.querySelector('#newsItemTemp');
 
-        news.forEach((item, idx) => {
-            const newsClone = newsItemTemp.content.cloneNode(true);
+    news.forEach((item, idx) => {
+      const newsClone = newsItemTemp.content.cloneNode(true) as Element;
 
-            if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
+      if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
 
-            newsClone.querySelector('.news__meta-photo').style.backgroundImage = `url(${
-                item.urlToImage || 'img/news_placeholder.jpg'
-            })`;
-            newsClone.querySelector('.news__meta-author').textContent = item.author || item.source.name;
-            newsClone.querySelector('.news__meta-date').textContent = item.publishedAt
-                .slice(0, 10)
-                .split('-')
-                .reverse()
-                .join('-');
+      const newsMetaPhoto: HTMLElement = newsClone.querySelector('.news__meta-photo');
 
-            newsClone.querySelector('.news__description-title').textContent = item.title;
-            newsClone.querySelector('.news__description-source').textContent = item.source.name;
-            newsClone.querySelector('.news__description-content').textContent = item.description;
-            newsClone.querySelector('.news__read-more a').setAttribute('href', item.url);
+      newsMetaPhoto.style.backgroundImage = `
+        url(${item.urlToImage || 'img/news_placeholder.jpg'})
+      `;
+      newsClone.querySelector('.news__meta-author').textContent = item.author || item.source.name;
+      newsClone.querySelector('.news__meta-date').textContent = item.publishedAt
+        .slice(0, 10)
+        .split('-')
+        .reverse()
+        .join('-');
 
-            fragment.append(newsClone);
-        });
+      newsClone.querySelector('.news__description-title').textContent = item.title;
+      newsClone.querySelector('.news__description-source').textContent = item.source.name;
+      newsClone.querySelector('.news__description-content').textContent = item.description;
+      newsClone.querySelector('.news__read-more a').setAttribute('href', item.url);
 
-        document.querySelector('.news').innerHTML = '';
-        document.querySelector('.news').appendChild(fragment);
-    }
+      fragment.append(newsClone);
+    });
+
+    document.querySelector('.news').innerHTML = '';
+    document.querySelector('.news').appendChild(fragment);
+  }
 }
 
 export default News;
