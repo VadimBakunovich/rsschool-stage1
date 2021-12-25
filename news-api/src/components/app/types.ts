@@ -22,8 +22,6 @@ interface IData {
   [x: string]: IObj[]
 }
 
-type Callback = {
-  (someArg: IData): void;
-}
+type Callback = (someArg: IData) => void;
 
 export { IOptions, IObj, IData, Callback };

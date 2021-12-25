@@ -1,4 +1,4 @@
-import { IObj, IData } from '../app/types';
+import { IData } from '../app/types';
 import News from './news/news';
 import Sources from './sources/sources';
 
@@ -12,7 +12,7 @@ export class AppView {
   }
 
   drawNews(data: IData) {
-    const values: IObj[] = data?.articles ? data?.articles : [];
+    const values = data?.articles ? data?.articles : [];
     this.news.draw(values);
   }
 
