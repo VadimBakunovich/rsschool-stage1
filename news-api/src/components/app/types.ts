@@ -1,25 +1,29 @@
 interface IOptions {
-  [x: string]: string
+  [x: string]: string;
 }
 
 interface ISource {
-  name: string
+  id: string;
+  name: string;
 }
 
 interface IObj {
-  author: string
-  description: string
-  id: string
-  name: string
-  publishedAt: string
-  source: ISource
-  title: string
-  url: string
-  urlToImage: string
+  author: string;
+  description: string;
+  id: string;
+  name: string;
+  publishedAt: string;
+  source: ISource;
+  title: string;
+  url: string;
+  urlToImage: string;
 }
 
 interface IData {
-  [x: string]: IObj[]
+  status: string;
+  sources?: IObj[];
+  totalResults?: number;
+  articles?: IObj[];
 }
 
 type Callback = (someArg: IData) => void;
